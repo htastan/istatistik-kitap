@@ -1,0 +1,1997 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>6&nbsp; İki Değişken Arasındaki İlişki – İstatistik</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./Olasilik.html" rel="next">
+<link href="./Betimsel-sayisal.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-70a47bd5681a7291082a5b9f83d58762.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Giris.html">KISIM I: İstatistik I</a></li><li class="breadcrumb-item"><a href="./Iliski.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">İki Değişken Arasındaki İlişki</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">İstatistik</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Önsöz</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">KISIM I: İstatistik I</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Giris.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Giriş</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R-base.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">R Programına Giriş</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Temelk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Verilerin Betimlenmesi: Temel Kavramlar</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Betimsel-gorsel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Frekans Dağılımları ve Grafikler</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Betimsel-sayisal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Sayısal Özet Ölçüleri</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Iliski.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">İki Değişken Arasındaki İlişki</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Olasilik.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Olasılık</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Kesiklird.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Kesikli Rassal Değişkenler</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Sureklird.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Sürekli Rassal Değişkenler</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Normal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Normal Dağılım</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Birlesikdagilimlar.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Birleşik Dağılımlar</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kaynaklar.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Kaynaklar</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Ekler</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ek-sozluk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Terimler Sözlüğü</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">İçindekiler</h2>
+   
+  <ul>
+  <li><a href="#serpilme-diyagramı" id="toc-serpilme-diyagramı" class="nav-link active" data-scroll-target="#serpilme-diyagramı"><span class="header-section-number">6.1</span> Serpilme Diyagramı</a></li>
+  <li><a href="#kovaryans" id="toc-kovaryans" class="nav-link" data-scroll-target="#kovaryans"><span class="header-section-number">6.2</span> Kovaryans</a></li>
+  <li><a href="#korelasyon" id="toc-korelasyon" class="nav-link" data-scroll-target="#korelasyon"><span class="header-section-number">6.3</span> Korelasyon</a>
+  <ul>
+  <li><a href="#sec-iliski-birim" id="toc-sec-iliski-birim" class="nav-link" data-scroll-target="#sec-iliski-birim"><span class="header-section-number">6.3.1</span> Ölçü birimi ve doğrusal dönüşümler</a></li>
+  <li><a href="#korelasyon-katsayısının-geometrik-anlamı" id="toc-korelasyon-katsayısının-geometrik-anlamı" class="nav-link" data-scroll-target="#korelasyon-katsayısının-geometrik-anlamı"><span class="header-section-number">6.3.2</span> Korelasyon katsayısının geometrik anlamı</a></li>
+  <li><a href="#görselleştirmenin-önemi" id="toc-görselleştirmenin-önemi" class="nav-link" data-scroll-target="#görselleştirmenin-önemi"><span class="header-section-number">6.3.3</span> Görselleştirmenin önemi</a></li>
+  <li><a href="#doğrusal-olmayan-ilişkiler-ve-dönüşümler" id="toc-doğrusal-olmayan-ilişkiler-ve-dönüşümler" class="nav-link" data-scroll-target="#doğrusal-olmayan-ilişkiler-ve-dönüşümler"><span class="header-section-number">6.3.4</span> Doğrusal olmayan ilişkiler ve dönüşümler</a></li>
+  <li><a href="#sec-spearman" id="toc-sec-spearman" class="nav-link" data-scroll-target="#sec-spearman"><span class="header-section-number">6.3.5</span> Sıra korelasyonu</a></li>
+  <li><a href="#korelasyon-ve-nedensellik" id="toc-korelasyon-ve-nedensellik" class="nav-link" data-scroll-target="#korelasyon-ve-nedensellik"><span class="header-section-number">6.3.6</span> Korelasyon ve nedensellik</a></li>
+  </ul></li>
+  <li><a href="#çözümlü-alıştırmalar" id="toc-çözümlü-alıştırmalar" class="nav-link" data-scroll-target="#çözümlü-alıştırmalar"><span class="header-section-number">6.4</span> Çözümlü Alıştırmalar</a></li>
+  <li><a href="#problemler" id="toc-problemler" class="nav-link" data-scroll-target="#problemler"><span class="header-section-number">6.5</span> Problemler</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Giris.html">KISIM I: İstatistik I</a></li><li class="breadcrumb-item"><a href="./Iliski.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">İki Değişken Arasındaki İlişki</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="sec-iliski" class="quarto-section-identifier"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">İki Değişken Arasındaki İlişki</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="hidden">
+<p><span class="math display">\[
+  \renewcommand{\E}{\mathbb{E}}
+  \renewcommand{\P}{\mathbb{P}}
+  \renewcommand{\Var}{\mbox{Var}}
+  \renewcommand{\Cov}{\mbox{Cov}}
+\]</span></p>
+</div>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Bu bölümün amacı.</strong></p>
+<ul>
+<li>Serpilme diyagramıyla iki değişken arasındaki ilişkiyi görselleştirmek</li>
+<li>Kovaryansı hesaplamak ve büyüklüğünün neden tek başına yorumlanamayacağını anlamak</li>
+<li>Korelasyon katsayısını hesaplamak, işaretini ve büyüklüğünü yorumlamak</li>
+<li>Ölçü birimindeki değişikliklerin kovaryansı ve korelasyonu nasıl etkilediğini görmek</li>
+<li>Aynı korelasyon katsayısını veren veri kümelerinin çok farklı görünebileceğini görmek</li>
+<li>Doğrusal olmayan ilişkileri tanımak, logaritma dönüşümünün etkisini ve korelasyonun hangi veriye bakıldığına göre değişebileceğini görmek</li>
+<li>Sıralı değişkenler için sıra korelasyonunu kullanmak</li>
+<li>Korelasyonun nedensellik anlamına gelmediğini kavramak</li>
+</ul>
+</div>
+</div>
+</div>
+<p>Şimdiye kadar bir değişkenin merkezi eğilimi, yayıklığı ve dağılımının biçimine ilişkin çeşitli görsel ve sayısal araçları öğrendik. Bu bölümde iki değişken arasındaki ilişkinin nasıl görselleştirilebileceğini ve özetlenebileceğini öğreneceğiz.</p>
+<p>Bu bölümdeki araçlar kitabın ilerleyen kısımlarında yeniden karşımıza çıkacaktır. Birleşik Dağılımlar bölümünde kovaryans ve korelasyonu bu kez rassal değişkenler için, yani anakütle düzeyinde tanımlayacağız (bkz. <a href="Birlesikdagilimlar.html" class="quarto-xref"><span>Bölüm 11</span></a>). Buradaki <span class="math inline">\(s_{xy}\)</span> ve <span class="math inline">\(r_{xy}\)</span> örneklemden hesaplanan büyüklüklerdir, oradaki karşılıkları ise dağılımın kendisine ait parametrelerdir.</p>
+<p>Kısım II’deki regresyon analizinde ise iki adım daha atacağız. Önce gözlenen korelasyonun şans eseri olup olmadığını sınayacak, ardından iki değişken arasındaki ilişkiyi bir denklemle modelleyeceğiz. Bu bölümde öğrendiğiniz serpilme diyagramı okuma alışkanlığı orada da işinize yarayacak.</p>
+<section id="serpilme-diyagramı" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="serpilme-diyagramı"><span class="header-section-number">6.1</span> Serpilme Diyagramı</h2>
+<p>Elimizde sürekli değerler alan iki değişkene ilişkin gözlemler olsun. Örneğin, 10 öğrencinin derse devam oranları ile notları aşağıdaki gibidir:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># notlar ve devam oranı</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>devam <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">80</span>, <span class="dv">75</span>, <span class="dv">70</span>, <span class="dv">90</span>, <span class="dv">91</span>, <span class="dv">60</span>, <span class="dv">86</span>, <span class="dv">95</span>, <span class="dv">83</span>, <span class="dv">70</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>basari <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">75</span>, <span class="dv">78</span>, <span class="dv">50</span>, <span class="dv">80</span>, <span class="dv">81</span>, <span class="dv">60</span>, <span class="dv">80</span>, <span class="dv">90</span>, <span class="dv">76</span>, <span class="dv">80</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Veri çerçevesi oluşturma</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>veri1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">`</span><span class="at">Öğrenci</span><span class="st">`</span> <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>                   <span class="st">`</span><span class="at">Devam_oranı</span><span class="st">`</span> <span class="ot">=</span> devam,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>                   <span class="st">`</span><span class="at">Başarı</span><span class="st">`</span> <span class="ot">=</span> basari)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(veri1)</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Öğrenci Devam_oranı Başarı
+1        1          80     75
+2        2          75     78
+3        3          70     50
+4        4          90     80
+5        5          91     81
+6        6          60     60
+7        7          86     80
+8        8          95     90
+9        9          83     76
+10      10          70     80</code></pre>
+</div>
+</div>
+<p>Bu veri kümesinde gözlem birimi öğrencilerdir. Her bir öğrenci için derse devam oranı ile not çiftini gözlemliyoruz. Birinci öğrencinin %80 devam oranı ile 100 üzerinden 75 başarıyla dersi tamamladığını görüyoruz. İkinci öğrenci %75 devam ve 78 puan, üçüncü öğrenci %70 devam ve 50 puan değerlerine sahiptir. Bu veri kümesini görsel olarak özetlemenin en pratik yolu, yatay ve dikey eksenlerde bu değişkenlerin yer aldığı ve her gözlem çiftinin bir noktayla gösterildiği bir serpilme grafiği çizmektir:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> veri1<span class="sc">$</span><span class="st">`</span><span class="at">Devam_oranı</span><span class="st">`</span>, <span class="co"># x ekseni</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">y =</span> veri1<span class="sc">$</span><span class="st">`</span><span class="at">Başarı</span><span class="st">`</span>,      <span class="co"># y ekseni</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"black"</span>,           <span class="co"># renk = siyah</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">16</span>,                <span class="co"># sembol=içi dolu nokta</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> <span class="fl">1.2</span>,               <span class="co"># sembol büyüklüğü</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span><span class="st">""</span>,                <span class="co"># başlık</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">50</span>,<span class="dv">100</span>),          <span class="co"># y ekseninin sınırları</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">50</span>,<span class="dv">100</span>),          <span class="co"># x ekseninin sınırları</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">panel.first =</span> <span class="fu">grid</span>(),    <span class="co"># grid çizgileri</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Derse devam oranı, %"</span>,          <span class="co"># x etiketi</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Başarı (100 puan üzerinden)"</span>    <span class="co"># y etiketi</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>     )</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(veri1<span class="sc">$</span><span class="st">`</span><span class="at">Devam_oranı</span><span class="st">`</span>, veri1<span class="sc">$</span><span class="st">`</span><span class="at">Başarı</span><span class="st">`</span>,</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">labels =</span> veri1<span class="sc">$</span><span class="st">`</span><span class="at">Öğrenci</span><span class="st">`</span>,  <span class="co"># öğrenci no ekle</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> <span class="fl">0.9</span>,</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">pos =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div id="fig-notlar1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-notlar1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Iliski_files/figure-html/fig-notlar1-1.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-notlar1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;6.1: Ders devam oranı ve başarı arasındaki serpilme çizimi
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><a href="#fig-notlar1" class="quarto-xref">Şekil&nbsp;<span>6.1</span></a> öğrencilerin derse devam oranları ile başarı düzeyleri arasındaki ilişkinin serpilme çizimini göstermektedir. Noktaların üzerindeki sayılar öğrencilerin numaralarıdır. Bu grafikten hareketle devam oranı arttıkça başarının yükselme eğiliminde olduğunu söyleyebiliriz. İki değişken arasında aynı yönlü (pozitif) ve kabaca doğrusal bir ilişki görülmektedir. İlişki kusursuz değildir: aynı devam oranına (%70) sahip 3 ve 10 numaralı öğrencilerin notları arasında 30 puan fark vardır.</p>
+<div id="exm-serpilme1" class="theorem example">
+<p><span class="theorem-title"><strong>Örnek 6.1</strong></span> <code>hane_ornek</code> veri kümesinde yer alan <code>aylik_gelir</code> ve <code>aylik_harcama</code> değişkenlerinin serpilme çizimini oluşturunuz.</p>
+<p><strong>Çözüm</strong></p>
+<p>Çok sayıda nokta üst üste bineceği için noktaları yarı saydam çizelim. <code>rgb()</code> fonksiyonunun dördüncü argümanı saydamlığı belirler; üst üste binen noktaların olduğu bölgeler daha koyu görünür.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"Data/hane_ornek.RData"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> hane_ornek<span class="sc">$</span>aylik_gelir, <span class="at">y =</span> hane_ornek<span class="sc">$</span>aylik_harcama,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> <span class="fu">rgb</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.3</span>),</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">panel.first =</span> <span class="fu">grid</span>(),</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Aylık hane geliri, TL"</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Aylık hane harcaması, TL"</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>     )</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div id="fig-serpilme-harc1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-serpilme-harc1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Iliski_files/figure-html/fig-serpilme-harc1-1.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-serpilme-harc1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;6.2: Serpilme grafiği: aylık gelir ve harcama
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><a href="#fig-serpilme-harc1" class="quarto-xref">Şekil&nbsp;<span>6.2</span></a> hanelerin aylık gelir ve harcama değerlerinin serpilme grafiğini göstermektedir. Genel olarak gelir düzeyi ile harcama arasında pozitif bir ilişki olduğu söylenebilse de grafiğin sol alt kısmında, gelir ve harcamanın düşük olduğu alanda noktaların yoğunlaştığı görülmektedir. Bu, hanelerin çoğunun düşük gelir ve düşük harcama düzeylerinde olduğunu gösterir. Gerçekten de özet istatistiklerden</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(hane_ornek<span class="sc">$</span>aylik_harcama)</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+    408    1697    2575    3234    3845   17587 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(hane_ornek<span class="sc">$</span>aylik_gelir)</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  306.7  1935.1  2934.6  3566.9  4451.8 16372.9 </code></pre>
+</div>
+</div>
+<p>hanelerin yüzde 75 kadarının 4452 TL’den az gelire sahip olduğu görülebilir. Gelir 5000 TL’nin altında olan hanelerin payı ise yüzde 79.2 olarak bulunur. <a href="#fig-serpilme-harc2" class="quarto-xref">Şekil&nbsp;<span>6.3</span></a> bu alt küme için serpilme çizimini göstermektedir. Bu grafikte gelir ve harcamanın düşük olduğu bölgede noktaların yoğunlaşması daha belirgin hâle gelmiştir. Gelirine oranla harcaması çok yüksek hanelerin de olduğu görülmektedir.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>hane_ornek_alt1 <span class="ot">&lt;-</span> <span class="fu">subset</span>(hane_ornek, aylik_gelir <span class="sc">&lt;</span> <span class="dv">5000</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> hane_ornek_alt1<span class="sc">$</span>aylik_gelir,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">y =</span> hane_ornek_alt1<span class="sc">$</span>aylik_harcama,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> <span class="fu">rgb</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.3</span>),</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">panel.first =</span> <span class="fu">grid</span>(),</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Aylık hane geliri, TL"</span>,</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Aylık hane harcaması, TL"</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>     )</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div id="fig-serpilme-harc2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-serpilme-harc2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Iliski_files/figure-html/fig-serpilme-harc2-1.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-serpilme-harc2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;6.3: Aylık geliri 5000 TL’den az olan hanelerde gelir ve harcama
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="exm-serpilme2" class="theorem example">
+<p><span class="theorem-title"><strong>Örnek 6.2 (Serpilme ve dağılım grafiği)</strong></span> Serpilme çizimine değişkenlerin dağılımlarını da eklemek mümkündür. Bunun için <code>car</code> paketinde yer alan <code>scatterplot()</code> fonksiyonu kullanılabilir. Paket yüklü değilse önce <code>install.packages("car")</code> komutuyla kurulmalıdır:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: carData</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>) <span class="sc">+</span> <span class="dv">10</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">scatterplot</span>(y <span class="sc">~</span> x, <span class="at">regLine =</span> <span class="cn">FALSE</span>, <span class="at">smooth =</span> <span class="cn">FALSE</span>, <span class="at">col =</span> <span class="st">"gray40"</span>, <span class="at">pch =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div id="fig-serpilme-boxplot" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-serpilme-boxplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Iliski_files/figure-html/fig-serpilme-boxplot-1.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-serpilme-boxplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;6.4: Serpilme çizimi ve kutu grafiği
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><a href="#fig-serpilme-boxplot" class="quarto-xref">Şekil&nbsp;<span>6.4</span></a> bu veri kümesinin serpilme çizimini x ve y değişkenlerinin kutu çizimleriyle birlikte vermektedir. Bu iki değişken arasında pozitif yönlü doğrusal bir ilişki olduğunu görüyoruz. Ayrıca x’in merkezinin 10 civarında olduğunu ve dağılımının simetrik olduğunu söyleyebiliriz. Benzer şekilde y’nin merkezi 32 civarındadır ve dağılımı simetrik bir biçime sahiptir.</p>
+</div>
+<p>Serpilme çizimlerini inceleyerek değişkenler arasındaki ilişkinin yönü ve biçimi hakkında fikir edinebiliriz. Görsel araçlar verilerin faydalı bir özetini sunar, ancak bu özetler sayısal özetlerle desteklenmelidir. İki sayısal değişken arasındaki ilişkiyi özetlemek için kullanılan temel araçlar kovaryans ve korelasyondur. Kovaryans iki değişkenin birlikte nasıl değiştiğini ölçer ve ilişkinin yönü hakkında bilgi verir. Korelasyon ise doğrusal ilişkinin hem yönünü hem de gücünü ölçekten bağımsız olarak ifade eder.</p>
+</section>
+<section id="kovaryans" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="kovaryans"><span class="header-section-number">6.2</span> Kovaryans</h2>
+<p>Kovaryans, iki değişkenin birlikte nasıl değiştiğini ölçen bir istatistiktir. İki değişkenin ortalamalarından sapmalarının çarpımlarının ortalaması olarak hesaplanır; varyansta olduğu gibi örneklemde toplam <span class="math inline">\(n\)</span> yerine <span class="math inline">\(n-1\)</span>’e bölünür. Kovaryans pozitifse değişkenler birlikte artma eğilimindedir; negatifse bir değişken artarken diğeri azalma eğilimindedir.</p>
+<div id="def-popcov" class="theorem definition">
+<p><span class="theorem-title"><strong>Tanım 6.1 (Anakütle kovaryansı)</strong></span> İki değişken arasındaki anakütle kovaryansı <span id="eq-kovpop"><span class="math display">\[
+\sigma_{xy} \equiv \text{Cov}(X, Y) = \frac{1}{N} \sum_{i=1}^{N} (X_i - \mu_x)(Y_i - \mu_y)
+\tag{6.1}\]</span></span> olarak tanımlanır ve <span class="math inline">\(\sigma_{xy}\)</span> ya da <span class="math inline">\(\mbox{Cov}(X, Y)\)</span> ile gösterilir. Burada <span class="math inline">\(N\)</span> anakütlenin (evrenin) büyüklüğünü, <span class="math inline">\(\mu_x\)</span> ve <span class="math inline">\(\mu_y\)</span> bu değişkenlerin anakütle ortalamalarını ifade etmektedir. <span class="math inline">\(\mbox{Cov}(X, Y)\)</span> pozitif, negatif ya da 0 olabilir.</p>
+</div>
+<div id="def-samplecov" class="theorem definition">
+<p><span class="theorem-title"><strong>Tanım 6.2 (Örneklem kovaryansı)</strong></span> Bir anakütleden çekilmiş <span class="math inline">\(n\)</span> gözlemli bir veri kümesinden hareketle örneklem kovaryansı <span id="eq-kovornek"><span class="math display">\[
+s_{xy} = \frac{1}{n-1} \sum_{i=1}^{n} (x_i - \bar{x})(y_i - \bar{y})
+\tag{6.2}\]</span></span> olarak tanımlanır. Burada <span class="math inline">\(x_i\)</span> ve <span class="math inline">\(y_i\)</span> değişkenlerin <span class="math inline">\(i\)</span>’inci gözlemlerini, <span class="math inline">\(\bar{x}\)</span> ve <span class="math inline">\(\bar{y}\)</span> örneklem ortalamalarını, <span class="math inline">\(n\)</span> ise gözlem sayısını ifade etmektedir. Örneklem kovaryansı, bilinmeyen anakütle kovaryansını tahmin etmekte kullanılabilir.</p>
+</div>
+<div id="tbl-kov1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-kov1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tablo&nbsp;6.1: Kovaryans hesaplama tablosu: derse devam ve başarı
+</figcaption>
+<div aria-describedby="tbl-kov1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 15%">
+<col style="width: 11%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 35%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Öğrenci</th>
+<th style="text-align: center;"><span class="math inline">\(x\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(y\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(x - \bar{x}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(y - \bar{y}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\((x - \bar{x}) \times (y - \bar{y})\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">80</td>
+<td style="text-align: center;">75</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">75</td>
+<td style="text-align: center;">78</td>
+<td style="text-align: center;">-5</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">-15</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">70</td>
+<td style="text-align: center;">50</td>
+<td style="text-align: center;">-10</td>
+<td style="text-align: center;">-25</td>
+<td style="text-align: center;">250</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">90</td>
+<td style="text-align: center;">80</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">50</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">91</td>
+<td style="text-align: center;">81</td>
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">66</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">60</td>
+<td style="text-align: center;">60</td>
+<td style="text-align: center;">-20</td>
+<td style="text-align: center;">-15</td>
+<td style="text-align: center;">300</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">86</td>
+<td style="text-align: center;">80</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">30</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">95</td>
+<td style="text-align: center;">90</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">225</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">83</td>
+<td style="text-align: center;">76</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">70</td>
+<td style="text-align: center;">80</td>
+<td style="text-align: center;">-10</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">-50</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>Toplam</strong></td>
+<td style="text-align: center;"><strong>800</strong></td>
+<td style="text-align: center;"><strong>750</strong></td>
+<td style="text-align: center;"><strong>0</strong></td>
+<td style="text-align: center;"><strong>0</strong></td>
+<td style="text-align: center;"><strong>859</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><a href="#tbl-kov1" class="quarto-xref">Tablo&nbsp;<span>6.1</span></a> derse devam oranı ile başarı düzeyi arasındaki kovaryansı hesaplamaktadır. Bu tabloda <span class="math inline">\(x\)</span> derse devam oranını, <span class="math inline">\(y\)</span> başarı düzeyini (not) göstermektedir. Tablonun altındaki toplamlardan hareketle devam oranının ortalamasının <span class="math inline">\(\bar{x}=80\)</span>, başarı düzeyinin ortalamasının <span class="math inline">\(\bar{y}=75\)</span> olduğu görülebilir. Dördüncü ve beşinci sütunlarda ortalamadan farklar hesaplanmıştır. Son sütunda ise bu farkların çarpımları yer almaktadır. Buradan hareketle iki değişken arasındaki örneklem kovaryansı kolayca hesaplanabilir:</p>
+<p><span class="math display">\[\begin{align*}
+s_{xy} &amp;= \frac{1}{10-1} \sum_{i=1}^{10} (x_i - \bar{x})(y_i - \bar{y}) \\
+&amp;= \frac{1}{9} \left[ (80-80)(75-75) + (75-80)(78-75) + \ldots + (70-80)(80-75) \right] \\
+&amp;= \frac{1}{9} \left[ 0 + (-5)(3) + \ldots + (-10)(5) \right] \\
+&amp;= \frac{1}{9} \left[ 0 -15 + \ldots -50 \right] \\
+&amp;= \frac{1}{9} \times (859) \\
+&amp;\approx 95.4
+\end{align*}\]</span></p>
+<p><code>R</code>’da <code>cov()</code> fonksiyonu ile de bu hesaplama yapılabilir:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cov</span>(veri1<span class="sc">$</span>Devam_oranı, veri1<span class="sc">$</span>Başarı)</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 95.44444</code></pre>
+</div>
+</div>
+<p>İki değişken arasındaki kovaryansın işareti ilişkinin yönü hakkında bilgi verir. Ancak büyüklüğü ölçü birimlerine bağlı olduğu için genellikle yorumlanmaz (bkz. alt bölüm <a href="#sec-iliski-birim" class="quarto-xref"><span>6.3.1</span></a>). Kovaryansın işaretini, ortalamalardan farkların çarpımlarının işaretleri belirler. <a href="#fig-kov" class="quarto-xref">Şekil&nbsp;<span>6.5</span></a> bunu üç yapay veri kümesiyle görselleştirmektedir. Grafiklerde eksenler ortalamalardan farkları gösterir; böylece orijin iki değişkenin ortalamasına karşılık gelir ve düzlem dört bölgeye ayrılır. Farkların çarpımı pozitif olan gözlemler dolu, negatif olanlar içi boş noktalarla gösterilmiştir.</p>
+<div id="fig-kov" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-kov-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-kov" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-kov-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-kov-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Iliski_files/figure-html/fig-kov-1.png" class="img-fluid figure-img" style="width:100.0%" data-ref-parent="fig-kov">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-kov-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Pozitif kovaryans
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-kov" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-kov-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-kov-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Iliski_files/figure-html/fig-kov-2.png" class="img-fluid figure-img" style="width:100.0%" data-ref-parent="fig-kov">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-kov-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Negatif kovaryans
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-kov" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-kov-3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-kov-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Iliski_files/figure-html/fig-kov-3.png" class="img-fluid figure-img" style="width:100.0%" data-ref-parent="fig-kov">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-kov-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(c) Sıfıra yakın kovaryans
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-kov-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;6.5: Ortalamadan farklar ve kovaryansın işareti (dolu nokta: farkların çarpımı pozitif, boş nokta: negatif)
+</figcaption>
+</figure>
+</div>
+<p><a href="#fig-kov-1" class="quarto-xref">Şekil&nbsp;<span>6.5 (a)</span></a> kovaryansın pozitif olduğu durumu göstermektedir. X ortalamanın üzerindeyken Y de ortalamanın üzerinde olma eğilimindeyse (bölge I) iki fark da pozitif olur ve çarpımları da pozitiftir. X ortalamanın altındayken Y de ortalamanın altında olma eğilimindeyse (bölge III) iki fark da negatif, çarpımları ise yine pozitiftir. Gözlemlerin çoğu bu iki bölgede yer aldığı için çarpımların toplamı pozitif olur. Bu veride örneklem kovaryansı 1.82 olarak bulunur.</p>
+<p><a href="#fig-kov-2" class="quarto-xref">Şekil&nbsp;<span>6.5 (b)</span></a> ise tersi durumu göstermektedir. X ortalamanın altındayken Y kendi ortalamasının üzerinde değerler alıyorsa (bölge II) ya da X ortalamanın üzerindeyken Y ortalamanın altındaysa (bölge IV) çarpımın işareti negatif olur. Gözlemlerin çoğu bu bölgelerde yer aldığı için kovaryans negatiftir (-1.97). Noktalar orijinden uzaklaştıkça farkların çarpımları, dolayısıyla kovaryansın mutlak değeri de büyür.</p>
+<p><a href="#fig-kov-3" class="quarto-xref">Şekil&nbsp;<span>6.5 (c)</span></a> X ile Y arasında ilişkinin olmadığı durumu göstermektedir. Bu durumda noktalar dört bölgeye kabaca eşit dağılır, pozitif ve negatif çarpımlar birbirini büyük ölçüde götürür ve kovaryans sıfıra yakın çıkar (0.15).</p>
+</section>
+<section id="korelasyon" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="korelasyon"><span class="header-section-number">6.3</span> Korelasyon</h2>
+<p>Korelasyon, iki değişken arasındaki doğrusal ilişkinin gücünü ve yönünü ölçen bir istatistiktir. En yaygın kullanılan korelasyon ölçüsü Pearson korelasyon katsayısıdır. Değerleri <span class="math inline">\(-1\)</span> ile <span class="math inline">\(+1\)</span> arasında değişir. <span class="math inline">\(+1\)</span> mükemmel pozitif doğrusal ilişkiyi, <span class="math inline">\(-1\)</span> mükemmel negatif doğrusal ilişkiyi, <span class="math inline">\(0\)</span> ise doğrusal bir ilişkinin olmadığını ifade eder.</p>
+<div id="def-popcorr" class="theorem definition">
+<p><span class="theorem-title"><strong>Tanım 6.3 (Anakütle korelasyon katsayısı)</strong></span> Bir anakütle için iki değişken arasındaki korelasyon katsayısı <span id="eq-korpop"><span class="math display">\[
+\rho_{xy} = \frac{\sigma_{xy}}{\sigma_x \sigma_y} \equiv \frac{\text{Cov}(X, Y)}{\sigma_x \sigma_y}
+\tag{6.3}\]</span></span> formülüyle hesaplanır. Burada <span class="math inline">\(\sigma_{xy}\)</span> iki değişken arasındaki anakütle kovaryansını, <span class="math inline">\(\sigma_x\)</span> ve <span class="math inline">\(\sigma_y\)</span> bu değişkenlerin anakütle standart sapmalarını ifade etmektedir.</p>
+</div>
+<div id="def-samplecorr" class="theorem definition">
+<p><span class="theorem-title"><strong>Tanım 6.4 (Örneklem korelasyon katsayısı)</strong></span> Örneklem korelasyon katsayısı <span id="eq-korornek"><span class="math display">\[
+r_{xy} = \frac{s_{xy}}{s_x s_y}
+\tag{6.4}\]</span></span> olarak tanımlanır. Burada <span class="math inline">\(s_{xy}\)</span> iki değişken arasındaki örneklem kovaryansını, <span class="math inline">\(s_x\)</span> ve <span class="math inline">\(s_y\)</span> bu değişkenlerin örneklem standart sapmalarını ifade etmektedir.</p>
+</div>
+<p>Örneklem korelasyon katsayısı <span class="math inline">\(r_{xy}\)</span>, iki sayısal değişken arasındaki doğrusal ilişkinin gücünü ve yönünü ölçer. Her zaman <span class="math inline">\(-1\)</span> ile <span class="math inline">\(1\)</span> arasında bir değer alır:</p>
+<ul>
+<li><p><span class="math inline">\(r = 1\)</span>: Mükemmel pozitif doğrusal ilişki. Bütün noktalar eğimi pozitif olan bir doğru üzerindedir.</p></li>
+<li><p><span class="math inline">\(r = -1\)</span>: Mükemmel negatif doğrusal ilişki. Bütün noktalar eğimi negatif olan bir doğru üzerindedir.</p></li>
+<li><p><span class="math inline">\(r = 0\)</span>: Değişkenler arasında <strong>doğrusal bir ilişki</strong> yoktur. Bu, hiçbir ilişki olmadığı anlamına gelmez; değişkenler arasında doğrusal olmayan güçlü bir ilişki bulunabilir.</p></li>
+</ul>
+<p>Korelasyonun işareti kovaryansın işaretiyle aynıdır, çünkü paydadaki standart sapmalar her zaman pozitiftir. Pozitif korelasyon durumunda noktalar ağırlıklı olarak I. ve III. bölgelerde, negatif korelasyon durumunda ise II. ve IV. bölgelerde toplanır. Kovaryansı iki standart sapmanın çarpımına bölmek, ölçü birimini ortadan kaldırır ve katsayıyı <span class="math inline">\(-1\)</span> ile <span class="math inline">\(1\)</span> arasına sıkıştırır.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-korelasyon1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-korelasyon1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Iliski_files/figure-html/fig-korelasyon1-1.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-korelasyon1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;6.6: Anakütle korelasyon katsayısı farklı olan veri kümelerinin serpilme çizimleri (her panelde 200 gözlem)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Korelasyon katsayısı <span class="math inline">\(1\)</span>’e ya da <span class="math inline">\(-1\)</span>’e yaklaştıkça doğrusal ilişkinin güçlendiğini, <span class="math inline">\(0\)</span>’a yaklaştıkça zayıfladığını söyleyebiliriz. <a href="#fig-korelasyon1" class="quarto-xref">Şekil&nbsp;<span>6.6</span></a> anakütle korelasyon katsayısı farklı olan altı veri kümesinin serpilme çizimlerini göstermektedir. Her panelde 200 gözlemlik bir örneklem çizildiği için örneklem korelasyonları panel başlığındaki <span class="math inline">\(\rho\)</span> değerinden biraz farklıdır. Korelasyon katsayısının mutlak değeri büyüdükçe noktaların bir doğru etrafında daha sıkı kümelendiği görülmektedir. Özetlersek, bu grafikte</p>
+<ul>
+<li><p><span class="math inline">\(\rho = -0.8\)</span>: Güçlü negatif ilişki. X değeri arttıkça Y değeri azalma eğilimindedir.</p></li>
+<li><p><span class="math inline">\(\rho = -0.5\)</span>: Orta düzeyde negatif ilişki. X değeri arttıkça Y değeri genel olarak azalmaktadır, ancak noktalar doğru etrafında daha fazla dağılır.</p></li>
+<li><p><span class="math inline">\(\rho = 0\)</span>: Doğrusal ilişki yoktur. Noktalar belirgin bir eğim olmadan dağılır.</p></li>
+<li><p><span class="math inline">\(\rho = 0.5\)</span>: Orta düzeyde pozitif ilişki. X değeri arttıkça Y değeri genel olarak artmaktadır.</p></li>
+<li><p><span class="math inline">\(\rho = 0.8\)</span>: Güçlü pozitif ilişki. X değeri arttıkça Y değeri artma eğilimindedir.</p></li>
+<li><p><span class="math inline">\(\rho = 1\)</span>: Mükemmel pozitif doğrusal ilişki. Bütün noktalar bir doğru üzerindedir; X bir birim arttığında Y her zaman aynı miktarda artar.</p></li>
+</ul>
+<p>“Güçlü” ve “orta düzeyde” gibi nitelemeler için herkesin kabul ettiği kesin sınırlar yoktur. Aynı katsayı bir alanda güçlü, başka bir alanda zayıf sayılabilir. Bu yüzden katsayıyı her zaman serpilme çizimiyle birlikte yorumlamak gerekir.</p>
+<div id="exm-kor1" class="theorem example">
+<p><span class="theorem-title"><strong>Örnek 6.3</strong></span> <a href="#tbl-kov1" class="quarto-xref">Tablo&nbsp;<span>6.1</span></a> verisinden hareketle derse devam oranı ile başarı notu arasındaki Pearson korelasyon katsayısını hesaplayınız.</p>
+<p><strong>Çözüm</strong></p>
+<p>Örneklem korelasyon katsayısını hesaplayabilmek için kovaryansı ve değişkenlerin standart sapmalarını bulmamız gerekir. Örneklem kovaryansını 95.4 olarak bulmuştuk. Derse devam oranının örneklem standart sapması 11.14, başarı notunun standart sapması ise 11.53 olarak bulunabilir. Böylece örneklem korelasyon katsayısı</p>
+<p><span class="math display">\[
+r_{xy} = \frac{s_{xy}}{s_x s_y} = \frac{95.4}{(11.14)(11.53)} \approx 0.74
+\]</span> olur. <code>cor()</code> fonksiyonu ile</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(veri1<span class="sc">$</span>Devam_oranı, veri1<span class="sc">$</span>Başarı)</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.7435248</code></pre>
+</div>
+</div>
+<p>sonucuna ulaşılır. Buradan hareketle derse devam oranı ile başarı düzeyi arasında güçlü pozitif bir doğrusal ilişki olduğunu söyleyebiliriz. Ancak bu sonucun yalnızca 10 öğrenciye dayandığını unutmamak gerekir; tek bir öğrencinin eklenmesi bile katsayıyı büyük ölçüde değiştirebilir (bkz. <a href="#exr-iliski-uc" class="quarto-xref">Alıştırma&nbsp;<span>6.3</span></a>).</p>
+</div>
+<section id="sec-iliski-birim" class="level3" data-number="6.3.1">
+<h3 data-number="6.3.1" class="anchored" data-anchor-id="sec-iliski-birim"><span class="header-section-number">6.3.1</span> Ölçü birimi ve doğrusal dönüşümler</h3>
+<p>Kovaryansın büyüklüğünün neden yorumlanamadığını görmek için devam oranını yüzde yerine 0 ile 1 arasında bir oran olarak ifade edelim:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>devam_oran <span class="ot">&lt;-</span> veri1<span class="sc">$</span>Devam_oranı <span class="sc">/</span> <span class="dv">100</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">kovaryans =</span> <span class="fu">cov</span>(devam_oran, veri1<span class="sc">$</span>Başarı),</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">korelasyon =</span> <span class="fu">cor</span>(devam_oran, veri1<span class="sc">$</span>Başarı))</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> kovaryans korelasyon 
+ 0.9544444  0.7435248 </code></pre>
+</div>
+</div>
+<p>İlişkinin kendisinde hiçbir şey değişmediği hâlde kovaryans 95.4 değerinden 0.954 değerine inmiştir. Korelasyon katsayısı ise aynı kalmıştır. Genel olarak değişkenlere <span class="math display">\[
+u_i = a + b\,x_i, \qquad v_i = c + d\,y_i
+\]</span> biçiminde doğrusal dönüşümler uygulandığında <span class="math display">\[
+s_{uv} = b\,d\,s_{xy}, \qquad r_{uv} = \begin{cases} r_{xy}, &amp; b\,d &gt; 0 \\ -r_{xy}, &amp; b\,d &lt; 0 \end{cases}
+\]</span> olur. Bir sabit eklemek (<span class="math inline">\(a\)</span>, <span class="math inline">\(c\)</span>) ortalamadan farkları değiştirmez, bu yüzden kovaryansı da etkilemez. Bir sabitle çarpmak ise farkları, dolayısıyla kovaryansı o sabitle çarpar. Standart sapmalar da <span class="math inline">\(|b|\)</span> ve <span class="math inline">\(|d|\)</span> ile çarpıldığı için korelasyon katsayısında bu çarpanlar birbirini götürür; yalnızca işaret değişebilir. Bu yüzden sıcaklığı Celsius yerine Fahrenheit, geliri TL yerine bin TL ile ölçmek korelasyon katsayısını değiştirmez.</p>
+<p>Aynı sonucu şöyle de ifade edebiliriz: korelasyon katsayısı, standartlaştırılmış değerlerin çarpımlarının ortalamasıdır: <span class="math display">\[
+r_{xy} = \frac{1}{n-1}\sum_{i=1}^{n} \left(\frac{x_i - \bar{x}}{s_x}\right)\left(\frac{y_i - \bar{y}}{s_y}\right).
+\]</span> Standartlaştırılmış değerlerin ölçü birimi yoktur; bu yüzden korelasyonun da ölçü birimi yoktur.</p>
+<div id="exm-eticaret-teslim" class="theorem example">
+<p><span class="theorem-title"><strong>Örnek 6.4</strong></span> <code>eticaret</code> veri kümesinde (bkz. <a href="Temelk.html#tbl-veri-kumeleri" class="quarto-xref">Tablo&nbsp;<span>3.4</span></a>) teslim süresi ile müşteri memnuniyeti arasındaki ilişkiyi inceleyelim. İki değişken de az sayıda farklı değer aldığı için binlerce siparişin serpilme çizimi üst üste binen noktalardan oluşur ve bilgi vermez. Bunun yerine her teslim süresi için ortalama memnuniyeti hesaplayalım:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"Data/eticaret.RData"</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>ort_memnuniyet <span class="ot">&lt;-</span> <span class="fu">tapply</span>(eticaret<span class="sc">$</span>memnuniyet, eticaret<span class="sc">$</span>teslim_suresi, mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>siparis_sayisi <span class="ot">&lt;-</span> <span class="fu">table</span>(eticaret<span class="sc">$</span>teslim_suresi)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">rbind</span>(<span class="at">ortalama_memnuniyet =</span> ort_memnuniyet, <span class="at">siparis_sayisi =</span> siparis_sayisi), <span class="dv">2</span>)</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                         1       2       3       4       5      6      7     8
+ortalama_memnuniyet    4.6    4.35    4.01    3.63    3.23   2.93   2.43  2.17
+siparis_sayisi      5947.0 5638.00 3972.00 2260.00 1071.00 504.00 195.00 79.00
+                        9   10
+ortalama_memnuniyet  1.54 1.57
+siparis_sayisi      21.00 8.00</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">as.numeric</span>(<span class="fu">names</span>(ort_memnuniyet)), ort_memnuniyet, <span class="at">type =</span> <span class="st">"b"</span>, <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>), <span class="at">xlab =</span> <span class="st">"Teslim süresi (gün)"</span>, <span class="at">ylab =</span> <span class="st">"Ortalama memnuniyet (1-5)"</span>)</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div id="fig-eticaret-teslim" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-eticaret-teslim-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Iliski_files/figure-html/fig-eticaret-teslim-1.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-eticaret-teslim-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;6.7: Teslim süresine göre ortalama müşteri memnuniyeti
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Korelasyon katsayısını hesaplarken memnuniyetin eksik olduğu siparişleri dışarıda bırakmamız gerekir:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(eticaret<span class="sc">$</span>teslim_suresi, eticaret<span class="sc">$</span>memnuniyet, <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.5250615</code></pre>
+</div>
+</div>
+<p><a href="#fig-eticaret-teslim" class="quarto-xref">Şekil&nbsp;<span>6.7</span></a> teslim süresi uzadıkça ortalama memnuniyetin düzenli olarak azaldığını göstermektedir. Korelasyon katsayısı -0.53 olarak bulunur. <code>use = "complete.obs"</code> argümanı hesaplamayı iki değişkenin de gözlendiği 12203 siparişle sınırlar. Bu argüman olmadan <code>cor()</code> fonksiyonu eksik gözlem nedeniyle <code>NA</code> sonucunu verir.</p>
+<p>Bu örnekte iki noktaya dikkat etmek gerekir. Birincisi, memnuniyet 1-5 arası puanlarla ölçülen sıralı bir değişkendir ve puanlar arasındaki mesafelerin eşit olduğu varsayımı tartışmalıdır. Pearson korelasyon katsayısı bu yüzden ilişkinin yönü ve kabaca gücü hakkında bilgi verir; sıralı değişkenler için daha uygun bir ölçüyü aşağıda göreceğiz (bkz. alt bölüm <a href="#sec-spearman" class="quarto-xref"><span>6.3.5</span></a>). İkincisi, en uzun teslim sürelerinde sipariş sayısı çok azdır. Bu sürelerdeki ortalamalar az sayıda siparişe dayandığı için daha belirsizdir.</p>
+</div>
+</section>
+<section id="korelasyon-katsayısının-geometrik-anlamı" class="level3" data-number="6.3.2">
+<h3 data-number="6.3.2" class="anchored" data-anchor-id="korelasyon-katsayısının-geometrik-anlamı"><span class="header-section-number">6.3.2</span> Korelasyon katsayısının geometrik anlamı</h3>
+<p>Korelasyon katsayısı, ortalamadan farklardan oluşan iki vektör arasındaki açının kosinüsü olarak düşünülebilir. <span class="math inline">\(\mathbf{a}\)</span> ve <span class="math inline">\(\mathbf{b}\)</span>, <span class="math inline">\(n\)</span> elemanlı iki vektör olsun. Bu iki vektörün iç çarpımı <span class="math display">\[
+\mathbf{a} \cdot \mathbf{b} = \sum_{i=1}^{n} a_i b_i
+\]</span> ve vektörlerin normları (uzunlukları) <span class="math display">\[
+\| \mathbf{a} \| = \sqrt{\sum_{i=1}^{n} a_i^2}, \qquad \| \mathbf{b} \| = \sqrt{\sum_{i=1}^{n} b_i^2}
+\]</span> olarak tanımlanır. İki vektör arasındaki açı <span class="math inline">\(\theta\)</span> (<span class="math inline">\(0\leq \theta\leq \pi\)</span>) olmak üzere, bu açının kosinüsü iç çarpım ve uzunluklar yardımıyla <span class="math display">\[
+\cos(\theta) = \frac{\mathbf{a} \cdot \mathbf{b}}{\| \mathbf{a} \| \| \mathbf{b} \|}
+\]</span> olarak yazılabilir. Kosinüs fonksiyonu her zaman <span class="math inline">\(-1\)</span> ile <span class="math inline">\(1\)</span> arasında değerler alır.</p>
+<p>Ortalamadan farklar vektörlerini <span class="math inline">\(\mathbf{a} = (x_1 - \bar{x}, \ldots, x_n - \bar{x})\)</span> ve <span class="math inline">\(\mathbf{b} = (y_1 - \bar{y}, \ldots, y_n - \bar{y})\)</span> olarak tanımlarsak, <a href="#eq-korornek" class="quarto-xref">Denklem&nbsp;<span>6.4</span></a> formülündeki <span class="math inline">\(n-1\)</span> çarpanları birbirini götürür ve <span class="math display">\[
+r = \frac{\sum_{i=1}^{n} (x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum_{i=1}^{n} (x_i - \bar{x})^2} \sqrt{\sum_{i=1}^{n} (y_i - \bar{y})^2}} = \cos(\theta)
+\]</span> elde ederiz. Buna göre:</p>
+<ul>
+<li><p><span class="math inline">\(r = 1\)</span>: İki vektör aynı yöndedir ve aralarındaki açı <span class="math inline">\(\theta = 0\)</span>’dır, dolayısıyla <span class="math inline">\(\cos(0) = 1\)</span>.</p></li>
+<li><p><span class="math inline">\(r = -1\)</span>: İki vektör zıt yöndedir ve aralarındaki açı <span class="math inline">\(\theta = \pi\)</span>, yani <span class="math inline">\(180^\circ\)</span>’dir. Dolayısıyla <span class="math inline">\(\cos(\pi) = -1\)</span> olur.</p></li>
+<li><p><span class="math inline">\(r = 0\)</span>: İki vektör birbirine dikdir; aralarındaki açı <span class="math inline">\(\theta = \pi/2\)</span>, yani <span class="math inline">\(90^\circ\)</span>’dir ve <span class="math inline">\(\cos(\pi/2) = 0\)</span> olur.</p></li>
+</ul>
+<p><strong>Cauchy-Schwarz eşitsizliği</strong>: İki vektörün iç çarpımının mutlak değeri, bu vektörlerin normlarının çarpımını aşamaz: <span class="math display">\[
+    \left| \sum_{i=1}^{n} (x_i - \bar{x})(y_i - \bar{y}) \right| \leq \sqrt{\sum_{i=1}^{n} (x_i - \bar{x})^2} \sqrt{\sum_{i=1}^{n} (y_i - \bar{y})^2}
+\]</span> Eşitsizliğin iki tarafını sağdaki ifadeye böldüğümüzde <span class="math inline">\(|r| \leq 1\)</span> sonucunu elde ederiz. Korelasyon katsayısının neden hiçbir zaman <span class="math inline">\(-1\)</span> ile <span class="math inline">\(1\)</span> aralığının dışına çıkamadığını bu eşitsizlik açıklar. Eşitlik yalnızca iki değişken arasında tam doğrusal bir ilişki (pozitif ya da negatif) olduğunda sağlanır.</p>
+</section>
+<section id="görselleştirmenin-önemi" class="level3" data-number="6.3.3">
+<h3 data-number="6.3.3" class="anchored" data-anchor-id="görselleştirmenin-önemi"><span class="header-section-number">6.3.3</span> Görselleştirmenin önemi</h3>
+<p>Korelasyon katsayısı, ortalama ve standart sapma gibi bir özet ölçüdür. Her özet ölçü gibi o da veriyi tek bir sayıya indirger ve bu sırada bir şeyleri görünmez kılar. Aynı katsayıyı veren veri kümeleri birbirinden çok farklı görünebilir. Bu yüzden iki değişken arasındaki ilişkiyi yorumlamadan önce serpilme diyagramına bakmak gerekir.</p>
+<div id="exm-anscombe" class="theorem example">
+<p><span class="theorem-title"><strong>Örnek 6.5 (Anscombe veri kümesi)</strong></span> İstatistikçi Francis Anscombe, grafiğe bakmadan yalnızca özet istatistiklere güvenmenin tehlikesini göstermek için dört küçük veri kümesi oluşturmuştur <span class="citation" data-cites="anscombe1973">(<a href="kaynaklar.html#ref-anscombe1973" role="doc-biblioref">Anscombe 1973</a>)</span>. Bu veriler <code>R</code> ile birlikte gelen <code>datasets</code> paketinde yer alır:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(datasets)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>anscombe</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   x1 x2 x3 x4    y1   y2    y3    y4
+1  10 10 10  8  8.04 9.14  7.46  6.58
+2   8  8  8  8  6.95 8.14  6.77  5.76
+3  13 13 13  8  7.58 8.74 12.74  7.71
+4   9  9  9  8  8.81 8.77  7.11  8.84
+5  11 11 11  8  8.33 9.26  7.81  8.47
+6  14 14 14  8  9.96 8.10  8.84  7.04
+7   6  6  6  8  7.24 6.13  6.08  5.25
+8   4  4  4 19  4.26 3.10  5.39 12.50
+9  12 12 12  8 10.84 9.13  8.15  5.56
+10  7  7  7  8  4.82 7.26  6.42  7.91
+11  5  5  5  8  5.68 4.74  5.73  6.89</code></pre>
+</div>
+</div>
+<p>Bu veri kümesinde yer alan <span class="math inline">\((x_1,y_1),\ldots,(x_4,y_4)\)</span> değişken çiftleri arasındaki korelasyon katsayısı yaklaşık olarak 0.816’dır:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>kor_x1_y1 <span class="ot">&lt;-</span> <span class="fu">cor</span>(anscombe<span class="sc">$</span>x1, anscombe<span class="sc">$</span>y1)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>kor_x2_y2 <span class="ot">&lt;-</span> <span class="fu">cor</span>(anscombe<span class="sc">$</span>x2, anscombe<span class="sc">$</span>y2)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>kor_x3_y3 <span class="ot">&lt;-</span> <span class="fu">cor</span>(anscombe<span class="sc">$</span>x3, anscombe<span class="sc">$</span>y3)</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>kor_x4_y4 <span class="ot">&lt;-</span> <span class="fu">cor</span>(anscombe<span class="sc">$</span>x4, anscombe<span class="sc">$</span>y4)</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(kor_x1_y1, kor_x2_y2, kor_x3_y3, kor_x4_y4)</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     kor_x1_y1 kor_x2_y2 kor_x3_y3 kor_x4_y4
+[1,] 0.8164205 0.8162365 0.8162867 0.8165214</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-anscombe" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anscombe-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Iliski_files/figure-html/fig-anscombe-1.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anscombe-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;6.8: Görselleştirmenin önemi: Anscombe dörtlüsü
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><a href="#fig-anscombe" class="quarto-xref">Şekil&nbsp;<span>6.8</span></a> bu veri kümelerini göstermektedir. Dört veri kümesinde de x’lerin ortalaması 9, varyansı 11’dir; y’lerin ortalaması (7.50) ve varyansı (4.12) ise iki ondalığa kadar aynıdır. Korelasyon katsayıları da neredeyse aynıdır. Ancak grafiklere bakıldığında bu verilerin birbirinden çok farklı ilişkiler sergilediği görülmektedir.</p>
+<ul>
+<li>Veri 1: <span class="math inline">\(x_1\)</span> ile <span class="math inline">\(y_1\)</span> arasında, noktaların bir doğru etrafında dağıldığı pozitif yönlü doğrusal bir ilişki vardır. Korelasyon katsayısının anlatmak istediği durum budur.</li>
+<li>Veri 2: <span class="math inline">\(x_2\)</span> ile <span class="math inline">\(y_2\)</span> arasında kusursuza yakın, ancak doğrusal olmayan (ikinci dereceden, parabolik) bir ilişki vardır.</li>
+<li>Veri 3: Noktalar tek bir gözlem dışında bir doğru üzerindedir. Bu uç değer korelasyon katsayısını 1’den 0.816’ya düşürür.</li>
+<li>Veri 4: 11 gözlemin 10’unda <span class="math inline">\(x_4\)</span> değeri 8’dir. Aradaki bütün değişkenlik tek bir gözlemden (<span class="math inline">\(x_4 = 19\)</span>) gelir. Bu gözlem olmasa <span class="math inline">\(x_4\)</span>’ün varyansı sıfır olur ve korelasyon katsayısı hesaplanamaz.</li>
+</ul>
+</div>
+<p>Anscombe dörtlüsü, yalnızca korelasyon katsayısına dayanarak değişkenler arasındaki ilişkiyi anlamanın sınırlarını ortaya koymaktadır. Korelasyon katsayısı yalnızca doğrusal ilişkiyi ölçer; değişkenler arasında doğrusal olmayan güçlü bir ilişki olabilir. Uç değerler korelasyon katsayısını önemli ölçüde değiştirebilir. Ayrıca aynı korelasyon katsayısına sahip veri kümeleri çok farklı biçimlerde olabilir. Bu yüzden korelasyon katsayısını hesaplamadan önce serpilme çizimine bakmak gerekir (ayrıca bkz. <a href="#exr-iliski-uc" class="quarto-xref">Alıştırma&nbsp;<span>6.3</span></a> ve <a href="#exr-datasaurus" class="quarto-xref">Alıştırma&nbsp;<span>6.5</span></a>).</p>
+</section>
+<section id="doğrusal-olmayan-ilişkiler-ve-dönüşümler" class="level3" data-number="6.3.4">
+<h3 data-number="6.3.4" class="anchored" data-anchor-id="doğrusal-olmayan-ilişkiler-ve-dönüşümler"><span class="header-section-number">6.3.4</span> Doğrusal olmayan ilişkiler ve dönüşümler</h3>
+<p>Korelasyon katsayısı yalnızca doğrusal ilişkiyi ölçtüğü için gerçek verilerde karşılaşılan eğrisel ilişkileri iyi özetlemeyebilir. Bu kısımda ülke veri kümesinden (bkz. <a href="Temelk.html#exm-panel1" class="quarto-xref">Örnek&nbsp;<span>3.4</span></a>) iki örnekle bu durumu inceleyeceğiz.</p>
+<div id="exm-preston" class="theorem example">
+<p><span class="theorem-title"><strong>Örnek 6.6 (Gelir ve yaşam beklentisi)</strong></span> 2022 yılında ülkelerin kişi başına GSYİH’si (satın alma gücü paritesiyle) ile doğumda yaşam beklentisi arasındaki ilişkiyi inceleyelim. <a href="#fig-preston" class="quarto-xref">Şekil&nbsp;<span>6.9</span></a> iki değişkenin serpilme çizimini iki farklı biçimde göstermektedir.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"Data/ulkeler.RData"</span>)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>kesit_2022 <span class="ot">&lt;-</span> <span class="fu">subset</span>(ulkeler, yil <span class="sc">==</span> <span class="dv">2022</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(kisi_basi_gsyih_sagp))</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(kesit_2022<span class="sc">$</span>kisi_basi_gsyih_sagp <span class="sc">/</span> <span class="dv">1000</span>, kesit_2022<span class="sc">$</span>yasam_beklentisi,</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> <span class="fu">rgb</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.35</span>),</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Kişi başına GSYİH (bin $)"</span>, <span class="at">ylab =</span> <span class="st">"Yaşam beklentisi (yıl)"</span>)</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(kesit_2022<span class="sc">$</span>kisi_basi_gsyih_sagp, kesit_2022<span class="sc">$</span>yasam_beklentisi, <span class="at">log =</span> <span class="st">"x"</span>,</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> <span class="fu">rgb</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.35</span>), <span class="at">xaxt =</span> <span class="st">"n"</span>,</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Kişi başına GSYİH (bin $, logaritmik)"</span>, <span class="at">ylab =</span> <span class="st">"Yaşam beklentisi (yıl)"</span>)</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="fl">1e3</span>, <span class="fl">3e3</span>, <span class="fl">1e4</span>, <span class="fl">3e4</span>, <span class="fl">1e5</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">30</span>, <span class="dv">100</span>))</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="fig-preston" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-preston-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-preston" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-preston-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-preston-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Iliski_files/figure-html/fig-preston-1.png" class="img-fluid figure-img" style="width:100.0%" data-ref-parent="fig-preston">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-preston-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Gelir, doğrusal ölçek
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-preston" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-preston-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-preston-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Iliski_files/figure-html/fig-preston-2.png" class="img-fluid figure-img" style="width:100.0%" data-ref-parent="fig-preston">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-preston-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Gelir, logaritmik ölçek
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-preston-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;6.9: Kişi başına GSYİH ve doğumda yaşam beklentisi (2022)
+</figcaption>
+</figure>
+</div>
+<p>Doğrusal ölçekte (<a href="#fig-preston-1" class="quarto-xref">Şekil&nbsp;<span>6.9 (a)</span></a>) ilişki belirgin biçimde eğriseldir. Düşük gelir düzeylerinde gelirdeki küçük artışlar yaşam beklentisindeki büyük farklarla birlikte görülür. Belirli bir gelir düzeyinden sonra ise eğri yataylaşır. Gelir ile yaşam beklentisi arasındaki bu ilişki, onu ilk kez sistemli biçimde inceleyen demograf Samuel Preston’ın adıyla <strong>Preston eğrisi</strong> olarak bilinir <span class="citation" data-cites="preston1975">(<a href="kaynaklar.html#ref-preston1975" role="doc-biblioref">Preston 1975</a>)</span>.</p>
+<p>Logaritmik ölçekte (<a href="#fig-preston-2" class="quarto-xref">Şekil&nbsp;<span>6.9 (b)</span></a>) yatay eksendeki eşit mesafeler gelirin aynı oranda artmasına karşılık gelir. 1 bin dolardan 10 bin dolara çıkmak ile 10 bin dolardan 100 bin dolara çıkmak aynı yatay mesafeyi kaplar. Bu ölçekte noktalar bir doğru etrafında çok daha düzenli dağılmaktadır. İki durumda korelasyon katsayısını hesaplayalım:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">dogrusal =</span> <span class="fu">cor</span>(kesit_2022<span class="sc">$</span>kisi_basi_gsyih_sagp, kesit_2022<span class="sc">$</span>yasam_beklentisi),</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">logaritmik =</span> <span class="fu">cor</span>(<span class="fu">log</span>(kesit_2022<span class="sc">$</span>kisi_basi_gsyih_sagp), kesit_2022<span class="sc">$</span>yasam_beklentisi))</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  dogrusal logaritmik 
+ 0.6748183  0.8061132 </code></pre>
+</div>
+</div>
+<p>Korelasyon katsayısı 0.67 değerinden 0.81 değerine yükselmektedir. İlişkinin kendisi değişmemiştir, değişen onu ölçtüğümüz ölçektir. Logaritma dönüşümü eğrisel ilişkiyi doğrusala yaklaştırdığı için doğrusal ilişkiyi ölçen korelasyon katsayısı da büyümüştür.</p>
+<p>Grafiğin en altında kalan nokta, yaşam beklentisi 18.8 yıl olarak görünen Orta Afrika Cumhuriyeti’dir. Bu değerin bir tahmin sorunu olabileceğini merkezi eğilim ölçülerini incelerken görmüştük (bkz. <a href="Betimsel-sayisal.html#exm-medyan-ulke" class="quarto-xref">Örnek&nbsp;<span>5.6</span></a>). Bu gözlem çıkarıldığında korelasyon katsayıları doğrusal ölçekte 0.74, logaritmik ölçekte 0.85 olur. 194 ülkelik bir kesitte bile tek bir gözlem katsayıyı belirgin biçimde değiştirebilmektedir.</p>
+<p>Bu grafik ülkeler arasındaki bir ilişkiyi betimler. Daha zengin ülkelerde insanların daha uzun yaşadığını gösterir, ancak gelirin tek başına yaşam süresini ne ölçüde belirlediğini söylemez. Sağlık hizmetleri, eğitim ve altyapı gibi etkenler hem gelirle hem de yaşam beklentisiyle ilişkilidir.</p>
+</div>
+<div id="exm-kuznets" class="theorem example">
+<p><span class="theorem-title"><strong>Örnek 6.7 (Gelir ve karbon emisyonu: çevresel Kuznets eğrisi)</strong></span> İktisatçı Simon Kuznets, ülkeler kalkındıkça gelir eşitsizliğinin önce artıp sonra azaldığını, yani gelir ile eşitsizlik arasında ters U biçiminde bir ilişki olduğunu ileri sürmüştü <span class="citation" data-cites="kuznets1955">(<a href="kaynaklar.html#ref-kuznets1955" role="doc-biblioref">Kuznets 1955</a>)</span>. Benzer bir fikir daha sonra çevre kirliliği için ortaya atıldı <span class="citation" data-cites="grossman1995">(<a href="kaynaklar.html#ref-grossman1995" role="doc-biblioref">Grossman and Krueger 1995</a>)</span>. Buna göre sanayileşmenin ilk aşamalarında gelir arttıkça kirlilik de artar. Belirli bir gelir düzeyinden sonra ise hizmet sektörünün payının büyümesi, daha temiz teknolojiler ve çevre düzenlemeleri sayesinde kirlilik azalmaya başlar. Gelir ile kirlilik arasındaki bu varsayımsal ters U ilişkisine <strong>çevresel Kuznets eğrisi</strong> denir.</p>
+<p>Bu fikri ülke veri kümesindeki kişi başına CO2 emisyonuyla inceleyelim. Önce 2022 yılı kesitine bakalım. Bu karşılaştırmada nüfusu 1 milyonun altındaki ülke ve bölgeleri dışarıda bırakıyoruz. Bu çok küçük ülkelerin bir kısmında emisyon değerleri güvenilir görünmemektedir. Örneğin birkaç küçük ada ülkesinde kişi başına emisyon yıllar boyunca değişmeden 0.002 ton olarak kaydedilmiştir, Tuvalu’da ise sıfırdır. Sıfırın logaritması alınamaz. Çok küçük değerler de logaritmik ölçekte diğer gözlemlerden çok uzağa düşerek sonuçları bozar.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>co2_kesit <span class="ot">&lt;-</span> <span class="fu">subset</span>(kesit_2022, <span class="sc">!</span><span class="fu">is.na</span>(co2_kisi_basi) <span class="sc">&amp;</span> nufus <span class="sc">&gt;=</span> <span class="fl">1e6</span>)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(co2_kesit<span class="sc">$</span>kisi_basi_gsyih_sagp, co2_kesit<span class="sc">$</span>co2_kisi_basi, <span class="at">log =</span> <span class="st">"xy"</span>,</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> <span class="fu">rgb</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.35</span>), <span class="at">xaxt =</span> <span class="st">"n"</span>, <span class="at">yaxt =</span> <span class="st">"n"</span>,</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Kişi başına GSYİH (bin $, logaritmik)"</span>,</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Kişi başına CO2 (ton, logaritmik)"</span>)</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="fl">1e3</span>, <span class="fl">3e3</span>, <span class="fl">1e4</span>, <span class="fl">3e4</span>, <span class="fl">1e5</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">30</span>, <span class="dv">100</span>))</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.3</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">30</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.3</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">30</span>))</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>etiket <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Katar"</span>, <span class="st">"Türkiye"</span>, <span class="st">"İsveç"</span>, <span class="st">"Hindistan"</span>)</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>e <span class="ot">&lt;-</span> co2_kesit[<span class="fu">match</span>(etiket, co2_kesit<span class="sc">$</span>ulke), ]</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(e<span class="sc">$</span>kisi_basi_gsyih_sagp, e<span class="sc">$</span>co2_kisi_basi, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> <span class="st">"firebrick"</span>)</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(e<span class="sc">$</span>kisi_basi_gsyih_sagp, e<span class="sc">$</span>co2_kisi_basi, etiket, <span class="at">pos =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">3</span>), <span class="at">cex =</span> <span class="fl">0.8</span>, <span class="at">col =</span> <span class="st">"firebrick"</span>)</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div id="fig-kuznets-kesit" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-kuznets-kesit-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Iliski_files/figure-html/fig-kuznets-kesit-1.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-kuznets-kesit-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;6.10: Kişi başına GSYİH ve kişi başına CO2 emisyonu (2022, iki eksen de logaritmik)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">dogrusal =</span> <span class="fu">cor</span>(co2_kesit<span class="sc">$</span>kisi_basi_gsyih_sagp, co2_kesit<span class="sc">$</span>co2_kisi_basi),</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">log_log =</span> <span class="fu">cor</span>(<span class="fu">log</span>(co2_kesit<span class="sc">$</span>kisi_basi_gsyih_sagp), <span class="fu">log</span>(co2_kesit<span class="sc">$</span>co2_kisi_basi)))</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> dogrusal   log_log 
+0.6549385 0.9101170 </code></pre>
+</div>
+</div>
+<p><a href="#fig-kuznets-kesit" class="quarto-xref">Şekil&nbsp;<span>6.10</span></a>, ülkeler düzeyinde gelir ile emisyon arasında güçlü ve pozitif bir ilişki olduğunu göstermektedir. Kesitte ters U biçimi belirgin değildir. En yüksek gelir düzeylerinde emisyonların dağılımı genişlese de genel eğilim yukarı doğrudur. Korelasyon katsayısı doğrusal ölçekte 0.65, iki değişkenin de logaritması alındığında ise 0.91 olarak bulunur. İki değişken de sağa çarpık olduğu için doğrusal ölçekte birkaç yüksek değer katsayıyı belirgin biçimde etkiler. Kişi başına emisyonun en yüksek olduğu üç ülke olan Katar, Bahreyn ve Kuveyt, petrol ve doğalgaz üreticisi Körfez ülkeleridir.</p>
+<p>Kuznets eğrisi aslında bir ülkenin kalkınma sürecinde, yani zaman içinde ne olduğuna ilişkin bir iddiadır. Bu yüzden ülkelerin zaman içindeki seyrine de bakmamız gerekir. <a href="#fig-kuznets-zaman" class="quarto-xref">Şekil&nbsp;<span>6.11</span></a> seçilmiş sekiz ülkenin 1970-2022 dönemindeki yolunu göstermektedir. Her çizgi bir ülkenin yıllar içinde gelir ve emisyon düzleminde izlediği yoldur. İçi boş daire 1970 yılını, dolu daire 2022 yılını göstermektedir.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>secilen <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"ABD"</span>, <span class="st">"Almanya"</span>, <span class="st">"Birleşik Krallık"</span>, <span class="st">"Fransa"</span>,</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Güney Kore"</span>, <span class="st">"Çin"</span>, <span class="st">"Türkiye"</span>, <span class="st">"Hindistan"</span>)</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>yol <span class="ot">&lt;-</span> <span class="fu">subset</span>(ulkeler, ulke <span class="sc">%in%</span> secilen <span class="sc">&amp;</span> yil <span class="sc">&gt;=</span> <span class="dv">1970</span> <span class="sc">&amp;</span> yil <span class="sc">&lt;=</span> <span class="dv">2022</span>)</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>renk <span class="ot">&lt;-</span> <span class="fu">palette.colors</span>(<span class="dv">9</span>, <span class="st">"Okabe-Ito"</span>)[<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">6</span><span class="sc">:</span><span class="dv">9</span>)]</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="cn">NA</span>, <span class="at">log =</span> <span class="st">"x"</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">250</span>, <span class="dv">150000</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">24</span>), <span class="at">xaxt =</span> <span class="st">"n"</span>,</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Kişi başına GSYİH (bin sabit 2015 $, logaritmik)"</span>,</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Kişi başına CO2 (ton)"</span>)</span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="dv">300</span>, <span class="fl">1e3</span>, <span class="fl">3e3</span>, <span class="fl">1e4</span>, <span class="fl">3e4</span>, <span class="fl">1e5</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="fl">0.3</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">30</span>, <span class="dv">100</span>))</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>konum <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">ABD =</span> <span class="dv">4</span>, <span class="at">Almanya =</span> <span class="dv">4</span>, <span class="st">"Birleşik Krallık"</span> <span class="ot">=</span> <span class="dv">4</span>, <span class="at">Fransa =</span> <span class="dv">1</span>,</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>           <span class="st">"Güney Kore"</span> <span class="ot">=</span> <span class="dv">4</span>, <span class="st">"Çin"</span> <span class="ot">=</span> <span class="dv">3</span>, <span class="st">"Türkiye"</span> <span class="ot">=</span> <span class="dv">4</span>, <span class="at">Hindistan =</span> <span class="dv">1</span>)</span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (j <span class="cf">in</span> <span class="fu">seq_along</span>(secilen)) {</span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>  d <span class="ot">&lt;-</span> yol[yol<span class="sc">$</span>ulke <span class="sc">==</span> secilen[j], ]</span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lines</span>(d<span class="sc">$</span>kisi_basi_gsyih, d<span class="sc">$</span>co2_kisi_basi, <span class="at">col =</span> renk[j], <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">points</span>(d<span class="sc">$</span>kisi_basi_gsyih[<span class="dv">1</span>], d<span class="sc">$</span>co2_kisi_basi[<span class="dv">1</span>], <span class="at">col =</span> renk[j], <span class="at">pch =</span> <span class="dv">1</span>, <span class="at">cex =</span> <span class="fl">1.1</span>)</span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">points</span>(d<span class="sc">$</span>kisi_basi_gsyih[<span class="fu">nrow</span>(d)], d<span class="sc">$</span>co2_kisi_basi[<span class="fu">nrow</span>(d)], <span class="at">col =</span> renk[j], <span class="at">pch =</span> <span class="dv">19</span>)</span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">text</span>(d<span class="sc">$</span>kisi_basi_gsyih[<span class="fu">nrow</span>(d)], d<span class="sc">$</span>co2_kisi_basi[<span class="fu">nrow</span>(d)], secilen[j],</span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> renk[j], <span class="at">pos =</span> konum[[secilen[j]]], <span class="at">cex =</span> <span class="fl">0.75</span>)</span>
+<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div id="fig-kuznets-zaman" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-kuznets-zaman-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Iliski_files/figure-html/fig-kuznets-zaman-1.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-kuznets-zaman-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;6.11: Seçilmiş ülkelerde kişi başına GSYİH ve CO2 emisyonunun seyri, 1970-2022
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Grafikteki iki farklı hareket dikkat çekicidir. Çin, Hindistan, Türkiye ve Güney Kore’de dönem boyunca gelir de emisyon da artmıştır; bu ülkeler grafikte sağa ve yukarı doğru ilerler. Almanya, Birleşik Krallık ve Fransa’da ise kişi başına emisyon 1970’lerde en yüksek düzeyine ulaşmış, sonra gelir artmaya devam ederken azalmıştır. ABD’de kişi başına emisyon 2000’lerin ortasına kadar yaklaşık yatay seyretmiş, ardından belirgin biçimde düşmüştür. Bu dört ülke grafikte sağa ve aşağı doğru ilerler. Ülkelerin yolları bir arada düşünüldüğünde ters U biçimini andıran bir görüntü ortaya çıkmaktadır.</p>
+<p>Aynı iki değişken arasındaki korelasyonu her ülke için ayrı ayrı, zaman boyutunda hesaplayalım:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>r_zaman <span class="ot">&lt;-</span> <span class="fu">sapply</span>(secilen, <span class="cf">function</span>(u) {</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  d <span class="ot">&lt;-</span> yol[yol<span class="sc">$</span>ulke <span class="sc">==</span> u, ]</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cor</span>(d<span class="sc">$</span>kisi_basi_gsyih, d<span class="sc">$</span>co2_kisi_basi, <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(r_zaman, <span class="dv">2</span>)</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             ABD          Almanya Birleşik Krallık           Fransa 
+           -0.83            -0.95            -0.87            -0.91 
+      Güney Kore              Çin          Türkiye        Hindistan 
+            0.96             0.98             0.97             0.98 </code></pre>
+</div>
+</div>
+<p>Korelasyon katsayısı ABD, Almanya, Birleşik Krallık ve Fransa’da -0.95 ile -0.83 arasında negatif, diğer dört ülkede ise 0.96 ile 0.98 arasında pozitiftir. Aynı iki değişken arasındaki ilişki, hangi ülkeye ve hangi döneme bakıldığına göre yön değiştirmektedir. Anscombe dörtlüsünün ikinci veri kümesinde olduğu gibi, ilişki doğrusal değilse tek bir korelasyon katsayısı onu özetleyemez. Farklı gelir düzeylerindeki gözlemleri bir araya getirdiğimizde artan ve azalan kısımlar birbirini kısmen götürür.</p>
+<p>Bu grafikler çevresel Kuznets eğrisi hipotezini kanıtlamaz, yalnızca onunla tutarlı bir tablo sunar. Üç noktaya dikkat etmek gerekir. Birincisi, buradaki emisyon göstergesi bir ülkenin kendi sınırları içinde üretilen emisyonları ölçer. Gelişmiş ülkelerin tükettiği malların giderek daha fazla başka ülkelerde üretilmesi, bu ülkelerde gözlenen düşüşün bir kısmını açıklıyor olabilir. İkincisi, veri 1970’te başladığı için gelişmiş ülkelerin emisyonlarının arttığı dönemi göremiyoruz. Üçüncüsü, farklı ülkelerin yollarını tek bir eğriye bağlamak ve gelirin emisyonları nasıl etkilediğine ilişkin nedensel bir sonuç çıkarmak için daha ileri yöntemler gerekir.</p>
+</div>
+<div id="exm-konut-buyukluk" class="theorem example">
+<p><span class="theorem-title"><strong>Örnek 6.8 (Konut fiyatı ve daire büyüklüğü)</strong></span> Dönüşüm yalnız ülke verilerinde işe yarayan bir hile değildir. İstanbul Beşiktaş ilçesindeki satılık daire ilanlarında fiyat ile daire büyüklüğü arasındaki ilişkiye bakalım (bkz. <a href="Temelk.html#tbl-veri-kumeleri" class="quarto-xref">Tablo&nbsp;<span>3.4</span></a>).</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"Data/besiktas_ev.RData"</span>)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(besiktas_ev<span class="sc">$</span>metrekare, besiktas_ev<span class="sc">$</span>fiyat <span class="sc">/</span> <span class="fl">1e6</span>,</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> <span class="fu">rgb</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.35</span>),</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Büyüklük (metrekare)"</span>, <span class="at">ylab =</span> <span class="st">"Fiyat (milyon TL)"</span>)</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(besiktas_ev<span class="sc">$</span>metrekare, besiktas_ev<span class="sc">$</span>fiyat <span class="sc">/</span> <span class="fl">1e6</span>, <span class="at">log =</span> <span class="st">"xy"</span>,</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> <span class="fu">rgb</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.35</span>), <span class="at">yaxt =</span> <span class="st">"n"</span>,</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Büyüklük (metrekare, logaritmik)"</span>, <span class="at">ylab =</span> <span class="st">"Fiyat (milyon TL, logaritmik)"</span>)</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="fl">0.3</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">10</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="fl">0.3</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">10</span>))</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="fig-konut-buyukluk" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-konut-buyukluk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-konut-buyukluk" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-konut-buyukluk-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-konut-buyukluk-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Iliski_files/figure-html/fig-konut-buyukluk-1.png" class="img-fluid figure-img" style="width:100.0%" data-ref-parent="fig-konut-buyukluk">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-konut-buyukluk-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Doğrusal ölçek
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-konut-buyukluk" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-konut-buyukluk-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-konut-buyukluk-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Iliski_files/figure-html/fig-konut-buyukluk-2.png" class="img-fluid figure-img" style="width:100.0%" data-ref-parent="fig-konut-buyukluk">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-konut-buyukluk-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) İki eksen de logaritmik
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-konut-buyukluk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;6.12: Beşiktaş’ta satılık daire ilanlarında fiyat ve büyüklük
+</figcaption>
+</figure>
+</div>
+<p>Doğrusal ölçekte (<a href="#fig-konut-buyukluk-1" class="quarto-xref">Şekil&nbsp;<span>6.12 (a)</span></a>) noktalar sola toplanır ve yukarı doğru açılan bir yelpaze oluşturur. Büyük daireler hem daha pahalıdır hem de fiyatları çok daha geniş bir aralığa yayılır. Logaritmik ölçekte (<a href="#fig-konut-buyukluk-2" class="quarto-xref">Şekil&nbsp;<span>6.12 (b)</span></a>) bu yelpaze kapanır ve noktalar bir doğru çevresinde toplanır.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">dogrusal =</span> <span class="fu">cor</span>(besiktas_ev<span class="sc">$</span>fiyat, besiktas_ev<span class="sc">$</span>metrekare),</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">logaritmik =</span> <span class="fu">cor</span>(<span class="fu">log</span>(besiktas_ev<span class="sc">$</span>fiyat), <span class="fu">log</span>(besiktas_ev<span class="sc">$</span>metrekare)))</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  dogrusal logaritmik 
+ 0.7362402  0.8326516 </code></pre>
+</div>
+</div>
+<p>Korelasyon katsayısı 0.74 değerinden 0.83 değerine yükselir. İki değişkenin de logaritması alındığında ilişki oranlar cinsinden okunur. Daire büyüklüğündeki yüzde değişme, fiyatta yaklaşık sabit bir yüzde değişmeye karşılık gelir. Aynı hesap Bakırköy ilanlarında da benzer sonuç verir, katsayı 0.77 değerinden 0.81 değerine çıkar.</p>
+<p>Fiyatı belirleyen tek değişken büyüklük değildir. Semt, bina yaşı ve ısıtma sistemi gibi özellikler de fiyata yansır. Bu özellikleri aynı anda hesaba katmak için Kısım II’de göreceğimiz regresyon analizi gerekir.</p>
+</div>
+</section>
+<section id="sec-spearman" class="level3" data-number="6.3.5">
+<h3 data-number="6.3.5" class="anchored" data-anchor-id="sec-spearman"><span class="header-section-number">6.3.5</span> Sıra korelasyonu</h3>
+<p>Pearson korelasyon katsayısı iki durumda ilişkiyi iyi özetlemeyebilir. Birincisi, değişkenlerden biri ya da ikisi memnuniyet puanı gibi sıralı (ordinal) bir değişken olabilir. Bu durumda puanlar arasındaki mesafelerin eşit olduğunu varsaymak için bir gerekçe yoktur. İkincisi, ilişki monoton olabilir, yani bir değişken arttıkça diğeri hep aynı yönde değişebilir, ama bu değişim doğrusal olmayabilir.</p>
+<p>Bu durumlarda <strong>Spearman sıra korelasyon katsayısı</strong> kullanılabilir. Spearman katsayısı, gözlemlerin kendileri yerine sıralarıyla hesaplanan Pearson korelasyon katsayısıdır. Her değişkenin gözlemleri küçükten büyüğe sıralanır ve en küçük gözleme 1, en büyüğüne <span class="math inline">\(n\)</span> sırası verilir. Eşit gözlemlere, paylaştıkları sıraların ortalaması verilir. <code>R</code>’da sıraları <code>rank()</code> fonksiyonu hesaplar:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rank</span>(devam)</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  5.0  4.0  2.5  8.0  9.0  1.0  7.0 10.0  6.0  2.5</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rank</span>(basari)</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  3  5  1  7  9  2  7 10  4  7</code></pre>
+</div>
+</div>
+<p>Devam oranı 70 olan iki öğrenci 2. ve 3. sıraları paylaştığı için ikisine de 2.5 sırası verilmiştir. Sıraların Pearson korelasyonu, <code>cor()</code> fonksiyonunun <code>method = "spearman"</code> seçeneğiyle hesaplanan katsayıya eşittir:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">siralarin_pearson =</span> <span class="fu">cor</span>(<span class="fu">rank</span>(devam), <span class="fu">rank</span>(basari)),</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">spearman =</span> <span class="fu">cor</span>(devam, basari, <span class="at">method =</span> <span class="st">"spearman"</span>))</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>siralarin_pearson          spearman 
+          0.79388           0.79388 </code></pre>
+</div>
+</div>
+<p>Eşit gözlem yoksa Spearman katsayısı, <span class="math inline">\(d_i\)</span> iki değişkendeki sıralar arasındaki fark olmak üzere, daha basit bir formülle de hesaplanabilir: <span class="math display">\[
+r_s = 1 - \frac{6\sum_{i=1}^{n} d_i^2}{n(n^2-1)}
+\]</span> Eşit gözlem sayısı az olduğunda bu formül yaklaşık olarak aynı sonucu verir.</p>
+<p>Spearman katsayısı da <span class="math inline">\(-1\)</span> ile <span class="math inline">\(1\)</span> arasında değer alır. <span class="math inline">\(r_s = 1\)</span> olması, bir değişkendeki sıralamanın diğerindeki sıralamayla tamamen aynı olduğunu, yani ilişkinin kusursuz biçimde monoton artan olduğunu gösterir; noktaların bir doğru üzerinde olması gerekmez. Sıralar değişkenin artan bir fonksiyonuyla dönüştürülmesinden etkilenmediği için Spearman katsayısı logaritma dönüşümüyle değişmez. Bunu Preston örneğinde görelim:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">pearson_dogrusal =</span> <span class="fu">cor</span>(kesit_2022<span class="sc">$</span>kisi_basi_gsyih_sagp, kesit_2022<span class="sc">$</span>yasam_beklentisi),</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">pearson_log =</span> <span class="fu">cor</span>(<span class="fu">log</span>(kesit_2022<span class="sc">$</span>kisi_basi_gsyih_sagp), kesit_2022<span class="sc">$</span>yasam_beklentisi),</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">spearman_dogrusal =</span> <span class="fu">cor</span>(kesit_2022<span class="sc">$</span>kisi_basi_gsyih_sagp, kesit_2022<span class="sc">$</span>yasam_beklentisi, <span class="at">method =</span> <span class="st">"spearman"</span>),</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">spearman_log =</span> <span class="fu">cor</span>(<span class="fu">log</span>(kesit_2022<span class="sc">$</span>kisi_basi_gsyih_sagp), kesit_2022<span class="sc">$</span>yasam_beklentisi, <span class="at">method =</span> <span class="st">"spearman"</span>))</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> pearson_dogrusal       pearson_log spearman_dogrusal      spearman_log 
+        0.6748183         0.8061132         0.8559806         0.8559806 </code></pre>
+</div>
+</div>
+<p>Pearson katsayısı dönüşümle 0.67 değerinden 0.81 değerine yükselirken Spearman katsayısı iki durumda da 0.86 olarak kalmaktadır. Spearman katsayısı ilişkinin doğrusal olup olmadığıyla ilgilenmez, yalnızca ne kadar tutarlı biçimde aynı yönde olduğunu ölçer.</p>
+<p>Konut örneğinde de (bkz. <a href="#exm-konut-buyukluk" class="quarto-xref">Örnek&nbsp;<span>6.8</span></a>) aynı durum görülür. Fiyat ile büyüklük arasındaki Spearman katsayısı 0.85 olup ham veriyle hesaplanan Pearson katsayısından da, logaritmalarla hesaplanandan da büyüktür.</p>
+<p>E-ticaret örneğinde ise teslim süresi ile memnuniyet arasındaki Spearman katsayısı -0.47, Pearson katsayısı -0.53 olarak bulunur. Memnuniyet sıralı bir değişken olduğu için Spearman katsayısı daha savunulabilir bir özettir. İki katsayının birbirine yakın olması, bu veride puanları eşit aralıklı saymanın sonucu fazla değiştirmediğini göstermektedir. Ancak çok az sayıda farklı değer alan değişkenlerde sıraların çoğu eşit olur; böyle durumlarda çapraz tablo çoğu zaman daha fazla bilgi verir (bkz. <a href="#exr-iliski-spearman" class="quarto-xref">Alıştırma&nbsp;<span>6.4</span></a>).</p>
+</section>
+<section id="korelasyon-ve-nedensellik" class="level3" data-number="6.3.6">
+<h3 data-number="6.3.6" class="anchored" data-anchor-id="korelasyon-ve-nedensellik"><span class="header-section-number">6.3.6</span> Korelasyon ve nedensellik</h3>
+<p>Temel Kavramlar bölümünde ilişki bulmanın nedensellik göstermediğini vurgulamıştık (bkz. <a href="Temelk.html" class="quarto-xref"><span>Bölüm 3</span></a>). Artık bu ilişkiyi bir sayıyla ölçebildiğimize göre uyarıyı yinelemekte yarar var: iki değişken arasındaki korelasyon ne kadar güçlü olursa olsun, tek başına birinin diğerine yol açtığını göstermez. Güçlü bir korelasyonun arkasında başka açıklamalar da olabilir:</p>
+<ol type="1">
+<li><p><strong>Ortak neden (karıştırıcı değişken).</strong> İki değişkeni birden etkileyen üçüncü bir değişken olabilir. Yaz aylarında hem dondurma satışları hem de boğulma vakaları artar. Aralarındaki pozitif korelasyonun nedeni dondurma değil, ikisini de etkileyen hava sıcaklığıdır.</p></li>
+<li><p><strong>Ters nedensellik.</strong> Nedensellik düşündüğümüzün tersi yönde olabilir. Suç oranı yüksek ilçelerde daha fazla polis görevlendirilir. Polis sayısı ile suç oranı arasındaki pozitif korelasyon, polisin suçu artırdığını değil, suçun polis ihtiyacını artırdığını yansıtır.</p></li>
+<li><p><strong>Ortak zaman eğilimi.</strong> Zaman içinde düzenli olarak artan ya da azalan iki değişken, aralarında hiçbir bağ olmasa da güçlü bir korelasyon gösterir.</p></li>
+</ol>
+<p>Son durumu ülke verisiyle görelim:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>tr_2000 <span class="ot">&lt;-</span> <span class="fu">subset</span>(ulkeler, ulke <span class="sc">==</span> <span class="st">"Türkiye"</span> <span class="sc">&amp;</span> yil <span class="sc">&gt;=</span> <span class="dv">2000</span> <span class="sc">&amp;</span> yil <span class="sc">&lt;=</span> <span class="dv">2022</span>)</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>r_internet_dogurganlik <span class="ot">&lt;-</span> <span class="fu">cor</span>(tr_2000<span class="sc">$</span>internet, tr_2000<span class="sc">$</span>dogurganlik, <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>r_internet_dogurganlik</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.8759795</code></pre>
+</div>
+</div>
+<p>Türkiye’de 2000-2022 döneminde internet kullanan bireylerin oranı ile toplam doğurganlık hızı arasındaki korelasyon katsayısı -0.88 olarak bulunur. Bu güçlü negatif ilişkiden internet kullanımının doğurganlığı düşürdüğü sonucunu çıkarmak yanlış olur. Bu dönemde internet kullanımı düzenli olarak artarken doğurganlık, kentleşme, eğitim düzeyinin yükselmesi ve kadınların iş gücüne katılımı gibi uzun dönemli etkenlerle düzenli olarak azalmıştır. Zaman içinde tek yönde hareket eden hemen her iki değişken arasında benzer bir korelasyon bulunabilir.</p>
+<p>Nedensel bir soruyu yanıtlamanın en güvenilir yolu rassal atamaya dayanan deneylerdir. Gözlemsel verilerle nedensel çıkarım yapmak ise açıkça belirtilmiş varsayımlar ve daha ileri yöntemler gerektirir. Kısım II’deki regresyon analizi bu yöntemlerin başlangıç noktasıdır.</p>
+</section>
+</section>
+<section id="çözümlü-alıştırmalar" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="çözümlü-alıştırmalar"><span class="header-section-number">6.4</span> Çözümlü Alıştırmalar</h2>
+<div id="exr-scatter1" class="theorem exercise">
+<p><span class="theorem-title"><strong>Alıştırma 6.1</strong></span> <code>mtcars</code> veri kümesi, 1974 yılında Motor Trend dergisinde yayımlanan 32 otomobile ilişkin ölçümleri içerir ve <code>R</code> ile birlikte gelir. Bu veri kümesinde yer alan araç ağırlığı (<code>wt</code>, 1000 libre) ve yakıt verimliliği (<code>mpg</code>, galon başına mil) değişkenlerinin kovaryansını ve korelasyon katsayısını hesaplayınız. Serpilme grafiğini oluşturarak yorumlayınız. Değişkenleri kilogram ve litre başına kilometre cinsinden ifade ettiğinizde sonuçlar nasıl değişir?</p>
+<p><strong>Çözüm</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(mtcars)</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>kov_mt <span class="ot">&lt;-</span> <span class="fu">cov</span>(mtcars<span class="sc">$</span>wt, mtcars<span class="sc">$</span>mpg)</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>kor_mt <span class="ot">&lt;-</span> <span class="fu">cor</span>(mtcars<span class="sc">$</span>wt, mtcars<span class="sc">$</span>mpg)</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">kovaryans =</span> kov_mt, <span class="at">korelasyon =</span> kor_mt)</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> kovaryans korelasyon 
+-5.1166847 -0.8676594 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>wt, mtcars<span class="sc">$</span>mpg, <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Ağırlık (1000 libre)"</span>, <span class="at">ylab =</span> <span class="st">"Yakıt verimliliği (mil/galon)"</span>)</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div id="fig-mtcars" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mtcars-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Iliski_files/figure-html/fig-mtcars-1.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mtcars-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;6.13: Otomobillerde ağırlık ve yakıt verimliliği (mtcars)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Korelasyon katsayısı -0.87 olarak bulunur. Otomobilin ağırlığı ile yakıt verimliliği arasında güçlü ve negatif bir doğrusal ilişki vardır: ağır araçlar bir galon yakıtla daha az yol gitme eğilimindedir (<a href="#fig-mtcars" class="quarto-xref">Şekil&nbsp;<span>6.13</span></a>).</p>
+<p>Şimdi ağırlığı kilograma, yakıt verimliliğini litre başına kilometreye çevirelim. 1000 libre yaklaşık 453.6 kg, 1 mil/galon ise yaklaşık 0.4251 km/litredir:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>agirlik_kg <span class="ot">&lt;-</span> mtcars<span class="sc">$</span>wt <span class="sc">*</span> <span class="fl">453.6</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>verim_kml <span class="ot">&lt;-</span> mtcars<span class="sc">$</span>mpg <span class="sc">*</span> <span class="fl">0.4251</span></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">kovaryans =</span> <span class="fu">cov</span>(agirlik_kg, verim_kml), <span class="at">korelasyon =</span> <span class="fu">cor</span>(agirlik_kg, verim_kml))</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   kovaryans   korelasyon 
+-986.6265649   -0.8676594 </code></pre>
+</div>
+</div>
+<p>Kovaryans -5.12 değerinden -986.6 değerine değişmiştir; iki çarpan da pozitif olduğu için işaret aynı kalmış, büyüklük ise <span class="math inline">\(453.6 \times 0.4251 \approx 192.8\)</span> katına çıkmıştır. Korelasyon katsayısı ise değişmemiştir (bkz. alt bölüm <a href="#sec-iliski-birim" class="quarto-xref"><span>6.3.1</span></a>).</p>
+<p>Bu ilişkiden ağırlığın tek başına yakıt verimliliğini belirlediği sonucu çıkarılmamalıdır. Ağır araçların motor hacmi ve silindir sayısı da genellikle daha büyüktür ve bu özellikler de yakıt tüketimini etkiler.</p>
+</div>
+<div id="exr-kor1" class="theorem exercise">
+<p><span class="theorem-title"><strong>Alıştırma 6.2</strong></span> <code>mutluluk</code> veri kümesi 2015 yılında Türkiye’nin 81 iline ilişkin yaşam memnuniyeti göstergelerini içermektedir. Bu veri kümesinde yer alan <code>saglik_tatmin</code> (sağlık hizmetlerinden tatmin düzeyi) ve <code>mutluluk</code> (mutluluk düzeyi) değişkenlerinin serpilme grafiğini çiziniz ve korelasyon katsayısını hesaplayınız. Ardından bu iki değişken ile <code>sosyal_hayat_tatmin</code> (sosyal hayattan tatmin düzeyi) değişkeninin korelasyon matrisini oluşturunuz.</p>
+<p><strong>Çözüm</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"Data/mutluluk.rda"</span>)</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>r_saglik <span class="ot">&lt;-</span> <span class="fu">cor</span>(mutluluk<span class="sc">$</span>saglik_tatmin, mutluluk<span class="sc">$</span>mutluluk)</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>r_saglik</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5918097</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mutluluk<span class="sc">$</span>saglik_tatmin, mutluluk<span class="sc">$</span>mutluluk,</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> <span class="fu">rgb</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.5</span>),</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Sağlık tatmin düzeyi"</span>,</span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Mutluluk endeksi"</span>)</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div id="fig-mutluluk-saglik" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mutluluk-saglik-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Iliski_files/figure-html/fig-mutluluk-saglik-1.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mutluluk-saglik-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;6.14: İllerde sağlık tatmin düzeyi ve mutluluk (2015)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Korelasyon katsayısı 0.59 olarak bulunur. Buna göre sağlık tatmin düzeyi ile mutluluk arasında orta düzeyde pozitif bir doğrusal ilişki vardır. Serpilme çiziminden de görüldüğü gibi sağlık tatmin düzeyi yüksek olan illerde mutluluk düzeyi de yüksek olma eğilimindedir, ancak noktalar oldukça dağınıktır (<a href="#fig-mutluluk-saglik" class="quarto-xref">Şekil&nbsp;<span>6.14</span></a>).</p>
+<p>Birden fazla değişken arasındaki korelasyonları bir arada görmek için korelasyon matrisi oluşturabiliriz. Değişkenleri sütun numaraları yerine adlarıyla seçmek, kodu daha okunur ve veri kümesindeki sütunların sırası değiştiğinde de doğru çalışır hâle getirir:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>degiskenler <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"mutluluk"</span>, <span class="st">"saglik_tatmin"</span>, <span class="st">"sosyal_hayat_tatmin"</span>)</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>kor_mat <span class="ot">&lt;-</span> <span class="fu">cor</span>(mutluluk[, degiskenler])</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(kor_mat, <span class="dv">2</span>)</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                    mutluluk saglik_tatmin sosyal_hayat_tatmin
+mutluluk                1.00          0.59                0.45
+saglik_tatmin           0.59          1.00                0.68
+sosyal_hayat_tatmin     0.45          0.68                1.00</code></pre>
+</div>
+</div>
+<p>Bu matrisin hücreleri o satır ve sütundaki değişkenler arasındaki korelasyon katsayısını gösterir. Matris simetriktir ve ana köşegeni her zaman 1’dir, çünkü her değişkenin kendisiyle korelasyonu 1’dir. Mutluluk ile sosyal hayat tatmini arasındaki korelasyon katsayısı 0.45, sağlık tatmini ile sosyal hayat tatmini arasındaki katsayı ise 0.68 olarak bulunur. Üç değişken arasındaki en güçlü ilişki iki tatmin göstergesi arasındadır. Bu değişkenlerin bütün ikili serpilme çizimlerini <code>pairs()</code> fonksiyonuyla tek bir grafikte oluşturabiliriz:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(mutluluk[, degiskenler], <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> <span class="fu">rgb</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.5</span>))</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div id="fig-mutluluk-pairs" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mutluluk-pairs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Iliski_files/figure-html/fig-mutluluk-pairs-1.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mutluluk-pairs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;6.15: Mutluluk, sağlık tatmini ve sosyal hayat tatmini: serpilme çizimleri matrisi
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Bu verilerin gözlem birimi bireyler değil illerdir. İl ortalamaları arasında bulunan bir ilişkinin bireyler için de aynı güçte geçerli olduğunu varsaymak yanıltıcı olabilir. Toplulaştırılmış verilerden bireyler hakkında sonuç çıkarmaya <strong>ekolojik yanılgı</strong> denir. Ortalamalar bireysel farklılıkları yok ettiği için il düzeyindeki korelasyonlar genellikle bireysel düzeydekilerden daha güçlü çıkar.</p>
+</div>
+<div id="exr-iliski-uc" class="theorem exercise">
+<p><span class="theorem-title"><strong>Alıştırma 6.3</strong></span> Kovaryans hesaplama tablosundaki 10 öğrenciye (bkz. <a href="#tbl-kov1" class="quarto-xref">Tablo&nbsp;<span>6.1</span></a>), derse yalnızca %30 oranında devam ettiği hâlde 95 alan on birinci bir öğrenci eklensin. Devam oranı ile başarı arasındaki korelasyon katsayısı nasıl değişir? Neden?</p>
+<p><strong>Çözüm</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>devam11 <span class="ot">&lt;-</span> <span class="fu">c</span>(veri1<span class="sc">$</span>Devam_oranı, <span class="dv">30</span>)</span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>basari11 <span class="ot">&lt;-</span> <span class="fu">c</span>(veri1<span class="sc">$</span>Başarı, <span class="dv">95</span>)</span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>r_ilk10 <span class="ot">&lt;-</span> <span class="fu">cor</span>(veri1<span class="sc">$</span>Devam_oranı, veri1<span class="sc">$</span>Başarı)</span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>r_11 <span class="ot">&lt;-</span> <span class="fu">cor</span>(devam11, basari11)</span>
+<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">ilk_10_ogrenci =</span> r_ilk10, <span class="at">ogrenci_11_ile =</span> r_11)</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>ilk_10_ogrenci ogrenci_11_ile 
+    0.74352483    -0.02178858 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(devam11, basari11, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"black"</span>, <span class="dv">10</span>), <span class="st">"firebrick"</span>),</span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">100</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">40</span>, <span class="dv">100</span>),</span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Derse devam oranı, %"</span>, <span class="at">ylab =</span> <span class="st">"Başarı (100 puan üzerinden)"</span>)</span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="dv">30</span>, <span class="dv">95</span>, <span class="st">"11. öğrenci"</span>, <span class="at">pos =</span> <span class="dv">4</span>, <span class="at">col =</span> <span class="st">"firebrick"</span>)</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div id="fig-iliski-uc" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-iliski-uc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Iliski_files/figure-html/fig-iliski-uc-1.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-iliski-uc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;6.16: Tek bir uç gözlemin korelasyon katsayısına etkisi
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Korelasyon katsayısı 0.74 değerinden -0.02 değerine düşmüştür. Güçlü pozitif bir ilişki, tek bir gözlemle neredeyse tamamen ortadan kalkmıştır. Bunun nedeni yeni gözlemin iki değişkenin ortalamasından da çok uzakta ve “yanlış” bölgede yer almasıdır (<a href="#fig-iliski-uc" class="quarto-xref">Şekil&nbsp;<span>6.16</span></a>). Devam oranı ortalamanın çok altında, notu ise ortalamanın çok üzerindedir. Bu gözlemin ortalamadan farklarının çarpımı büyük ve negatif olduğu için diğer on öğrencinin pozitif katkılarının büyük kısmını götürür. Aynı zamanda devam oranının standart sapmasını da büyütür.</p>
+<p>Bu alıştırma, Anscombe dörtlüsünün üçüncü veri kümesinde gördüğümüz durumun sayısal bir karşılığıdır. Küçük veri kümelerinde korelasyon katsayısı tek bir gözleme karşı çok duyarlıdır. Böyle bir gözlemi hemen silmek doğru değildir; önce bir veri girişi hatası olup olmadığı araştırılmalı, sonuçların bu gözlem dahil ve hariç ne kadar değiştiği raporlanmalıdır.</p>
+</div>
+<div id="exr-iliski-spearman" class="theorem exercise">
+<p><span class="theorem-title"><strong>Alıştırma 6.4</strong></span> <code>ogrenci_anket</code> veri kümesinde (bkz. <a href="Temelk.html#tbl-veri-kumeleri" class="quarto-xref">Tablo&nbsp;<span>3.4</span></a>) öğrencilerin istatistik dersinin zorluğuna ilişkin puanları (<code>istatistik_zorluk</code>) ile dersteki başarı beklentilerine ilişkin puanları (<code>istatistik_basari</code>) yer almaktadır. İki değişken de 1-5 arası puanlarla ölçülmüştür. Bu iki değişken arasındaki ilişkiyi serpilme çizimi, çapraz tablo, Pearson ve Spearman korelasyon katsayılarıyla inceleyiniz.</p>
+<p><strong>Çözüm</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"Data/ogrenci_anket.RData"</span>)</span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>zorluk_puan <span class="ot">&lt;-</span> ogrenci_anket<span class="sc">$</span>istatistik_zorluk</span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>basari_puan <span class="ot">&lt;-</span> ogrenci_anket<span class="sc">$</span>istatistik_basari</span>
+<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>tam <span class="ot">&lt;-</span> <span class="fu">complete.cases</span>(zorluk_puan, basari_puan)</span>
+<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">ogrenci =</span> <span class="fu">sum</span>(tam), <span class="at">farkli_nokta =</span> <span class="fu">nrow</span>(<span class="fu">unique</span>(<span class="fu">cbind</span>(zorluk_puan, basari_puan)[tam, ])))</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     ogrenci farkli_nokta 
+          97           14 </code></pre>
+</div>
+</div>
+<p>İki değişken de yalnızca birkaç farklı değer aldığı için 97 öğrencinin cevapları serpilme çiziminde yalnızca 14 farklı noktaya düşer. Noktalar üst üste bindiği için her noktada kaç öğrenci olduğunu serpilme çiziminden okuyamayız. Bu tür değişkenler için çapraz tablo çok daha bilgilendiricidir:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(<span class="at">zorluk =</span> zorluk_puan, <span class="at">basari =</span> basari_puan)</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      basari
+zorluk  2  3  4  5
+     1  1  0  0  0
+     2  0  0  3  3
+     3  0 10  7  5
+     4  1 21 16  4
+     5  5  6 11  4</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">pearson =</span> <span class="fu">cor</span>(zorluk_puan, basari_puan, <span class="at">use =</span> <span class="st">"complete.obs"</span>),</span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">spearman =</span> <span class="fu">cor</span>(zorluk_puan, basari_puan, <span class="at">use =</span> <span class="st">"complete.obs"</span>, <span class="at">method =</span> <span class="st">"spearman"</span>))</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   pearson   spearman 
+-0.1485461 -0.1357642 </code></pre>
+</div>
+</div>
+<p>Pearson katsayısı -0.15, Spearman katsayısı -0.14 olarak bulunur. İki katsayı da zayıf ve negatif bir ilişkiye işaret eder: zorluk puanı yükseldikçe başarı beklentisi puanı çok az düşme eğilimindedir. Çapraz tabloya bakınca bu zayıflığın nedeni görülür: aynı zorluk puanını veren öğrencilerin başarı beklentileri geniş bir aralığa yayılmaktadır.</p>
+<p>Değişkenler sıralı olduğu için Spearman katsayısı Pearson katsayısından daha uygundur. Ancak 5 kategorili değişkenlerde çok sayıda eşit sıra oluşur ve tek bir sayı tablodaki bilginin önemli bir kısmını kaybettirir. Bu tür verilerde korelasyon katsayısını çapraz tabloyla birlikte raporlamak iyi bir uygulamadır.</p>
+</div>
+<div id="exr-datasaurus" class="theorem exercise">
+<p><span class="theorem-title"><strong>Alıştırma 6.5</strong></span> Bu alıştırmada verileri görselleştirmenin önemini vurgulamak amacıyla geliştirilmiş <code>datasauRus</code> veri kümesini inceleyeceğiz <span class="citation" data-cites="matejka2017">(<a href="kaynaklar.html#ref-matejka2017" role="doc-biblioref">Matejka and Fitzmaurice 2017</a>)</span>. Önce paketi kurup veri kümesini yükleyin:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("datasauRus")</span></span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(datasauRus)</span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(datasaurus_dozen)</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><code>datasaurus_dozen</code> veri çerçevesinde <code>dataset</code> değişkeniyle ayrılan 13 veri kümesi vardır. Her bir veri kümesi için x ve y değişkenlerinin ortalamasını, standart sapmasını ve aralarındaki korelasyon katsayısını hesaplayın, serpilme çizimlerini oluşturun ve yorumlayın.</p>
+<p><strong>Çözüm</strong></p>
+<p><code>split()</code> fonksiyonu veri çerçevesini <code>dataset</code> değişkeninin değerlerine göre parçalara ayırır. <code>sapply()</code> ile her parçaya aynı hesaplamayı uygulayabiliriz:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>parcalar <span class="ot">&lt;-</span> <span class="fu">split</span>(datasaurus_dozen, datasaurus_dozen<span class="sc">$</span>dataset)</span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>ozet_dino <span class="ot">&lt;-</span> <span class="fu">sapply</span>(parcalar, <span class="cf">function</span>(d) {</span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="at">ort_x =</span> <span class="fu">mean</span>(d<span class="sc">$</span>x), <span class="at">ort_y =</span> <span class="fu">mean</span>(d<span class="sc">$</span>y), <span class="at">ss_x =</span> <span class="fu">sd</span>(d<span class="sc">$</span>x), <span class="at">ss_y =</span> <span class="fu">sd</span>(d<span class="sc">$</span>y), <span class="at">kor =</span> <span class="fu">cor</span>(d<span class="sc">$</span>x, d<span class="sc">$</span>y))</span>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">t</span>(ozet_dino), <span class="dv">2</span>)</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           ort_x ort_y  ss_x  ss_y   kor
+away       54.27 47.83 16.77 26.94 -0.06
+bullseye   54.27 47.83 16.77 26.94 -0.07
+circle     54.27 47.84 16.76 26.93 -0.07
+dino       54.26 47.83 16.77 26.94 -0.06
+dots       54.26 47.84 16.77 26.93 -0.06
+h_lines    54.26 47.83 16.77 26.94 -0.06
+high_lines 54.27 47.84 16.77 26.94 -0.07
+slant_down 54.27 47.84 16.77 26.94 -0.07
+slant_up   54.27 47.83 16.77 26.94 -0.07
+star       54.27 47.84 16.77 26.93 -0.06
+v_lines    54.27 47.84 16.77 26.94 -0.07
+wide_lines 54.27 47.83 16.77 26.94 -0.07
+x_shape    54.26 47.84 16.77 26.93 -0.07</code></pre>
+</div>
+</div>
+<p>On üç veri kümesinin hepsinde x’in ortalaması yaklaşık 54.3, y’nin ortalaması yaklaşık 47.8, standart sapmalar yaklaşık 16.8 ve 26.9, korelasyon katsayısı ise -0.069 ile -0.060 arasındadır. Özet istatistiklere bakarak bu veri kümelerini birbirinden ayırt edemeyiz. Şimdi serpilme çizimlerine bakalım:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">3</span>), <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>))</span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (ad <span class="cf">in</span> <span class="fu">names</span>(parcalar)) {</span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(parcalar[[ad]]<span class="sc">$</span>x, parcalar[[ad]]<span class="sc">$</span>y, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">cex =</span> <span class="fl">0.4</span>,</span>
+<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">100</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>), <span class="at">main =</span> ad, <span class="at">xlab =</span> <span class="st">""</span>, <span class="at">ylab =</span> <span class="st">""</span>)</span>
+<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div id="fig-datasaurus" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-datasaurus-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Iliski_files/figure-html/fig-datasaurus-1.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-datasaurus-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;6.17: Görselleştirmenin önemi: Datasaurus verileri
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><a href="#fig-datasaurus" class="quarto-xref">Şekil&nbsp;<span>6.17</span></a> bu on üç veri kümesinin serpilme çizimlerini göstermektedir. Aynı özet istatistiklere sahip veri kümeleri bir dinozor, bir yıldız, bir daire ya da paralel çizgiler gibi birbirinden tamamen farklı biçimler almaktadır. Sıfıra yakın bir korelasyon katsayısı değişkenler arasında hiçbir ilişki olmadığı anlamına gelmez; yalnızca doğrusal bir ilişki olmadığını söyler. Anscombe dörtlüsünde olduğu gibi, Datasaurus veri kümesi de özet istatistiklerin verinin bütün özelliklerini yansıtmakta yetersiz kalabileceğini göstermektedir.</p>
+</div>
+</section>
+<section id="problemler" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="problemler"><span class="header-section-number">6.5</span> Problemler</h2>
+<div id="cnj-iliski-dy" class="theorem conjecture">
+<p><span class="theorem-title"><strong>Problem 6.1</strong></span> Aşağıdaki ifadelerin doğru/yanlış olup olmadıklarını belirtin ve kısaca açıklayın.</p>
+<ol type="a">
+<li>Kovaryans her zaman -1 ile 1 arasında değerler alır.</li>
+<li>Korelasyon katsayısının 0.9 olması iki değişken arasında güçlü pozitif doğrusal ilişki olduğu anlamına gelir.</li>
+<li>Korelasyon katsayısı sıfır ise iki değişken arasında hiçbir ilişki yoktur.</li>
+<li>Değişkenlerden birinin ölçü birimi değiştirilirse korelasyon katsayısı da değişir.</li>
+<li>İki veri kümesinin korelasyon katsayıları aynıysa serpilme diyagramları da birbirine benzer.</li>
+<li>İki değişken arasındaki korelasyon katsayısı 0.8 ise değişkenlerden birindeki artış diğerinde artışa neden olur.</li>
+<li>Değişkenlerden birinin logaritması alındığında Spearman sıra korelasyon katsayısı değişmez.</li>
+</ol>
+</div>
+<div id="cnj-iliski-elle" class="theorem conjecture">
+<p><span class="theorem-title"><strong>Problem 6.2</strong></span> Bir bölgede faaliyet gösteren 6 firmanın yıllık reklam harcamaları ve satışları (milyon TL) aşağıdaki gibidir:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Firma</th>
+<th style="text-align: center;">Reklam harcaması (<span class="math inline">\(x\)</span>)</th>
+<th style="text-align: center;">Satışlar (<span class="math inline">\(y\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">A</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">20</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">B</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">26</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">C</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">29</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">D</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">38</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">E</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">41</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">56</td>
+</tr>
+</tbody>
+</table>
+<ol type="a">
+<li>Serpilme çizimini elle çizin ve ilişkinin yönünü yorumlayın.</li>
+<li>Kovaryans hesaplama tablosuna (bkz. <a href="#tbl-kov1" class="quarto-xref">Tablo&nbsp;<span>6.1</span></a>) benzer bir tablo oluşturarak örneklem kovaryansını hesaplayın.</li>
+<li>İki değişkenin örneklem standart sapmalarını ve korelasyon katsayısını hesaplayın. Sonuçlarınızı <code>cov()</code>, <code>sd()</code> ve <code>cor()</code> fonksiyonlarıyla kontrol edin.</li>
+<li>Reklam harcaması milyon TL yerine bin TL cinsinden ifade edilirse kovaryans ve korelasyon katsayısı ne olur? Hesap yapmadan yanıtlayın.</li>
+<li>Her iki değişkenin sıralarını bularak Spearman sıra korelasyon katsayısını hesaplayın.</li>
+<li>Bu verilerden reklam harcamasını artıran bir firmanın satışlarının da artacağı sonucu çıkarılabilir mi? Tartışın.</li>
+</ol>
+</div>
+<div id="cnj-iliski-nedensellik" class="theorem conjecture">
+<p><span class="theorem-title"><strong>Problem 6.3</strong></span> Aşağıdaki her durumda gözlenen korelasyonun nedensel bir ilişkiyi yansıttığı sonucuna varılabilir mi? Korelasyonu açıklayabilecek başka bir mekanizma (ortak neden, ters nedensellik ya da ortak zaman eğilimi) önerin.</p>
+<ol type="a">
+<li>İller arasında eczane sayısı ile yıllık ölüm sayısı arasında güçlü pozitif bir korelasyon bulunmuştur.</li>
+<li>Bir şirkette çalışanların yıl içinde katıldıkları eğitim saatleri ile performans puanları arasında pozitif bir korelasyon bulunmuştur.</li>
+<li>Bir ülkede 1990-2020 döneminde yıllık cep telefonu abone sayısı ile ortalama yaşam beklentisi arasındaki korelasyon katsayısı 0.95 olarak hesaplanmıştır.</li>
+<li>Firmalar arasında çalışan başına bilgisayar sayısı ile kârlılık arasında pozitif bir korelasyon bulunmuştur.</li>
+<li>Yukarıda (b) şıkkında sözü edilen şirket, eğitimin performansı gerçekten artırıp artırmadığını öğrenmek istiyor. Bu soruyu yanıtlamak için nasıl bir çalışma tasarlanabilir? (bkz. <a href="Temelk.html" class="quarto-xref"><span>Bölüm 3</span></a>)</li>
+</ol>
+</div>
+<div id="cnj-mutluluk" class="theorem conjecture">
+<p><span class="theorem-title"><strong>Problem 6.4</strong></span> <code>mutluluk.rda</code> verilerini kullanarak aşağıdaki soruları yanıtlayınız:</p>
+<ol type="a">
+<li><code>ort_gun_kazanc</code> o ilde yaşayan bireylerin ortalama günlük kazançlarını göstermektedir. Bu değişkenin histogramını ve kutu grafiğini çizin. Özet istatistikleri hesaplayın ve grafiklerle birlikte yorumlayın.</li>
+<li><code>mutluluk</code> endeksi ile <code>ort_gun_kazanc</code> arasındaki korelasyon katsayısını bulun. Serpilme diyagramını çizin ve yorumlayın.</li>
+<li>Aynı iki değişken için Spearman sıra korelasyon katsayısını hesaplayın ve Pearson katsayısıyla karşılaştırın.</li>
+<li>Bu iki değişkenin değişkenlik katsayılarını hesaplayın ve yorumlayın.</li>
+</ol>
+</div>
+<div id="cnj-iliski-ulkeler" class="theorem conjecture">
+<p><span class="theorem-title"><strong>Problem 6.5</strong></span> <code>ulkeler.RData</code> verilerini kullanarak aşağıdaki soruları yanıtlayınız:</p>
+<ol type="a">
+<li>2022 yılında internet kullanan bireylerin oranı ile <code>kisi_basi_gsyih_sagp</code> değişkenindeki kişi başına GSYİH arasındaki serpilme çizimini hem doğrusal hem logaritmik gelir ölçeğiyle çizin. Her iki durumda korelasyon katsayısını hesaplayın ve karşılaştırın.</li>
+<li>Kuznets’in özgün hipotezi gelir eşitsizliğine ilişkindi. Gini katsayısı (<code>gini</code>) her yıl gözlenmediği için her ülkenin 2015 ve sonrasındaki en son Gini gözlemini seçin. Bu gözlemlerle Gini katsayısı ile kişi başına GSYİH’nin logaritması arasındaki serpilme çizimini oluşturun. Ters U biçiminde bir ilişki görüyor musunuz? Korelasyon katsayısı bu ilişkiyi iyi özetler mi?</li>
+<li>Türkiye için 1991-2024 döneminde işsizlik oranı ile enflasyon arasındaki serpilme çizimini oluşturun ve noktaları yıllarla etiketleyin. Korelasyon katsayısını hesaplayın. Bu katsayı, işsizlik arttığında enflasyonun düştüğü anlamına mı gelir? Gözlemlerin zaman sırasını dikkate alarak tartışın.</li>
+<li>2022 yılı için <code>dogurganlik</code>, <code>kadin_isgucu</code>, <code>kentlesme</code>, <code>egitim_harcamasi</code> ve kişi başına GSYİH’nin logaritmasından oluşan bir korelasyon matrisi hesaplayın. Eksik gözlemler nedeniyle <code>cor()</code> fonksiyonunda <code>use = "complete.obs"</code> argümanını kullanmanız gerekecektir. Bu argüman hesaplamaya hangi ülkeleri dahil eder? Hangi değişken çiftleri arasında güçlü bir ilişki vardır?</li>
+</ol>
+</div>
+<div id="cnj-iliski-anket" class="theorem conjecture">
+<p><span class="theorem-title"><strong>Problem 6.6</strong></span> <code>ogrenci_anket.RData</code> verilerini kullanarak aşağıdaki soruları yanıtlayınız:</p>
+<ol type="a">
+<li>Boy ile kilo arasındaki serpilme çizimini, noktaları cinsiyete göre farklı sembollerle göstererek çiziniz. Bütün öğrenciler için ve her cinsiyet için ayrı ayrı korelasyon katsayısını hesaplayınız ve karşılaştırınız. Bütün öğrenciler için hesaplanan katsayı neden cinsiyetlere göre hesaplananlardan farklıdır?</li>
+<li>Boyu metre, kiloyu gram cinsinden ifade ederek kovaryansı ve korelasyon katsayısını yeniden hesaplayınız. Sonuçları (a) şıkkındakilerle karşılaştırınız ve farkı açıklayınız.</li>
+</ol>
+</div>
+<div id="cnj-body1" class="theorem conjecture">
+<p><span class="theorem-title"><strong>Problem 6.7</strong></span> <code>body.RData</code> vücut ölçümleri veri kümesi 507 yetişkinin boy, kilo, yaş ve çeşitli vücut ölçümlerini içermektedir <span class="citation" data-cites="heinz2003">(<a href="kaynaklar.html#ref-heinz2003" role="doc-biblioref">Heinz et al. 2003</a>)</span>. Cinsiyet <code>gender</code> değişkeninde <code>female</code> (kadın) ve <code>male</code> (erkek) düzeyleriyle kodlanmıştır. Bu veri kümesini kullanarak aşağıdaki soruları yanıtlayınız:</p>
+<ol type="a">
+<li><code>height</code> (boy, cm) değişkeninin kadın ve erkekler için ayrı ayrı kutu çizimlerini oluşturun ve özet istatistiklerle birlikte yorumlayın.</li>
+<li><code>height</code> ve <code>weight</code> (kilo, kg) değişkenlerinin serpilme çizimini oluşturun. Noktaları cinsiyete göre farklı renk ya da sembollerle gösterin.</li>
+<li>Boy ile kilo arasındaki korelasyon katsayısını bütün veri için ve her cinsiyet için ayrı ayrı hesaplayın. Sonuçları <a href="#cnj-iliski-anket" class="quarto-xref">Problem&nbsp;<span>6.6</span></a> (a) şıkkındaki bulgularla karşılaştırın.</li>
+</ol>
+</div>
+<div id="cnj-iliski-konut" class="theorem conjecture">
+<p><span class="theorem-title"><strong>Problem 6.8</strong></span> <code>bakirkoy_ev.RData</code> verisini kullanarak aşağıdaki soruları yanıtlayınız.</p>
+<ol type="a">
+<li>Fiyat ile daire büyüklüğünün serpilme çizimini oluşturunuz. İki eksen de logaritmik olan çizimi de yapıp karşılaştırınız.</li>
+<li>Bu iki değişken arasındaki Pearson korelasyon katsayısını ham veriyle, logaritmalarla ve Spearman yöntemiyle hesaplayınız. Üç sonucu karşılaştırınız.</li>
+<li>Fiyat ile oda sayısı arasındaki korelasyonu bulunuz. Oda sayısı ile daire büyüklüğü arasındaki ilişkiyi de hesaplayarak sonucu yorumlayınız.</li>
+<li>Metrekare başına fiyat ile daire büyüklüğü arasındaki korelasyonu hesaplayınız. İşaretini beklediğiniz gibi mi buldunuz?</li>
+<li>Aynı hesapları <code>besiktas_ev.RData</code> verisiyle tekrarlayıp iki ilçeyi karşılaştırınız.</li>
+</ol>
+</div>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-anscombe1973" class="csl-entry" role="listitem">
+Anscombe, Francis J. 1973. <span>“Graphs in Statistical Analysis.”</span> <em>The American Statistician</em> 27 (1): 17–21.
+</div>
+<div id="ref-grossman1995" class="csl-entry" role="listitem">
+Grossman, Gene M., and Alan B. Krueger. 1995. <span>“Economic Growth and the Environment.”</span> <em>Quarterly Journal of Economics</em> 110 (2): 353–77.
+</div>
+<div id="ref-heinz2003" class="csl-entry" role="listitem">
+Heinz, Grete, Louis J. Peterson, Roger W. Johnson, and Carter J. Kerk. 2003. <span>“Exploring Relationships in Body Dimensions.”</span> <em>Journal of Statistics Education</em> 11 (2).
+</div>
+<div id="ref-kuznets1955" class="csl-entry" role="listitem">
+Kuznets, Simon. 1955. <span>“Economic Growth and Income Inequality.”</span> <em>American Economic Review</em> 45 (1): 1–28.
+</div>
+<div id="ref-matejka2017" class="csl-entry" role="listitem">
+Matejka, Justin, and George Fitzmaurice. 2017. <span>“Same Stats, Different Graphs: Generating Datasets with Varied Appearance and Identical Statistics Through Simulated Annealing.”</span> In <em>Proceedings of the 2017 CHI Conference on Human Factors in Computing Systems</em>, 1290–94.
+</div>
+<div id="ref-preston1975" class="csl-entry" role="listitem">
+Preston, Samuel H. 1975. <span>“The Changing Relation Between Mortality and Level of Economic Development.”</span> <em>Population Studies</em> 29 (2): 231–48.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Kopyalandı!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Kopyalandı!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./Betimsel-sayisal.html" class="pagination-link" aria-label="Sayısal Özet Ölçüleri">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Sayısal Özet Ölçüleri</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./Olasilik.html" class="pagination-link" aria-label="Olasılık">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Olasılık</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

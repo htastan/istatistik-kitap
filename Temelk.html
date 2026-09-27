@@ -1,0 +1,1997 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>3&nbsp; Verilerin Betimlenmesi: Temel Kavramlar – İstatistik</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./Betimsel-gorsel.html" rel="next">
+<link href="./R-base.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-70a47bd5681a7291082a5b9f83d58762.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Giris.html">KISIM I: İstatistik I</a></li><li class="breadcrumb-item"><a href="./Temelk.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Verilerin Betimlenmesi: Temel Kavramlar</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">İstatistik</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Önsöz</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">KISIM I: İstatistik I</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Giris.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Giriş</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R-base.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">R Programına Giriş</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Temelk.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Verilerin Betimlenmesi: Temel Kavramlar</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Betimsel-gorsel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Frekans Dağılımları ve Grafikler</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Betimsel-sayisal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Sayısal Özet Ölçüleri</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Iliski.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">İki Değişken Arasındaki İlişki</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Olasilik.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Olasılık</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Kesiklird.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Kesikli Rassal Değişkenler</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Sureklird.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Sürekli Rassal Değişkenler</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Normal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Normal Dağılım</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Birlesikdagilimlar.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Birleşik Dağılımlar</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kaynaklar.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Kaynaklar</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Ekler</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ek-sozluk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Terimler Sözlüğü</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">İçindekiler</h2>
+   
+  <ul>
+  <li><a href="#anakütle-ve-örneklem" id="toc-anakütle-ve-örneklem" class="nav-link active" data-scroll-target="#anakütle-ve-örneklem"><span class="header-section-number">3.1</span> Anakütle ve Örneklem</a>
+  <ul>
+  <li><a href="#sec-veri-ureten-surec" id="toc-sec-veri-ureten-surec" class="nav-link" data-scroll-target="#sec-veri-ureten-surec"><span class="header-section-number">3.1.1</span> Anakütle ve veri üreten süreç</a></li>
+  <li><a href="#sec-ornekleme-yontemleri" id="toc-sec-ornekleme-yontemleri" class="nav-link" data-scroll-target="#sec-ornekleme-yontemleri"><span class="header-section-number">3.1.2</span> Örnekleme yöntemleri</a></li>
+  <li><a href="#sec-hane-veri" id="toc-sec-hane-veri" class="nav-link" data-scroll-target="#sec-hane-veri"><span class="header-section-number">3.1.3</span> Örnek: Hanehalkı verileri</a></li>
+  <li><a href="#sec-tuik-anket" id="toc-sec-tuik-anket" class="nav-link" data-scroll-target="#sec-tuik-anket"><span class="header-section-number">3.1.4</span> TÜİK anketleri</a></li>
+  </ul></li>
+  <li><a href="#veri-türleri" id="toc-veri-türleri" class="nav-link" data-scroll-target="#veri-türleri"><span class="header-section-number">3.2</span> Veri Türleri</a>
+  <ul>
+  <li><a href="#deneysel-veriler" id="toc-deneysel-veriler" class="nav-link" data-scroll-target="#deneysel-veriler"><span class="header-section-number">3.2.1</span> Deneysel veriler</a></li>
+  <li><a href="#gözlemsel-veriler" id="toc-gözlemsel-veriler" class="nav-link" data-scroll-target="#gözlemsel-veriler"><span class="header-section-number">3.2.2</span> Gözlemsel veriler</a></li>
+  <li><a href="#veri-organizasyonuna-göre" id="toc-veri-organizasyonuna-göre" class="nav-link" data-scroll-target="#veri-organizasyonuna-göre"><span class="header-section-number">3.2.3</span> Veri organizasyonuna göre</a></li>
+  </ul></li>
+  <li><a href="#değişkenler-ve-ölçüm-düzeyleri" id="toc-değişkenler-ve-ölçüm-düzeyleri" class="nav-link" data-scroll-target="#değişkenler-ve-ölçüm-düzeyleri"><span class="header-section-number">3.3</span> Değişkenler ve Ölçüm Düzeyleri</a>
+  <ul>
+  <li><a href="#nicel-değişkenler" id="toc-nicel-değişkenler" class="nav-link" data-scroll-target="#nicel-değişkenler"><span class="header-section-number">3.3.1</span> Nicel değişkenler</a>
+  <ul class="collapse">
+  <li><a href="#kesikli-ve-sürekli-değişkenler" id="toc-kesikli-ve-sürekli-değişkenler" class="nav-link" data-scroll-target="#kesikli-ve-sürekli-değişkenler"><span class="header-section-number">3.3.1.1</span> Kesikli ve sürekli değişkenler</a></li>
+  <li><a href="#aralık-ölçeği" id="toc-aralık-ölçeği" class="nav-link" data-scroll-target="#aralık-ölçeği"><span class="header-section-number">3.3.1.2</span> Aralık ölçeği</a></li>
+  <li><a href="#oransal-ölçek" id="toc-oransal-ölçek" class="nav-link" data-scroll-target="#oransal-ölçek"><span class="header-section-number">3.3.1.3</span> Oransal ölçek</a></li>
+  </ul></li>
+  <li><a href="#nitel-değişkenler" id="toc-nitel-değişkenler" class="nav-link" data-scroll-target="#nitel-değişkenler"><span class="header-section-number">3.3.2</span> Nitel değişkenler</a>
+  <ul class="collapse">
+  <li><a href="#nominal-ölçek" id="toc-nominal-ölçek" class="nav-link" data-scroll-target="#nominal-ölçek"><span class="header-section-number">3.3.2.1</span> Nominal ölçek</a></li>
+  <li><a href="#sıralı-ordinal-ölçek" id="toc-sıralı-ordinal-ölçek" class="nav-link" data-scroll-target="#sıralı-ordinal-ölçek"><span class="header-section-number">3.3.2.2</span> Sıralı (ordinal) ölçek</a></li>
+  </ul></li>
+  <li><a href="#ölçüm-düzeylerinin-özeti" id="toc-ölçüm-düzeylerinin-özeti" class="nav-link" data-scroll-target="#ölçüm-düzeylerinin-özeti"><span class="header-section-number">3.3.3</span> Ölçüm düzeylerinin özeti</a></li>
+  </ul></li>
+  <li><a href="#kitaptaki-veri-kümeleri" id="toc-kitaptaki-veri-kümeleri" class="nav-link" data-scroll-target="#kitaptaki-veri-kümeleri"><span class="header-section-number">3.4</span> Kitaptaki Veri Kümeleri</a></li>
+  <li><a href="#çözümlü-alıştırmalar" id="toc-çözümlü-alıştırmalar" class="nav-link" data-scroll-target="#çözümlü-alıştırmalar"><span class="header-section-number">3.5</span> Çözümlü Alıştırmalar</a></li>
+  <li><a href="#problemler" id="toc-problemler" class="nav-link" data-scroll-target="#problemler"><span class="header-section-number">3.6</span> Problemler</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Giris.html">KISIM I: İstatistik I</a></li><li class="breadcrumb-item"><a href="./Temelk.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Verilerin Betimlenmesi: Temel Kavramlar</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="sec-temelk" class="quarto-section-identifier"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Verilerin Betimlenmesi: Temel Kavramlar</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Bu bölümün amacı.</strong></p>
+<ul>
+<li>Anakütle ile örneklem, parametre ile istatistik ayrımını yapmak ve bunu betimsel ile çıkarımsal istatistik ayrımıyla ilişkilendirmek</li>
+<li>Veri üreten süreç kavramını tanımak ve anakütle kavramıyla ilişkisini görmek</li>
+<li>Başlıca örnekleme yöntemlerini tanımak</li>
+<li>Deneysel ve gözlemsel verileri birbirinden ayırmak</li>
+<li>Yatay kesit, zaman serisi ve panel veri yapılarını tanımak</li>
+<li>Değişkenleri kesikli ve sürekli olarak sınıflandırmak</li>
+<li>Ölçüm düzeylerini ayırt etmek ve hangi işlemin anlamlı olduğuna karar vermek</li>
+</ul>
+</div>
+</div>
+</div>
+<p>Giriş bölümünde (bkz. <a href="Giris.html" class="quarto-xref"><span>Bölüm 1</span></a>) elimizdeki veriyi özetleyen <strong>betimsel istatistik</strong> ile veriden hareketle onun geldiği daha büyük kitle hakkında sonuç çıkaran <strong>çıkarımsal istatistiği</strong> birbirinden ayırmıştık.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>Bu bölümde önce bu ayrımın dayandığı kavramları tanımlayacağız. Ardından, izleyen üç bölümdeki özetleme araçlarını kullanmadan önce yanıtlanması gereken bazı soruları ele alacağız. Betimsel istatistik araçlarını kullanabilmemiz için verinin nereden geldiğini ve nasıl elde edildiğini, verinin türünü, veride yer alan değişkenlerin özelliklerini ve ölçüm düzeylerini bilmemiz gerekir.</p>
+<section id="anakütle-ve-örneklem" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="anakütle-ve-örneklem"><span class="header-section-number">3.1</span> Anakütle ve Örneklem</h2>
+<p>Bir veri kümesi ilgilendiğimiz birimlere ilişkin ölçümlerden ya da kayıtlardan oluşur. Gözlem birimi kişi, hanehalkı, tüketici, firma, şehir, bölge, ülke vb olabilir. Pratikte karşılaştığımız veri kümeleri, tüm birimlerin verilerini içeren bir <strong>anakütle</strong> ya da bu birimlerin belirli bir kısmını (alt kümesini) kapsayan bir <strong>örneklem</strong> olabilir.</p>
+<div id="def-anakutle" class="theorem definition">
+<p><span class="theorem-title"><strong>Tanım 3.1 (Anakütle (popülasyon, evren))</strong></span> Araştırma yapılan birim ya da nesnelere ilişkin eksiksiz veri kümesine anakütle (ya da evren/popülasyon) adı verilir. Anakütleyi araştırma sorusu belirler.</p>
+</div>
+<p>Bir ülke ya da şehirdeki tüm hanehalkları, bir üniversitedeki tüm öğrenciler, bir endüstrideki tüm çalışanlar ya da bir fabrikada bir günde üretilen tüm ürünler anakütleyi oluşturabilir. Anakütleyi belirleyen şey büyüklüğü değil, araştırma sorusudur. Bir dersteki 40 öğrencinin tamamıyla ilgileniyorsak anakütlemiz 40 birimdir. Anakütle küçük ve tümüyle gözlenebiliyorsa örnekleme gerek kalmaz. Anakütleye ilişkin her sayı doğrudan hesaplanabilir. Ama anakütle çoğu zaman çok büyüktür ve her birimi gözlemek zor ya da çok pahalıdır. Bu durumda birimlerin tamamı yerine anakütlenin bir alt kümesi olan <strong>örneklem</strong> ile çalışırız.</p>
+<div id="def-parametre" class="theorem definition">
+<p><span class="theorem-title"><strong>Tanım 3.2 (Parametre)</strong></span> Anakütleyi tanımlayan ve anakütlenin belirli bir özelliğine ilişkin bilgi içeren <strong>sabit değerlere parametre</strong> denir. Örneğin, Türkiye’deki tüm hanehalklarının ortalama geliri bir parametredir. Bir fabrikanın tüm ürünlerinin ortalama ağırlığı veya bir okuldaki tüm öğrencilerin başarı ortalaması birer parametredir.</p>
+</div>
+<p>Anakütle gözlenemiyorsa bu parametreler hesaplanamaz. Bu durumda parametreler hakkında bilgi edinmenin yolu anakütlenin bir alt kümesini gözlemektir.</p>
+<div id="def-orneklem" class="theorem definition">
+<p><span class="theorem-title"><strong>Tanım 3.3 (Örneklem)</strong></span> Anakütle hakkında bilgi edinmek amacıyla belirli yöntemlerle seçilen anakütlenin bir alt kümesine örneklem (<em>sample</em>) adı verilir.</p>
+</div>
+<p>Örneklem anakütleden daha küçük olduğu için bilgi toplamak daha kolay ve ucuzdur. Bir şehirde yaşayan tüm hanelere ulaşmak yerine, bu anakütleyi temsil edebilen 500 gözlemli bir örneklem oluşturulabilir. Toplam öğrenci sayısı 40000 olan bir üniversitede, tesadüfi olarak seçilmiş 100 öğrenciden oluşan bir örneklem kullanılarak çıkarım ve genellemeler yapılabilir.</p>
+<div id="def-istatistik" class="theorem definition">
+<p><span class="theorem-title"><strong>Tanım 3.4 (İstatistik)</strong></span> Örneklemden hareketle hesaplanan değerlere <strong>istatistik</strong> denir. İstatistiklerin başlıca kullanımı anakütle parametrelerini tahmin etmektir. Örneğin, bir şehirdeki rassal seçilmiş 1000 hanehalkının ortalama geliri, bir üniversitedeki 200 öğrencinin ortalama notu veya bir fabrikada üretilen 500 ürünün ortalama ağırlığı birer istatistiktir.</p>
+</div>
+<p>Anakütle ve örneklem arasındaki karşılıklar <a href="#tbl-anakutle-orneklem" class="quarto-xref">Tablo&nbsp;<span>3.1</span></a> ile özetlenmiştir.</p>
+<div id="tbl-anakutle-orneklem" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-anakutle-orneklem-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tablo&nbsp;3.1: Anakütle ve örneklem karşılıkları
+</figcaption>
+<div aria-describedby="tbl-anakutle-orneklem-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 37%">
+<col style="width: 38%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: left;">Anakütle</th>
+<th style="text-align: left;">Örneklem</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Büyüklük</td>
+<td style="text-align: left;"><span class="math inline">\(N\)</span> birim</td>
+<td style="text-align: left;"><span class="math inline">\(n\)</span> birim, <span class="math inline">\(n&lt;N\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gözlenebilirlik</td>
+<td style="text-align: left;">çoğu zaman gözlenemez</td>
+<td style="text-align: left;">gözlenir</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Özet ölçüsü</td>
+<td style="text-align: left;"><strong>parametre</strong>, sabit ve genellikle bilinmeyen</td>
+<td style="text-align: left;"><strong>istatistik</strong>, örneklemden hesaplanır</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Ortalama</td>
+<td style="text-align: left;"><span class="math inline">\(\mu\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\bar{x}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Varyans</td>
+<td style="text-align: left;"><span class="math inline">\(\sigma^2\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(s^2\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Standart sapma</td>
+<td style="text-align: left;"><span class="math inline">\(\sigma\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(s\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Oran</td>
+<td style="text-align: left;"><span class="math inline">\(p\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\hat{p}\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<!-- Tablodaki simge seçimi rastgele değildir. Parametreler çoğunlukla Yunan harfleriyle, istatistikler -->
+<!-- Latin harfleriyle gösterilir. Oran bu kuralın istisnasıdır: anakütle oranı $p$, örneklem oranı -->
+<!-- ise şapkalı $\hat{p}$ ile gösterilir. Şapka işareti, bir değerin örneklemden hesaplanan bir -->
+<!-- tahmin olduğunu belirtmek için kitap boyunca kullanılacaktır. -->
+<p>Çıkarım tabloda sağdan sola işler. Örneklemden hesapladığımız istatistikleri kullanarak anakütlenin bilinmeyen parametreleri hakkında sonuç çıkarabiliriz.</p>
+<div class="callout callout-style-simple callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Uyarı</span>İstatistik örneklemden örnekleme değişir
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Parametre ile istatistik birbirine karıştırılmamalıdır. Aralarındaki fark yalnızca hesaplandıkları kümenin farklı olması değildir.</p>
+<p><strong>Parametre sabittir.</strong> Anakütle ortalaması <span class="math inline">\(\mu\)</span> belirli bir sayıdır. Bilmiyor olabiliriz, ama değişmez.</p>
+<p><strong>İstatistik sabit değildir.</strong> Örneklem ortalaması <span class="math inline">\(\bar{x}\)</span> hangi örneklemin çekildiğine bağlıdır. Aynı anakütleden başka bir örneklem çekseydik başka bir değer bulurduk. Bu yüzden istatistikleri birer <strong>rassal değişken</strong> olarak düşünürüz. Bu tür değişkenlerin davranışını anlayabilmek için olasılık kuramına ihtiyaç duyulur.</p>
+<p>Bu ayrım kitabın geri kalanının dayanağını oluşturmaktadır. Örneğin, elimizdeki tek bir örneklem ortalaması <span class="math inline">\(\bar{x}\)</span> değerinin çekilen örnekleme göre ne kadar oynadığını hesaplamak ve buradan anakütle ortalaması <span class="math inline">\(\mu\)</span> hakkında ne söylenebileceğine karar vermemiz gerekir. Bunu nasıl yapabileceğimizi Kısım II’de detaylı olarak göreceğiz.</p>
+</div>
+</div>
+<p>Örneklemden anakütleye güvenilir genelleme yapabilmek için örneklemin anakütleyi <strong>temsil</strong> etmesi, yani anakütlenin özelliklerini doğru yansıtması gerekir. Temsil gücünü belirleyen, örneklemin büyüklüğünden çok nasıl seçildiğidir.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<div class="callout callout-style-simple callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Uyarı</span>Büyük örneklem, kötü örneklemeyi düzeltmez
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Örneklem büyüklüğü ile örneklemin temsil gücü iki ayrı şeydir ve büyüklük ikincisini telafi etmez.</p>
+<p>Örnekleme yöntemi belirli birimlerin seçilme şansını sistematik olarak artırıyorsa sonuç <strong>yanlı</strong> olur. Bu yanlılık örneklem büyüdükçe küçülmez, olduğu yerde kalır. Değişen tek şey, yanlış sonuca daha dar bir güven aralığıyla, yani daha büyük bir kesinlik iddiasıyla varmamızdır.</p>
+<p>Örneğin, bir kentteki ortalama hane gelirini tahmin etmek için yalnızca kredi kartı sahiplerine ulaştığımızı düşünelim. Böylece 500 kişi yerine banka kayıtlarından 50000 kişiye ulaşmamız yapacağımız tahmini düzeltmez. Kredi kartı olmayan haneler örnekleme hiç girmediği için elimizdeki ortalama gelir yüksek çıkabilir. Üstelik artık bu yüksek değerin çevresindeki belirsizlik daha küçüktür. Sonuç olarak elde ettiğimiz bulgular şehrin tümüne genellenemez.</p>
+<p>Kısacası örneklem büyüklüğü <strong>belirsizliği</strong> azaltırken <strong>yanlılığı</strong> azaltmayabilir. Yanlılığın tek çaresi örnekleme yönteminin kendisini düzeltmektir.</p>
+</div>
+</div>
+<section id="sec-veri-ureten-surec" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="sec-veri-ureten-surec"><span class="header-section-number">3.1.1</span> Anakütle ve veri üreten süreç</h3>
+<p>Şimdiye kadar anakütleyi, bir şehirdeki haneler, bir üniversitedeki öğrenciler ya da bir ülkedeki bireyler gibi listesi yapılabilen birimlerin tamamı olarak düşündük. Her veri ya da araştırma sorusu bu kalıba uymaz.</p>
+<ul>
+<li>Bir zar 60 kez atılıyor ve sonuçlar kaydediliyor. Bu örneklemin anakütlesi nasıl tanımlanır? Zarın “bütün atışlarının” bir listesi yoktur, çünkü zar istediğimiz kadar yeniden atılabilir.</li>
+<li>Bir fabrikada bugün doldurulan 200 paketin ağırlığı ölçülüyor. İlgilendiğimiz yalnız bu paketler değil, makinenin yarın ve gelecek ay dolduracağı paketlerdir.</li>
+<li>BIST100 endeksinin 2003–2021 arasındaki günlük getirileri gözleniyor. İlgilendiğimiz, bu günlerin kendisinden çok getirilerin nasıl oluştuğu, yani gelecek günlerin getirilerinin nasıl dağılacağıdır.</li>
+</ul>
+<p>Bu örneklerde veriyi, tekrar tekrar işleyebilen bir mekanizmanın ürettiğini düşünürüz. Bu mekanizma zarın fiziksel yapısı, makinenin ayarı ve oynaklığı ya da piyasadaki alım satım kararları olabilir. Gözlenen verileri üreten bu mekanizmaya <strong>veri üreten süreç</strong> (<em>data generating process</em>) denir. Elimizdeki veri, sürecin şimdiye kadar ürettiği sonuçlardır. Süreç ise ilgilendiğimiz anakütlenin yerini alır. Hilesiz bir zarda 6 gelme olasılığı, makinenin paketlere koyduğu ortalama miktar ya da getirilerin standart sapması gibi parametreler de sürecin özellikleridir.</p>
+<p>Dünyadaki ülkeler iyi bir örnektir. Bütün ülkelere ait bir göstergeyle “yaşam süresi en uzun ülke hangisi?” diye soruyorsak elimizdeki veri anakütlenin kendisidir. Bu verileri izleyen bölümlerde göreceğimiz yöntemlerle betimleyebiliriz. Aynı veriyle “kişi başına gelir arttıkça yaşam süresi nasıl değişir?” diye soruyorsak ilgilendiğimiz şey bu ülkelere özgü sayılar değil, gelir ile yaşam süresi arasındaki ilişkiyi üreten süreçtir. Bu durumda ülkeleri o sürecin ürettiği gözlemler olarak görür ve çıkarım yöntemlerini kullanırız. Hangi bakışın uygun olduğunu, anakütlede olduğu gibi, araştırma sorusu belirler.</p>
+<p>Veri üreten süreç, anakütle kavramının genelleştirilmesi olarak düşünülebilir. Bu iki kavram birbiriyle çelişmez. Sonlu bir anakütleden rassal seçilen birimleri de, seçimi yapan rassal mekanizmanın ürettiği gözlemler olarak düşünebiliriz. İktisatta verinin önemli bir kısmı bu türdendir. Özellikle GSYH, enflasyon ya da faiz oranları gibi zaman serileri bir listeden tekrar tekrar seçilmez. Bu tür verileri yeniden örnekleme yapılabilen anakütle-örneklem çerçevesinde düşünmek yerine, iktisadi süreçlerin ürettiği gözlemler olarak kabul ederiz. Bu kavrama olasılık dağılımlarını öğrendikten sonra döneceğiz. Bir olasılık dağılımı, veri üreten sürecin matematiksel modelidir (bkz. <a href="Kesiklird.html" class="quarto-xref"><span>Bölüm 8</span></a>).</p>
+</section>
+<section id="sec-ornekleme-yontemleri" class="level3" data-number="3.1.2">
+<h3 data-number="3.1.2" class="anchored" data-anchor-id="sec-ornekleme-yontemleri"><span class="header-section-number">3.1.2</span> Örnekleme yöntemleri</h3>
+<p>Anakütleden örneklem almanın çok çeşitli yolları vardır. Başlıca örnekleme yöntemleri arasında basit rassal örnekleme, tabakalı örnekleme, sistematik örnekleme ve küme örneklemesi sayılabilir. Bu bölümde bu yöntemlerin detaylarına girmeyeceğiz ve kısaca tanımlamakla yetineceğiz.</p>
+<p><strong>Basit rassal örnekleme</strong>de <span class="math inline">\(N\)</span> birimlik anakütleden seçilebilecek <span class="math inline">\(n&lt;N\)</span> büyüklüğündeki bütün örneklemlerin seçilme olasılığı aynıdır. Bunun bir sonucu olarak anakütledeki her birimin örnekleme girme olasılığı da eşittir ve <span class="math inline">\(n/N\)</span> olur. Birimler yerine koymadan seçildiği için bir birimin seçilmesi diğer birimlerin seçilme olasılığını biraz değiştirir. Ancak anakütle örneklemden çok büyükse bu etki ihmal edilebilir. Anakütlenin bir listesi yapılabilirse örneklem birimleri bilgisayarda rassal sayı üreteçleri kullanılarak seçilebilir.</p>
+<p><strong>Tabakalı örnekleme</strong>de anakütle belirli özelliklere göre homojen alt gruplara (tabakalara) ayrılır ve her tabaka içinde rassal örneklemler çekilir. Örneğin, bir okulda öğrenci gruplarını sınıf düzeylerine göre (9. sınıf, 10. sınıf, vb.) ayırarak her sınıftan belirli sayıda öğrenci seçilerek anakütlenin daha iyi temsil edilmesi sağlanabilir.</p>
+<p><strong>Sistematik örnekleme</strong> birimleri düzenli aralıklarla seçer. <span class="math inline">\(N\)</span> boyutlu bir listeden <span class="math inline">\(n\)</span> elemanlı bir alt küme seçmek istiyorsak <span class="math inline">\(j=N/n\)</span> olmak üzere 1 ile <span class="math inline">\(j\)</span> arasında rassal bir sayıyla başlarız. Daha sonra her <span class="math inline">\(j\)</span>’inci birimi örnekleme dahil ederiz. Örneğin <span class="math inline">\(N=10000\)</span> elemanlı bir listeden <span class="math inline">\(n=500\)</span> elemanlı bir örneklem seçmek için 1 ile <span class="math inline">\(j=10000/500=20\)</span> arasında bir tam sayıyı rassal olarak seçeriz. Bu sayı 10 olsun. Daha sonra buna <span class="math inline">\(j=20\)</span> ekleriz ve 500’ü tamamlayana kadar seçime devam ederiz: 10, 30, 50, … Listede <span class="math inline">\(j\)</span> aralıklarla tekrar eden bir düzen varsa, örneğin her 20. kayıt bir apartmanın zemin katındaki daireyse, sistematik örnekleme yanlı sonuç verebilir.</p>
+<p><strong>Küme örneklemesi</strong>nde ise anakütle doğal kümelere (örneğin mahallelere ya da okullara) ayrılır. Önce kümeler rassal olarak seçilir, sonra seçilen kümelerdeki birimler gözlenir. Bütün birimlerin listesi yoksa ama kümelerin listesi varsa bu yöntem özellikle kullanışlıdır.</p>
+<p>Büyük ölçekli hanehalkı araştırmaları çoğunlukla bu yöntemleri birlikte kullanır. Bunlara ek olarak başka örnekleme teknikleri de mevcuttur. Bu yöntemler, anakütlenin yapısına ve araştırmanın amacına bağlı olarak tercih edilebilir.</p>
+<!-- İzleyen bölümlerdeki özetleme araçlarının çoğu anakütleye de örnekleme de aynı biçimde uygulanır. Varyans gibi bazı ölçüler ise ikisi için ayrı tanımlanır. -->
+</section>
+<section id="sec-hane-veri" class="level3" data-number="3.1.3">
+<h3 data-number="3.1.3" class="anchored" data-anchor-id="sec-hane-veri"><span class="header-section-number">3.1.3</span> Örnek: Hanehalkı verileri</h3>
+<p>Anakütle ya da örneklem verileri bilgisayarlarda çeşitli biçimlerde işlenebilir (vektör, liste, matris, veri çerçeveleri vb). Pratikte veriler çoğunlukla bir elektronik tablo (<em>spreadsheet</em>) biçiminde ya da <code>R</code>’ın veri çerçeveleri biçiminde saklanır. Bir veri çerçevesi yapı olarak elektronik tabloya benzer. Satırlarda gözlem birimleri ve sütunlarda değişkenler yer alır. Hücrelerde ise gözlem değerleri bulunur.</p>
+<p>Kitap boyunca sık kullanacağımız iki hanehalkı veri kümesi bu yapıdadır. <code>hane_anakutle</code> bir şehirde yaşayan bütün haneleri temsil eden bir anakütle, <code>hane_ornek</code> ise bu anakütleden basit rassal örneklemeyle seçilmiş hanelerdir.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> Anakütle elimizde olduğu için ondan istediğimiz zaman yeni örneklemler çekebiliriz. Farklı örnekleme yöntemleri ya da farklı örneklem büyüklükleri deneyerek sonuçların nasıl değiştiğini görebiliriz.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"Data/hane_anakutle.RData"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"Data/hane_ornek.RData"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">anakutle =</span> <span class="fu">nrow</span>(hane_anakutle), <span class="at">orneklem =</span> <span class="fu">nrow</span>(hane_ornek))</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>anakutle orneklem 
+   20000      400 </code></pre>
+</div>
+</div>
+<p>Anakütlede 20000, örneklemde 400 hane vardır; örneklemin anakütleye oranı yüzde 2.0 kadardır. Örneklemin yapısına bakalım:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(hane_ornek)</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Classes 'tbl_df', 'tbl' and 'data.frame':   400 obs. of  13 variables:
+ $ hane_no                    : int  2 55 92 121 156 200 238 249 335 355 ...
+ $ hane_kisi_sayisi           : num  3 5 3 3 4 1 7 3 8 4 ...
+ $ yillik_gelir               : num  20242 34522 97760 18944 61222 ...
+ $ aylik_gelir                : num  1687 2877 8147 1579 5102 ...
+ $ aylik_harcama              : num  1443 1580 3542 1528 1868 ...
+ $ tasarruf                   : chr  "Hayır" "Hayır" "Hayır" "Hayır" ...
+ $ saglik_merkezi_erisim      : num  2 2 2 3 2 1 4 4 2 2 ...
+ $ saglik_merkezi_erisim_olcek: chr  "Kolay" "Kolay" "Kolay" "Orta" ...
+ $ zor_egitim_erisim          : num  2 3 2 2 2 2 3 3 2 2 ...
+ $ zor_egitim_erisim_olcek    : chr  "Kolay" "Orta" "Kolay" "Kolay" ...
+ $ sigara                     : num  1 2 1 1 2 2 1 1 1 1 ...
+ $ ucretli_spor               : num  2 2 2 2 1 2 1 2 2 2 ...
+ $ ozel_sigorta               : num  2 2 2 2 2 2 1 2 2 2 ...
+ - attr(*, "aciklama")= chr "Simülasyon verisi: hane_anakutle'den çekilmiş 400 hanelik basit rassal örneklem."</code></pre>
+</div>
+</div>
+<p>Bu veri kümesinde hanede yaşayan kişi sayısı, hanenin yıllık ve aylık geliri ve harcaması, tasarruf yapıp yapmadığı gibi çeşitli bilgiler bulunmaktadır.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(hane_ornek[,<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>])</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  hane_no hane_kisi_sayisi yillik_gelir aylik_gelir aylik_harcama tasarruf
+1       2                3        20242    1686.833       1442.77    Hayır
+2      55                5        34522    2876.833       1579.68    Hayır
+3      92                3        97760    8146.667       3542.49    Hayır
+4     121                3        18944    1578.667       1527.96    Hayır
+5     156                4        61222    5101.833       1868.47     Evet
+6     200                1        27080    2256.667       1287.01     Evet</code></pre>
+</div>
+</div>
+<p>Sütunlarda yer alan değişkenler gözlem birimlerine (hanehalklarına) ilişkin çeşitli bilgiler içerir. Hanehalkı bir adreste (konutta) yaşayan tüm bireylerden oluşan topluluk olarak tanımlanır. Yukarıdaki örnekte, birinci satırdaki 2 numaralı hanede 3 kişi yaşamaktadır; toplam yıllık geliri 20242 TL’dir ve tasarruf yapmamaktadır. İkinci satırdaki hane ise 5 kişiden oluşmaktadır ve yıllık geliri 34522 TL’dir. Diğer satırlar benzer şekilde okunabilir.</p>
+<div class="callout callout-style-simple callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Uyarı</span>Anakütleyi gözleyebilmek çoğu zaman bir istisnadır
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Bu kitapta hem <code>hane_anakutle</code>’yi hem de ondan çekilen <code>hane_ornek</code>’i görebiliyoruz. Gerçek bir araştırmada bu neredeyse hiç mümkün değildir. Tipik olarak elimizde yalnızca bir örneklem olur. TÜİK’in Hanehalkı Bütçe Araştırması da bir örneklem araştırmasıdır ve Türkiye’deki bütün hanelere ulaşmaz.</p>
+<p>Kitapta kullandığımız hane anakütlesini bir <strong>laboratuvar</strong> gibi düşünebilirsiniz. Bu anakütleyi, gerçekte yapılamayanı yapabilmek için simülasyonla oluşturduk. Böylece örneklemden hesapladığımız istatistiği anakütlenin bilinen parametresiyle karşılaştırabileceğiz. Başka örneklemler çekildiğinde nelerin değiştiğini de görebiliriz. Kısım II’deki örnekleme ve tahmin konuları büyük ölçüde bu karşılaştırmaya dayanmaktadır.</p>
+</div>
+</div>
+</section>
+<section id="sec-tuik-anket" class="level3" data-number="3.1.4">
+<h3 data-number="3.1.4" class="anchored" data-anchor-id="sec-tuik-anket"><span class="header-section-number">3.1.4</span> TÜİK anketleri</h3>
+<!-- Hane verileri simülasyonla üretilmiş bir örnekti. Örnekleme uygulamasının gerçek örnekleri ise resmi istatistik kurumlarının anketleridir. Bu araştırmaların adlarına ve neyi ölçtüklerine aşina olmak, iktisat okuyan bir öğrenci için başlı başına yararlıdır. -->
+<p>Örneklem birimlerinden bilgi toplamanın en yaygın yöntemi anketlerdir. İktisatta ve diğer sosyal bilim alanlarında kullanılan verilerin önemli bir kısmı, anket ve araştırma sonuçlarına dayanmaktadır. Türkiye’de bu tür verilerin en önemli kaynaklarından biri <strong>Türkiye İstatistik Kurumu (TÜİK)</strong>’dur. TÜİK, hem makro hem de mikro düzeyde veri üretmek için düzenli aralıklarla çeşitli anketler ve araştırmalar gerçekleştirir. Mikro veriler, bireyler, hanehalkları veya firmalar gibi birimlerin davranışlarını anlamak için kullanılır ve iktisadi analizlerde yaygın olarak kullanılır.</p>
+<p>TÜİK’in iktisatta sıkça kullanılan mikro verileri topladığı başlıca araştırmalar ve veri kümeleri şunlardır:</p>
+<ul>
+<li><p><strong>Hanehalkı İşgücü Araştırması</strong> (HİA): Türkiye’de işgücü piyasasına ilişkin istatistikleri üretmek amacıyla yapılan bu anket, işgücü, istihdam, işsizlik ve işgücüne katılım gibi temel göstergeleri sağlar.</p></li>
+<li><p><strong>Hanehalkı Bütçe Araştırması</strong> (HBA): Hanehalklarının gelir, tüketim ve harcama alışkanlıklarını ölçmek için yapılan bu anket, hanelerin tüketim eğilimleri hakkında veri sunar. HBA’dan elde edilen harcama payları, tüketici fiyat endeksinde kullanılan tüketim sepetinin ve ağırlıklarının belirlenmesi için de yararlı bilgi sağlar. TÜİK’in ağırlıkların hesaplanmasında kullandığı kaynaklar zaman içinde değişebilir. Bu konuda güncel yöntem için TÜİK’in açıklamalarına bakılmalıdır.</p></li>
+<li><p><strong>Gelir ve Yaşam Koşulları Araştırması</strong> (GYKA): Hanehalklarının gelir kaynakları, yaşam standartları ve yoksulluk durumlarına ilişkin bilgi sağlayan bu anket, gelir eşitsizliği, sosyal hareketlilik ve refah düzeyini ölçmeye yönelik detaylı veriler içerir.</p></li>
+<li><p><strong>Sanayi ve Hizmet İstatistikleri</strong>: Türkiye’deki firmaların üretim, istihdam, yatırım ve yenilikçilik faaliyetlerini ölçen bu veriler, firma düzeyinde iktisadi analizler için değerli mikro veriler sağlar. Özellikle iktisadi büyüme, verimlilik analizleri ve sanayi dinamikleri üzerine yapılan çalışmalarda sıkça kullanılır.</p></li>
+</ul>
+<p>Bu verilere ve TÜİK tarafından derlenen diğer veri tabanlarına ilişkin daha fazla bilgi için TÜİK’in internet sitesine bakılabilir (bağlantılar zamanla değişebilir): <a href="https://www.tuik.gov.tr/Kurumsal/Mikro_Veri" class="uri">https://www.tuik.gov.tr/Kurumsal/Mikro_Veri</a> ve <a href="https://data.tuik.gov.tr/" class="uri">https://data.tuik.gov.tr/</a>.</p>
+<div id="exm-issizlik1" class="theorem example">
+<p><span class="theorem-title"><strong>Örnek 3.1 (İşsizlik oranı nasıl hesaplanır?)</strong></span> TÜİK <strong>Hanehalkı İşgücü Araştırması</strong> (HİA) verilerinden hareketle Türkiye geneli ve İBBS2 26 bölge düzeyinde işsizlik oranlarını hesaplamaktadır. İstatistiki Bölge Birimleri Sınıflaması (İBBS) Düzey 2 bölgeleri, illerin (Düzey 3) toplulaştırılmasıyla oluşturulmaktadır (bkz. <a href="#fig-ibbs2" class="quarto-xref">Şekil&nbsp;<span>3.1</span></a>). İBBS-1 düzeyi 12 bölgeden, İBBS-3 ise 81 ilden oluşmaktadır.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"Data/issizlik2023.RData"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(issizlik2023)</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                    ibbs2_ad ibbs2_kod issizlik_orani
+1              Adana, Mersin      TR62           11.1
+2 Ağrı, Kars, Iğdır, Ardahan      TRA2           11.9
+3                     Ankara      TR51           11.2
+4   Antalya, Isparta, Burdur      TR61            7.3
+5      Aydın, Denizli, Muğla      TR32            8.3
+6       Balıkesir, Çanakkale      TR22            6.4</code></pre>
+</div>
+</div>
+<div id="fig-ibbs2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ibbs2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="img/ibbs2map.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ibbs2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;3.1: İstatistiki Bölge Birimleri Sınıflaması (İBBS) Düzey 2 bölgeleri
+</figcaption>
+</figure>
+</div>
+<p>Anakütle Türkiye’deki hanelerde yaşayan bireylerdir. Örnekleme birimi adrestir, yani örneklem için adresler seçilir. Gözlem birimleri ise bu adreslerdeki hanelerde yaşayan bireylerdir. TÜİK, HİA örneklemini 26 İBBS2 bölgesini ve Türkiye’yi temsil edecek biçimde, tabakalamayı da kullanan bir örnekleme tasarımıyla seçmektedir. Bu tasarımın ayrıntıları için TÜİK’in yöntem açıklamalarına bakılabilir. Adrese Dayalı Nüfus Kayıt Sistemi (ADNKS) üzerinden elde edilen adreslerde yaşayan bireylerle yüzyüze ve telefon ile anketler yapılır. Toplanan demografik ve işgücü piyasası verilerinden hareketle çeşitli istatistikler hesaplanır.</p>
+<p>İşsizlik oranı <span class="math display">\[
+\frac{\mbox{işsizlerin sayısı}}{\mbox{işgücü}}\times 100
+\]</span> olarak tanımlanır. Bir birey bir işte çalışmıyorsa, son dört hafta içerisinde aktif olarak iş arıyorsa ve iş bulduğu takdirde 2 hafta içinde işbaşı yapabilecek durumda ise işsiz olarak sınıflandırılır. İşgücü, istihdam edilenler ile işsizlerin toplamıdır. Yani 15 ve daha yukarı yaştaki nüfusun çalışan ya da iş arayan kısmını kapsar. Çalışmayan ve iş de aramayan kişiler, örneğin öğrenciler, ev işleriyle uğraşanlar ve emekliler, işgücüne dahil değildir. <a href="#fig-HIA" class="quarto-xref">Şekil&nbsp;<span>3.2</span></a> HİA anketinde bu bilgilerin toplandığı soruları göstermektedir (kaynak: İşgücü İstatistikleri Mikro Veri Seti, TÜİK yayın no 4738, 2023).</p>
+<div id="fig-HIA" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-HIA-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="img/hia1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-HIA-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;3.2: Hanehalkı İşgücü Araştırması örnek anket soruları (Kaynak: TÜİK)
+</figcaption>
+</figure>
+</div>
+<p>2023 yılında 15-64 yaş arası Türkiye geneli için işsizlik oranı %9.6 olarak tahmin edilmiştir. <a href="#fig-ibbs2unem" class="quarto-xref">Şekil&nbsp;<span>3.3</span></a> 26 bölge için işsizlik oranlarını harita üzerinde, <a href="#fig-issizlik-bolge" class="quarto-xref">Şekil&nbsp;<span>3.4</span></a> ise aynı oranları küçükten büyüğe sıralayarak göstermektedir.</p>
+<div id="fig-ibbs2unem" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ibbs2unem-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="img/ibbs2unemp.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ibbs2unem-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;3.3: İBBS2 bölgelerinde işsizlik oranları (%), 2023
+</figcaption>
+</figure>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-issizlik-bolge" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-issizlik-bolge-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Temelk_files/figure-html/fig-issizlik-bolge-1.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-issizlik-bolge-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;3.4: İBBS2 bölgelerinde işsizlik oranları (%), 2023
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>En yüksek işsizlik oranı 17.5 ile Van, Muş, Bitlis, Hakkari bölgesinde, en düşük oran ise 5.4 ile Kastamonu, Çankırı, Sinop bölgesinde gözlenmektedir. Bu oranlar örneklemden hesaplandığı için birer tahmindir; bölgelerin örneklem büyüklükleri Türkiye geneline göre küçük olduğundan bölge tahminlerinin belirsizliği de daha büyüktür.</p>
+</div>
+</section>
+</section>
+<section id="veri-türleri" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="veri-türleri"><span class="header-section-number">3.2</span> Veri Türleri</h2>
+<p>Veriler araştırma türüne göre deneysel veya gözlemsel olabilir. Verilerin toplanma biçimine ve zamanın nasıl ele alındığına göre de sınıflandırılabilir.</p>
+<section id="deneysel-veriler" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="deneysel-veriler"><span class="header-section-number">3.2.1</span> Deneysel veriler</h3>
+<p>Deneysel veriler, araştırmacının bir veya daha fazla değişkeni kontrol ederek, bu değişkenlerin diğer değişkenler üzerindeki etkilerini gözlemlediği çalışmalardan elde edilir. Deneysel araştırmalarda temel amaç, belirli bir müdahalenin (örneğin yeni bir eğitim modelinin) bir hedef değişken ya da sonuç (örneğin sınav performansı) üzerindeki <strong>nedensel etkisini</strong> anlamaktır.</p>
+<p>Giriş bölümünde gördüğümüz araştırma süreci (bkz. <a href="Giris.html#fig-arastirma-sureci" class="quarto-xref">Şekil&nbsp;<span>1.2</span></a>) deneysel bir çalışmada kabaca aşağıdaki adımlardan oluşur:</p>
+<ol type="1">
+<li><p>Hipotez geliştirme: Araştırmacı, deney tasarımına teorik modellerden veya önceki bilimsel çalışmalardan hareketle oluşturulan bir hipotezle başlar. Bu hipotez, bir veya daha fazla bağımsız değişkenin (müdahale edilen faktör) hedef değişken (sonuç) üzerindeki etkilerine ilişkin sınanabilir bir önermedir. Örneğin, bir eğitimci yeni bir eğitim tekniğinin ilköğretim düzeyindeki öğrencilerin akademik performansları üzerindeki etkisine ilişkin bir hipotez oluşturur. Bu hipotez yeni tekniğin etkisiz olduğunu söyleyebilir.</p></li>
+<li><p>Grupların belirlenmesi: Araştırma katılımcıları (denekler) <strong>rassal atama</strong> ile <strong>kontrol grubu</strong> ve <strong>deney grubu</strong> olmak üzere ikiye ayrılır. Kontrol grubu müdahaleye maruz kalmazken deney grubu müdahaleyi alır. Rassal atama sayesinde iki grup, gözlenen ve gözlenmeyen bütün özellikler bakımından ortalamada birbirine benzer olur. Böylece hedef değişkende gruplar arasında ortaya çıkan fark müdahaleye (tedaviye) atfedilebilir. Rassal atama ile rassal örnekleme farklı işlevler görür. Rassal atama grupları karşılaştırılabilir kılar ve nedensel sonuç çıkarmayı sağlar. Katılımcıların anakütleden rassal olarak seçilmesi ise bu sonucun anakütleye genellenebilmesini sağlar.</p></li>
+<li><p>Müdahale (tedavi/manipülasyon): Tedavi ya da müdahaleden önce hedef değişken ölçümleri (örneğin öğrenci performansı) her iki grup için yapılır. Daha sonra deney grubuna müdahale edilir, yani araştırmacı bağımsız değişkeni değiştirir (örneğin, yeni bir eğitim yöntemi uygulamak). Kontrol grubu karşılaştırma amacıyla tedavi ya da müdahaleden etkilenmez.</p></li>
+<li><p>Veri toplama: Müdahaleden sonra, hedef değişken üzerindeki etkiler ölçülür (örneğin, sınav sonuçları) ve her iki grup için kaydedilir.</p></li>
+<li><p>Sonuçların analizi: Müdahalenin etkilerini değerlendirmek için istatistiksel analizler yapılır ve hipotez test edilir. Tedavinin gerçekten bir etkisi varsa kontrol ve deney grupları arasında bir fark oluşması beklenir. Ancak rastlantı da küçük farklar yaratabileceği için gözlenen farkın rastlantıyla açıklanıp açıklanamayacağı sınanır. Eğitim örneğimizde gruplar rassal olarak oluşturulduğu için deney grubundaki ortalama performans artışının kontrol grubundakini aşan kısmı yeni programın etkisi olarak yorumlanabilir.</p></li>
+</ol>
+<p>İki grup arasında ortalamada fark olup olmadığını nasıl sınayacağımızı Kısım II’de öğreneceğiz.</p>
+<div id="fig-deney1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-deney1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="img/deney-akis.svg" class="img-fluid figure-img" style="width:62.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-deney1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;3.5: Deneysel veri süreci: rassal atama ile deney ve kontrol grupları
+</figcaption>
+</figure>
+</div>
+<div id="exm-egitimdeney" class="theorem example">
+<p><span class="theorem-title"><strong>Örnek 3.2 (Yeni bir öğretim tekniğinin denenmesi)</strong></span> Yukarıda anlatılan beş adımı sayılarla izleyelim. Bir eğitimci, yeni geliştirdiği öğretim tekniğinin öğrenci başarısını artırıp artırmadığını sınamak istiyor.</p>
+<p><strong>Grupların oluşturulması.</strong> 80 öğrenci <strong>rassal olarak</strong> ikiye ayrılıyor, 40 kontrol 40 deney grubuna atanıyor.</p>
+<p><strong>Ön ölçüm.</strong> Her iki gruba da uygulamadan önce bir başarı testi veriliyor.</p>
+<p><strong>Müdahale.</strong> Deney grubu sekiz hafta boyunca yeni teknikle, kontrol grubu mevcut yöntemle ders görüyor.</p>
+<p><strong>Son ölçüm.</strong> Sekiz hafta sonra aynı test yeniden uygulanıyor.</p>
+<div id="tbl-egitimdeney" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-egitimdeney-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tablo&nbsp;3.2: Eğitim deneyinin ortalama sonuçları
+</figcaption>
+<div aria-describedby="tbl-egitimdeney-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Grup</th>
+<th style="text-align: right;">Ön ölçüm</th>
+<th style="text-align: right;">Son ölçüm</th>
+<th style="text-align: right;">Değişim</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Kontrol (<span class="math inline">\(n=40\)</span>)</td>
+<td style="text-align: right;">62.1</td>
+<td style="text-align: right;">64.3</td>
+<td style="text-align: right;"><span class="math inline">\(+2.2\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Deney (<span class="math inline">\(n=40\)</span>)</td>
+<td style="text-align: right;">61.8</td>
+<td style="text-align: right;">71.5</td>
+<td style="text-align: right;"><span class="math inline">\(+9.7\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><strong>Sonuçların değerlendirilmesi.</strong> Önce ön ölçümlere bakalım. İki grubun başlangıç ortalamaları birbirine çok yakın, 62.1’e karşı 61.8. Bu bir tesadüf değil, rassal atamanın beklenen sonucudur. Öğrenciler gruplara şansa göre dağıtıldığı için gruplar başlangıçta yalnızca başarı bakımından değil, gözlemediğimiz bütün özellikler bakımından da ortalamada benzer olur. Rassal atamanın asıl işlevi budur.</p>
+<p>Sekiz hafta sonunda kontrol grubu 2.2 puan, deney grubu 9.7 puan artmış. Aradaki <span class="math inline">\(9.7 - 2.2 = 7.5\)</span> puanlık fark, gruplar başlangıçta benzer olduğu için yeni tekniğe atfedilebilir.</p>
+<p>Peki bu 7.5 puan gerçek bir etki midir, yoksa şans eseri mi ortaya çıkmıştır? 80 öğrenciyi bir kez daha rassal olarak ikiye bölseydik, hiçbir müdahale yapmasak bile iki grubun ortalamaları birebir aynı çıkmazdı. Dolayısıyla bir fark görmek tek başına yeterli değildir; bu farkın rastlantıyla açıklanamayacak kadar büyük olup olmadığını sormak gerekir. Bu soruyu yanıtlamayı Kısım II’de, iki anakütlenin karşılaştırılması konusunda öğreneceğiz.</p>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Not</span>Dijital ortamda aynı tasarım: A/B testi
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Web sitelerinde ve mobil uygulamalarda kullanıcıların rassal olarak iki farklı sürüme yönlendirilmesine <strong>A/B testi</strong> denir. A grubu mevcut sürümü, B grubu değiştirilmiş sürümü görür; sonra iki grubun davranışı karşılaştırılır.</p>
+<p>Tasarım yukarıdakiyle birebir aynıdır. Farklı olan yalnızca ölçek ve hızdır; binlerce kullanıcıya birkaç gün içinde ulaşılabilir. Buna karşılık aynı ürünün farklı kullanıcılara farklı fiyatlarla gösterildiği A/B testleri hukuken ve etik olarak tartışmalıdır.</p>
+</div>
+</div>
+</section>
+<section id="gözlemsel-veriler" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="gözlemsel-veriler"><span class="header-section-number">3.2.2</span> Gözlemsel veriler</h3>
+<p>Gözlemsel veriler, araştırmacının herhangi bir müdahalede bulunmadığı, doğal süreçlerin izlendiği verilerden oluşur. Gözlemsel verilerin deneysel verilerden en önemli farkı araştırmacının deney ve kontrol gruplarını rassal bir şekilde oluşturamamasıdır. Gözlemsel veriler genellikle anket çalışmaları ve idari kayıtlardan elde edilen verilerdir. Bu tür araştırmalar, bazı özel durumlar dışında, nedensellik yerine değişkenler arasındaki ilişkileri incelemek için yapılır.</p>
+<p>Gözlemsel verilerle yapılan çalışmalar, kontrol edilemeyen dış faktörlerin bulunabileceği ve bu nedenle çoğu zaman nedensel bir etkiyi değil yalnızca bir ilişkiyi gösterebilen çalışmalardır. Örneğin gelir düzeyi ile eğitim seviyesi arasındaki ilişkiyi inceleyen bir araştırmacı, bireylerin eğitim düzeylerini değiştiremez; sadece mevcut veriler üzerinden gözlem yapar.</p>
+<p>Açıkça deney yapılmasa da, bazı kısıtlayıcı varsayımlar altında, gözlemsel veriler kullanılarak nedensel çıkarım yapılması mümkündür. Deney-benzeri veriler (quasi-experimental data) deney ve kontrol gruplarının kendiliğinden oluştuğu gözlemsel verilerdir. Örneğin, birbirine çok benzer iki şehirden biri belirli bir tarihte çok sayıda göç almış olsun. Göç alan şehir (deney grubu) göç almayan şehirle (kontrol grubu) belirli varsayımlar altında karşılaştırılabilir. Böylece göçün istihdam ya da fiyatlar üzerindeki etkisi gibi iktisadi sorular incelenebilir. Araştırmacı tarafından rassal atama yapılmadığı için (göç kendiliğinden oluşuyor) bu tür verilerden nedensel çıkarım yapılabilmesi, bazı özel varsayımlara dayanan ileri düzey ekonometrik tekniklerin kullanılmasını gerektirir.</p>
+<div class="callout callout-style-simple callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Uyarı</span>İlişki bulmak nedensellik göstermez
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>İki değişken arasında güçlü bir ilişki bulmak, birinin diğerine yol açtığını göstermez. Gözlemsel veride araştırmacı kimin müdahale gördüğüne karar vermediği için, gözlenen ilişkinin arkasında her ikisini birden etkileyen üçüncü bir değişken olabilir.</p>
+<p>Eğitim düzeyi ile gelir arasındaki ilişki buna örnektir. Eğitimin geliri artırdığı düşünülebilir, ancak aile geçmişi ve yetenek gibi gözlenmeyen etkenler hem eğitim düzeyini hem geliri etkiliyor olabilir. Ham ilişki bu iki olasılığı birbirinden ayırmaz.</p>
+<p>Bu, gözlemsel veriden nedensellik çıkarılamayacağı anlamına gelmez. Yukarıda değinilen deney-benzeri tasarımlar, atamanın rassala yakın olduğu durumları bularak nedensel çıkarıma imkan verir. Ancak bu, açıkça belirtilen ve tartışılan varsayımlar gerektirir. Nedensel iddia verinin kendisinden değil, o iddiayı gerekçelendiren <strong>tasarımdan</strong> doğar.</p>
+</div>
+</div>
+</section>
+<section id="veri-organizasyonuna-göre" class="level3" data-number="3.2.3">
+<h3 data-number="3.2.3" class="anchored" data-anchor-id="veri-organizasyonuna-göre"><span class="header-section-number">3.2.3</span> Veri organizasyonuna göre</h3>
+<p>Veriler ölçüm ve toplanma biçimine ve zamanın niteliğine göre dört farklı başlık altında toplanabilir:</p>
+<ul>
+<li><p><strong>Yatay kesit veri</strong> (Cross-sectional data): Belirli bir zaman diliminde, birden fazla birimden (birey, hanehalkı, firma, şehir, vb.) toplanan verileri ifade eder. Yatay kesit verilerin kaynağı çoğunlukla idari kayıtlar ya da bilimsel anketlerdir. Bu anketleri araştırmacı kendi tasarlayacağı gibi diğer kurum ve kuruluşlar tarafından da hazırlanabilir. Örneğin, TÜİK tarafından her yıl yapılan hanehalkı ve fert araştırmaları (HBA, HİA vb.) bir anket sonucunda farklı kişilere ait yaş, gelir ve eğitim düzeyi gibi bilgiler içerir. Gelir İdaresi Başkanlığı tarafından belirli bir yılda vergi mükelleflerinin bilanço ve gelir tablosu gibi finansal raporlarından oluşturulan idari kayıtlar da yatay kesit veri kümesi oluşturur.</p></li>
+<li><p><strong>Zaman serisi</strong> (Time series data): Aynı birimden, birbirini düzenli biçimde takip eden belirli zaman dilimlerinde alınan verileri ifade eder. Doğal olarak verilerin bir zaman sırası (kronoloji) vardır ve bu değiştirilemez. Örneğin, bir ülkenin yıllık GSYİH değerleri, aylık enflasyon oranları, bir finansal varlığın günlük değerleri ve getirileri zaman serisi verisidir. Bu veri türü özellikle finans ve makroiktisat alanlarında geliştirilen teori ve hipotezlerin değerlendirilmesinde, geleceğe dönük öngörü yapılmasında, zaman içerisindeki eğilimlerin ve dalgalanmaların analizinde kullanılır.</p></li>
+</ul>
+<div id="exm-ts1" class="theorem example">
+<p><span class="theorem-title"><strong>Örnek 3.3</strong></span> <code>R</code>’da zaman serileri <code>ts</code> ya da <code>xts</code> nesnesi olarak tanımlanabilir. Bu konuda daha fazla detay için bkz. <a href="https://htastan.github.io/Finansal-Ekonometri-MPI/R/R-zaman-serileri.html" class="uri">https://htastan.github.io/Finansal-Ekonometri-MPI/R/R-zaman-serileri.html</a></p>
+<p>Zaman serilerini görselleştirmenin en kolay yolu x ekseninde zamanın ve y ekseninde ölçümlerin olduğu çizgi grafiğidir. <a href="#fig-bist100xts" class="quarto-xref">Şekil&nbsp;<span>3.6</span></a> BIST100 endeksinin 2 Ocak 2003 ile 29 Eylül 2021 arasındaki günlük kapanış değerlerini göstermektedir.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-bist100xts" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bist100xts-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Temelk_files/figure-html/fig-bist100xts-1.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bist100xts-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;3.6: BIST100 endeksinin günlük kapanış değerleri
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li><p><strong>Birleştirilmiş yatay kesit</strong> (Pooled cross-sectional data): Farklı zaman dilimlerinde toplanmış yatay kesit verilerinin birleştirilmesiyle oluşturulan veri kümesidir. İki boyutludur; hem zaman hem de yatay kesite ilişkin bilgi içerir ancak yatay kesit birimleri takip edilmez. Bu tür veriler, farklı dönemlerdeki birimlerin özelliklerini inceleme imkanı sunar. Örneğin, TÜİK hanehalkı bütçe anketleri her yıl ilgili anakütleden rassal örnekleme yöntemiyle farklı birimlerden veri toplar. Bu farklı hanelerden oluşan yatay kesit verileri bir araya getirerek birleştirilmiş yatay kesit veri kümesi elde edebiliriz. Böylece hanehalkı tüketiminin zaman içindeki eğilimini inceleyebiliriz.</p></li>
+<li><p><strong>Panel veri</strong> (Panel or longitudinal data): <strong>Aynı birim</strong>lerin belirli zaman dilimlerinde gözlemlenmesiyle oluşturulan veri kümesidir. Örneğin, belirli bir grup bireyin yıllık gelir düzeyleri üzerinde yapılan bir araştırma panel veri olarak kabul edilir. Bir sektördeki firmaların zaman içindeki yatırım kararları ve buna ilişkin değişkenler bir panel veri kümesi oluşturur. Bu tür iki boyutlu veri, hem zaman içindeki değişimleri hem de birimler arası ilişkileri analiz etme olanağı sağlar.</p></li>
+</ul>
+<div id="exm-panel1" class="theorem example">
+<p><span class="theorem-title"><strong>Örnek 3.4</strong></span> Panel veriye bir örnek olarak kitapta kullanacağımız ülke veri kümesini inceleyelim. <code>ulkeler</code> veri kümesi Dünya Bankası’nın Dünya Kalkınma Göstergeleri veritabanından derlenmiştir<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>. Her satırda bir ülkenin bir yıldaki gözlemleri yer alır.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"Data/ulkeler.RData"</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(ulkeler)</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 13780    23</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ulkeler[ulkeler<span class="sc">$</span>ulke <span class="sc">==</span> <span class="st">"Türkiye"</span>,</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>             <span class="fu">c</span>(<span class="st">"ulke"</span>, <span class="st">"yil"</span>, <span class="st">"kisi_basi_gsyih"</span>, <span class="st">"nufus"</span>, <span class="st">"yasam_beklentisi"</span>)])</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         ulke  yil kisi_basi_gsyih    nufus yasam_beklentisi
+12611 Türkiye 1960        2449.492 28329898           50.799
+12612 Türkiye 1961        2410.643 29119238           51.558
+12613 Türkiye 1962        2477.158 29916147           52.347
+12614 Türkiye 1963        2630.462 30726841           53.120
+12615 Türkiye 1964        2702.277 31543072           53.600
+12616 Türkiye 1965        2709.669 32345220           54.105</code></pre>
+</div>
+</div>
+<p>Veri kümesinde 212 ülkenin 1960 ile 2024 yılları arasındaki gözlemleri bulunmaktadır. Birim boyutu <code>ulke</code>, zaman boyutu <code>yil</code> değişkeniyle temsil edilir. Göstergelerin tanımları <code>ulkeler_gostergeler</code> tablosunda verilmiştir.</p>
+<p>Aynı veri kümesinden yukarıda tanımladığımız veri türlerini elde edebiliriz. Tek bir ülkeyi seçersek bir zaman serisi, tek bir yılı seçersek bir yatay kesit elde ederiz:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>turkiye <span class="ot">&lt;-</span> <span class="fu">subset</span>(ulkeler, ulke <span class="sc">==</span> <span class="st">"Türkiye"</span>)   <span class="co"># zaman serisi</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>kesit_2022 <span class="ot">&lt;-</span> <span class="fu">subset</span>(ulkeler, yil <span class="sc">==</span> <span class="dv">2022</span>)       <span class="co"># yatay kesit</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">zaman_serisi =</span> <span class="fu">nrow</span>(turkiye), <span class="at">yatay_kesit =</span> <span class="fu">nrow</span>(kesit_2022), <span class="at">panel =</span> <span class="fu">nrow</span>(ulkeler))</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>zaman_serisi  yatay_kesit        panel 
+          65          212        13780 </code></pre>
+</div>
+</div>
+<p>Zaman serisinde her yıl için, yatay kesitte ise her ülke için bir gözlem vardır. Panel veri ikisini birlikte içerir. Gözlem sayısı ülke sayısı ile yıl sayısının çarpımına eşittir. Bununla birlikte her satırda her gösterge dolu değildir. Örneğin kişi başına GSYİH 1960 yılında yalnızca 105 ülke için gözlenmiştir. Eksik gözlemler (<code>NA</code>) gerçek verilerde sık karşılaşılan bir durumdur.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-panel-yasam" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-panel-yasam-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Temelk_files/figure-html/fig-panel-yasam-1.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-panel-yasam-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;3.7: Bir panel veri örneği: doğumda yaşam beklentisi, 1960-2024. Gri çizgiler ülkeleri, siyah çizgi Türkiye’yi göstermektedir (kaynak: Dünya Bankası).
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><a href="#fig-panel-yasam" class="quarto-xref">Şekil&nbsp;<span>3.7</span></a> panel verinin iki boyutunu aynı anda göstermektedir. Tek bir çizgiyi izlediğimizde bir ülkenin zaman içindeki değişimini görürüz. Türkiye’de doğumda yaşam beklentisi 1960 yılında 50.8 yıl iken 2022 yılında 77.6 yıla yükselmiştir. Belirli bir yılda dikey doğrultuda baktığımızda ise ülkeler arasındaki farkları görürüz. 2022 yılında ülkelerin ortadaki yarısında yaşam beklentisi 67.8 ile 78.3 yıl arasındadır. 2020 ve 2021 yıllarında çok sayıda ülkede aynı anda görülen düşüş COVID-19 salgınına karşılık gelir. Bazı çizgilerdeki ani ve derin düşüşler de dikkat çekmektedir. Örneğin Ruanda’da, soykırımın yaşandığı 1994 yılında doğumda yaşam beklentisi 12.2 yıla düşmüştür. Böyle aşırı değerlerin nasıl ele alınacağını sayısal özet ölçülerini incelerken tartışacağız (bkz. <a href="Betimsel-sayisal.html" class="quarto-xref"><span>Bölüm 5</span></a>).</p>
+<p>Bu veri kümesi bütün ülkeleri kapsadığı için, soru bu ülkelerle ilgili olduğunda bir anakütledir. Örneğin “2022 yılında kaç ülkede doğumda yaşam beklentisi 70 yılın altındaydı?” sorusunun yanıtı bir tahmin değil, kesin bir sayıdır. Bu veride yanıt 63 ülkedir.</p>
+</div>
+</section>
+</section>
+<section id="değişkenler-ve-ölçüm-düzeyleri" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="değişkenler-ve-ölçüm-düzeyleri"><span class="header-section-number">3.3</span> Değişkenler ve Ölçüm Düzeyleri</h2>
+<p>Betimsel analizde karşılaşılan değişkenler farklı özelliklere ve ölçüm düzeylerine sahip olabilir. Değişkenleri genel olarak nicel (kantitatif) ve nitel (kalitatif) olmak üzere ikiye ayırabiliriz.</p>
+<section id="nicel-değişkenler" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="nicel-değişkenler"><span class="header-section-number">3.3.1</span> Nicel değişkenler</h3>
+<p>Nicel değişkenler iki ayrı biçimde sınıflandırılır ve bu iki sınıflandırma birbirinin yerine geçmez. Birincisi değişkenin <strong>hangi değerleri alabildiğine</strong> bakar ve kesikli ile sürekli ayrımını verir. İkincisi değişken üzerinde <strong>hangi işlemlerin anlamlı olduğuna</strong> bakar ve aralık ile oran ölçeği ayrımını verir. Önce birincisini ele alalım.</p>
+<section id="kesikli-ve-sürekli-değişkenler" class="level4" data-number="3.3.1.1">
+<h4 data-number="3.3.1.1" class="anchored" data-anchor-id="kesikli-ve-sürekli-değişkenler"><span class="header-section-number">3.3.1.1</span> Kesikli ve sürekli değişkenler</h4>
+<p>Bir nicel değişken <strong>kesikli</strong> ise sayılabilir sayıda değer alır. Bu değerler çoğunlukla tam sayıdır ve sayma sonucu ortaya çıkar. Bir hanede yaşayan kişi sayısı, bir öğrencinin kardeş sayısı, bir mağazada günde satılan ürün adedi kesikli değişkenlerdir. Komşu iki değer arasında başka bir değer yoktur. Örneğin bir hanede 3 ya da 4 kişi yaşar, 3.5 kişi yaşamaz.</p>
+<p>Bir nicel değişken <strong>sürekli</strong> ise belirli bir aralıktaki her değeri alabilir. Bu değerler ölçme sonucu ortaya çıkar. Boy, ağırlık, süre, sıcaklık ve gelir sürekli değişkenlerdir. Herhangi iki değer arasında her zaman bir başka değer bulunur.</p>
+<p>Ayrımı pratikte yapmanın kolay bir yolu şu sorudur. Değişkenin alabileceği iki değer seçtiğinizde, aralarında başka bir değer bulabiliyor musunuz? Bulabiliyorsanız değişken sürekli, bulamıyorsanız kesiklidir.</p>
+<p>Veride bu ayrımın izini sürmenin bir yolu, değişkenin kaç farklı değer aldığına bakmaktır.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">hane_kisi_sayisi =</span> <span class="fu">length</span>(<span class="fu">unique</span>(hane_ornek<span class="sc">$</span>hane_kisi_sayisi)),</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">aylik_gelir      =</span> <span class="fu">length</span>(<span class="fu">unique</span>(hane_ornek<span class="sc">$</span>aylik_gelir)))</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>hane_kisi_sayisi      aylik_gelir 
+              13              399 </code></pre>
+</div>
+</div>
+<p>İki değişken de aynı 400 haneden ölçülmüş. Buna karşılık hane büyüklüğü yalnızca 13 farklı değer alıyor, aylık gelir ise 399. Yani hane büyüklüğünde aynı değeri paylaşan çok sayıda hane var. Gelirde ise neredeyse her hanenin değeri kendine özgüdür.</p>
+<p>Ayrım her zaman keskin olmayabilir. Gelir aslında en küçük para birimine kadar kesiklidir, kuruşun altında bir değer alamaz. Ama binlerce farklı değer aldığı için sürekli gibi işlem görür ve bu bir sorun yaratmaz. Tersi de olabilir. Eğer sürekli bir değişkeni kabaca ölçerseniz kesikli görünebilir. Boyu santimetre olarak kaydederseniz elinizdeki sayılar tam sayı olur, ama boyun kendisi sürekli bir büyüklüktür. Dolayısıyla, belirleyici olan bilgisayarda kaydedilen duyarlılık değil değişkenin doğasıdır.</p>
+<p>Bu ayrım kitabın geri kalanında belirleyici bir yere sahiptir. Kesikli ve sürekli rassal değişkenler için ilerleyen bölümlerde ayrı araçlar geliştireceğiz (bkz. <a href="Kesiklird.html" class="quarto-xref"><span>Bölüm 8</span></a> ve <a href="Sureklird.html" class="quarto-xref"><span>Bölüm 9</span></a>). Betimsel istatistik konusunda ise bir değişkeni görselleştirirken hangi grafiği seçeceğimizi bu ayrım belirler. Kesikli bir değişkenin frekansları çubuk çizimiyle, sürekli bir değişkenin dağılımı histogramla gösterilir (bkz. <a href="Betimsel-gorsel.html" class="quarto-xref"><span>Bölüm 4</span></a>).</p>
+<p>Nicel değişkenlerin ikinci sınıflandırması, üzerlerinde hangi aritmetik işlemlerin anlamlı olduğuna bakar.</p>
+</section>
+<section id="aralık-ölçeği" class="level4" data-number="3.3.1.2">
+<h4 data-number="3.3.1.2" class="anchored" data-anchor-id="aralık-ölçeği"><span class="header-section-number">3.3.1.2</span> Aralık ölçeği</h4>
+<p>Aralık (<em>interval</em>) değişkenleri, ölçülen değerler arasındaki “aralığın” veya “farkın” anlamlı olduğu değişkenlerdir. Bu tür değişkenler, sıralı bir şekilde düzenlenebilir ve aralarındaki farklar sabit ve anlamlıdır.</p>
+<p>Aralık değişkenlerinin en önemli özelliklerinden biri, sıfır noktasının keyfi veya anlamsız olmasıdır. Yani, sıfır değeri mutlak bir sıfırı (yokluk, hiçlik) temsil etmez. Örneğin, sıcaklık ölçümleri (Celsius veya Fahrenheit) bir aralık değişkenidir; burada sıfır derece sıcaklığın yokluğunu ifade etmez.</p>
+<p>Aralık değişkenleri üzerinde toplama ve çıkarma işlemleri anlamlıdır, ancak çarpma ve bölme işlemleri genellikle anlamlı değildir. Bu, sıfır noktasının keyfi olmasından kaynaklanır.</p>
+<p>Bazı illerin uzun dönem yıllık ortalama sıcaklıkları yaklaşık olarak şöyledir:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># bazı illerin uzun dönem yıllık ortalama sıcaklıkları (Celsius derece, yaklaşık)</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>tempC <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">il =</span> <span class="fu">c</span>(<span class="st">"İstanbul"</span>, <span class="st">"Ankara"</span>, <span class="st">"İzmir"</span>, <span class="st">"Ardahan"</span>),</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">ort_sicaklik =</span> <span class="fu">c</span>(<span class="fl">15.3</span>, <span class="dv">12</span>, <span class="dv">18</span>, <span class="fl">3.7</span>))</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>tempC</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        il ort_sicaklik
+1 İstanbul         15.3
+2   Ankara         12.0
+3    İzmir         18.0
+4  Ardahan          3.7</code></pre>
+</div>
+</div>
+<p>Yıllık sıcaklık ortalamalarına göre bu dört il arasında en sıcak il İzmir, en soğuk il ise Ardahan’dır. Ancak buradan hareketle İzmir’in Ardahan’dan yaklaşık 5 kat daha sıcak olduğunu söyleyemeyiz.</p>
+<p>Sıfır noktasının keyfiliğini görmenin bir yolu Celsius-Fahrenheit dönüştürmesi yapmaktır. Celsius <span class="math inline">\(^{\circ}C\)</span> ile Fahrenheit cinsinden sıcaklık arasındaki ilişki aşağıda verilmiştir: <span class="math display">\[
+F = 1.8~C+32
+\]</span> Buna göre santigrat cinsinden 0 noktası Fahrenheit cinsinden 32 <span class="math inline">\(^{\circ}F\)</span> dereceye karşılık gelir. Bu yeni değişkeni veri çerçevesine ekleyelim:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>tempC<span class="sc">$</span>Fahrenheit <span class="ot">&lt;-</span> <span class="fl">1.8</span><span class="sc">*</span>tempC<span class="sc">$</span>ort_sicaklik <span class="sc">+</span> <span class="dv">32</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>tempC</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        il ort_sicaklik Fahrenheit
+1 İstanbul         15.3      59.54
+2   Ankara         12.0      53.60
+3    İzmir         18.0      64.40
+4  Ardahan          3.7      38.66</code></pre>
+</div>
+</div>
+<p>Celsius ölçeğinde sıfır suyun donma noktası olarak, Fahrenheit ölçeğinde ise başka bir referansa göre seçilmiştir. İki ölçekte de sıfır sıcaklığın yokluğu anlamına gelmez. Bu yüzden değerlerin birbirine oranı yorumlanamaz, aralıklar ise anlamlı biçimde yorumlanabilir. Buna karşılık fizikte kullanılan Kelvin ölçeğinde sıfır mutlak sıfırdır, yani daha düşük bir sıcaklık yoktur. Kelvin cinsinden ölçülen sıcaklık bu yüzden oransal ölçektedir.</p>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">İpucu</span>Deneyiniz
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Yukarıdaki veri çerçevesinde her ilin sıcaklığını en soğuk ile (Ardahan) oranlayalım. Bunu hem Celsius hem Fahrenheit cinsinden yapalım.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>tempC<span class="sc">$</span>oran_C <span class="ot">&lt;-</span> tempC<span class="sc">$</span>ort_sicaklik <span class="sc">/</span> <span class="fu">min</span>(tempC<span class="sc">$</span>ort_sicaklik)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>tempC<span class="sc">$</span>oran_F <span class="ot">&lt;-</span> tempC<span class="sc">$</span>Fahrenheit  <span class="sc">/</span> <span class="fu">min</span>(tempC<span class="sc">$</span>Fahrenheit)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>tempC</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<p>İzmir’in Ardahan’a oranı Celsius cinsinden kaç çıkıyor, Fahrenheit cinsinden kaç? Veri değişmediği halde iki oran neden farklı?</p>
+<p>Aynı hesabı oransal ölçekteki bir değişken için, örneğin hanelerin aylık geliri için yapsanız oranların ölçü birimine bağlı olarak değişmesini bekler miydiniz? Gelirleri TL yerine bin TL cinsinden yazarsanız hanelerin birbirine oranı değişir mi?</p>
+</div>
+</div>
+</section>
+<section id="oransal-ölçek" class="level4" data-number="3.3.1.3">
+<h4 data-number="3.3.1.3" class="anchored" data-anchor-id="oransal-ölçek"><span class="header-section-number">3.3.1.3</span> Oransal ölçek</h4>
+<p>Oransal (ratio) değişkenler, hem aralıkların hem de oranların anlamlı olduğu nicel değişkenlerdir. Oransal ölçekli değişkenler anlamlı bir şekilde sıralanabilir, aralarındaki farklar ve oranlar yorumlanabilir. Oransal değişkenlerin en belirgin özelliği, mutlak sıfır noktasına sahip olmalarıdır. Bu, sıfır değerinin tam bir yokluk veya var olmama durumunu ifade ettiği anlamına gelir. Örneğin, ağırlık ve uzunluk ölçümleri oransal değişkenlere örnektir. Sıfır ağırlık ya da sıfır uzunluk, hiçbir şeyin olmadığını gösterir.</p>
+<p>Oransal değişkenler üzerinde tüm aritmetik işlemler (toplama, çıkarma, çarpma, bölme) anlamlıdır. Bu özellik, bu tür değişkenlerin analizinde daha geniş bir esneklik sağlar. İktisat, işletme, finans ve sosyal bilim alanlarındaki birçok değişken bu sınıfa girer. Örneğin hanelerin aylık gelir ve harcamaları oransal değişkenlerdir.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>  hane_no aylik_gelir aylik_harcama
+1       2    1686.833       1442.77
+2      55    2876.833       1579.68
+3      92    8146.667       3542.49
+4     121    1578.667       1527.96
+5     156    5101.833       1868.47
+6     200    2256.667       1287.01</code></pre>
+</div>
+</div>
+<p>Buna göre ilk hane aylık gelirinin yaklaşık yüzde 86 kadarını harcamaktadır. Bazı haneler gelirinden daha fazlasını harcar; bu örneklemde gelirinden fazla harcayan hanelerin oranı yüzde 42 kadardır. Her iki değişken için 0 değeri mutlak yokluğu ifade etmektedir. Bu, veride 0 değerinin mutlaka görülmesi gerektiği anlamına gelmez. Bu örneklemde aylık geliri ya da harcaması 0 olan hane yoktur; en düşük aylık gelir 307 TL’dir.</p>
+</section>
+</section>
+<section id="nitel-değişkenler" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="nitel-değişkenler"><span class="header-section-number">3.3.2</span> Nitel değişkenler</h3>
+<p>Nitel (kalitatif) değişkenler nominal ve sıralı (ordinal) olmak üzere iki gruba ayrılır.</p>
+<section id="nominal-ölçek" class="level4" data-number="3.3.2.1">
+<h4 data-number="3.3.2.1" class="anchored" data-anchor-id="nominal-ölçek"><span class="header-section-number">3.3.2.1</span> Nominal ölçek</h4>
+<p>Nominal değişkenler, sıralama veya hiyerarşi içermeyen kategorik değişkenlerdir. Bu değişken türü, etiketler veya isimler kullanarak verileri kategorize eder. Örneğin, cinsiyet, kan grubu, medeni durum gibi değişkenler nominal ölçeklidir.</p>
+<p>Hanehalkı harcama örnekleminde tasarruf değişkeni bu gruba girer:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(hane_ornek[,<span class="fu">c</span>(<span class="st">"hane_no"</span>, <span class="st">"aylik_gelir"</span>, <span class="st">"aylik_harcama"</span>, <span class="st">"tasarruf"</span>)])</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  hane_no aylik_gelir aylik_harcama tasarruf
+1       2    1686.833       1442.77    Hayır
+2      55    2876.833       1579.68    Hayır
+3      92    8146.667       3542.49    Hayır
+4     121    1578.667       1527.96    Hayır
+5     156    5101.833       1868.47     Evet
+6     200    2256.667       1287.01     Evet</code></pre>
+</div>
+</div>
+<p>Bu örneklemde tasarruf değişkeni iki farklı metin değeri alır: hane tasarruf yapıyorsa “Evet”, yapmıyorsa “Hayır”.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(hane_ornek<span class="sc">$</span>tasarruf)</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ Evet Hayır 
+  107   293 </code></pre>
+</div>
+</div>
+<p>Buna göre 107 hane tasarruf yapabiliyorken 293 hane tasarruf yapmamaktadır.</p>
+<p>Veri kümelerinde nominal değişkenler çoğu zaman sayılarla kodlanır. Örneğin cinsiyet için Erkek = 1 ve Kadın = 2, renk için Kırmızı = 1, Mavi = 2 ve Yeşil = 3 yazılabilir. Bu sayılar yalnızca kategorilerin etiketidir. Aralarında bir büyüklük ya da sıralama ilişkisi yoktur ve bu sayılarla aritmetik işlem yapmak anlamsızdır. Kategorik bir değişkenin sayısal bir modelde kullanılması gerektiğinde her kategori için ayrı bir ikili (0/1) değişken oluşturulur. Bu değişkenlere <strong>kukla değişken</strong> (dummy variable) denir.</p>
+<p>Örneğin hanehalkı veri kümesinde <code>sigara</code> değişkeni hanede sigara içen olup olmadığına ilişkin bilgi vermektedir:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>hane_sigara <span class="ot">&lt;-</span> <span class="fu">head</span>(hane_ornek[,<span class="fu">c</span>(<span class="st">"hane_no"</span>, <span class="st">"sigara"</span>)])</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>hane_sigara</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  hane_no sigara
+1       2      1
+2      55      2
+3      92      1
+4     121      1
+5     156      2
+6     200      2</code></pre>
+</div>
+</div>
+<p>Bu değişken hanede sigara içen biri varsa 1, yoksa 2 değerini alan nominal bir değişkendir. <code>sigara</code> değişkenini kukla değişkenler biçiminde yeniden kodlayabiliriz:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># "sigara" sütununu kategorik değişken olarak tanımlama</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>hane_sigara<span class="sc">$</span>sigara_faktor <span class="ot">&lt;-</span> <span class="fu">factor</span>(hane_sigara<span class="sc">$</span>sigara,</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>),</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Evet"</span>, <span class="st">"Hayır"</span>)</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>                                    )</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="co"># kukla değişken olarak tanımla</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>sigara_kukla <span class="ot">&lt;-</span> <span class="fu">model.matrix</span>(<span class="sc">~</span> sigara_faktor <span class="sc">-</span> <span class="dv">1</span>, <span class="at">data =</span> hane_sigara)</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(hane_sigara, sigara_kukla)</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  hane_no sigara sigara_faktor sigara_faktorEvet sigara_faktorHayır
+1       2      1          Evet                 1                  0
+2      55      2         Hayır                 0                  1
+3      92      1          Evet                 1                  0
+4     121      1          Evet                 1                  0
+5     156      2         Hayır                 0                  1
+6     200      2         Hayır                 0                  1</code></pre>
+</div>
+</div>
+<p><code>sigara_faktorEvet</code> sigara içenlerin olduğu bir hanede 1, diğerlerinde 0 değerini almaktadır. <code>sigara_faktorHayır</code> ise sigara içilmeyen hanelerde 1, diğerlerinde ise 0 değerini almaktadır.</p>
+<p>Ülke veri kümesindeki <code>bolge</code> değişkeni de nominaldir. Ülkeleri coğrafi bölgelere ayırır ve bölgeler arasında bir sıralama yoktur. 2022 yılı kesitinde ülkelerin bölgelere dağılımı şöyledir:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(kesit_2022<span class="sc">$</span>bolge)</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+        Avrupa ve Orta Asya        Doğu Asya ve Pasifik 
+                         57                          35 
+                 Güney Asya               Kuzey Amerika 
+                          8                           3 
+Latin Amerika ve Karayipler   Orta Doğu ve Kuzey Afrika 
+                         41                          21 
+          Sahra Altı Afrika 
+                         47 </code></pre>
+</div>
+</div>
+</section>
+<section id="sıralı-ordinal-ölçek" class="level4" data-number="3.3.2.2">
+<h4 data-number="3.3.2.2" class="anchored" data-anchor-id="sıralı-ordinal-ölçek"><span class="header-section-number">3.3.2.2</span> Sıralı (ordinal) ölçek</h4>
+<p>Ordinal değişkenler, sıralama veya derecelendirme içeren kategorik değişkenlerdir. Bu tür değişkenlerde, kategoriler arasında bir sıra veya hiyerarşi vardır. Ordinal değişkenler, sıralanabilir kategoriler içerir. Kategoriler arasındaki farklar sabit veya standart değildir. Örnek olarak, eğitim seviyesi, memnuniyet dereceleri, ürün kalite dereceleri verilebilir.</p>
+<p>Örneğin <code>memnuniyet</code> bir ürünün değerlendirmesine ilişkin 6 gözlem içeren bir faktör değişkenidir:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>memnuniyet <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"Düşük"</span>, <span class="st">"Orta"</span>, <span class="st">"Yüksek"</span>, <span class="st">"Orta"</span>, <span class="st">"Orta"</span>, <span class="st">"Yüksek"</span>),</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">ordered =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Düşük"</span>, <span class="st">"Orta"</span>, <span class="st">"Yüksek"</span>))</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>memnuniyet</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] Düşük  Orta   Yüksek Orta   Orta   Yüksek
+Levels: Düşük &lt; Orta &lt; Yüksek</code></pre>
+</div>
+</div>
+<p>Ülke veri kümesindeki <code>gelir_grubu</code> değişkeni de sıralı bir faktördür. Dünya Bankası ülkeleri kişi başına milli gelirlerine göre dört gruba ayırır:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(kesit_2022<span class="sc">$</span>gelir_grubu)</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Düşük gelir"    "Alt orta gelir" "Üst orta gelir" "Yüksek gelir"  </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(kesit_2022<span class="sc">$</span>gelir_grubu)</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+   Düşük gelir Alt orta gelir Üst orta gelir   Yüksek gelir 
+            27             53             54             77 </code></pre>
+</div>
+</div>
+<p>Sıralı faktörlerde karşılaştırma işlemleri anlamlıdır. Örneğin üst orta ve yüksek gelirli ülkelerin sayısını bulalım. Gelir grubu 2022 yılında bir ülke için (Venezuela) eksiktir. Eksik bir değerle yapılan karşılaştırmanın sonucu da eksik (<code>NA</code>) olur. Bu yüzden toplamı alırken <code>na.rm = TRUE</code> kullanıyoruz:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(kesit_2022<span class="sc">$</span>gelir_grubu <span class="sc">&gt;=</span> <span class="st">"Üst orta gelir"</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 131</code></pre>
+</div>
+</div>
+<p>Sıralama anlamlı olsa da gruplar arasındaki mesafeler eşit değildir. “Düşük gelir” ile “Alt orta gelir” arasındaki farkın, “Üst orta gelir” ile “Yüksek gelir” arasındaki farka eşit olduğunu söyleyemeyiz.</p>
+<p>Hane verilerinde yer alan <code>saglik_merkezi_erisim</code> ve <code>zor_egitim_erisim</code> değişkenleri sıralı kategorik değişkenlerdir:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>veri <span class="ot">&lt;-</span> hane_ornek[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,<span class="fu">c</span>(<span class="st">"saglik_merkezi_erisim"</span>, <span class="st">"saglik_merkezi_erisim_olcek"</span>)]</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>veri</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   saglik_merkezi_erisim saglik_merkezi_erisim_olcek
+1                      2                       Kolay
+2                      2                       Kolay
+3                      2                       Kolay
+4                      3                        Orta
+5                      2                       Kolay
+6                      1                   Çok kolay
+7                      4                         Zor
+8                      4                         Zor
+9                      2                       Kolay
+10                     2                       Kolay</code></pre>
+</div>
+</div>
+<p>Hanenin bulunduğu yerden sağlık merkezlerine erişimin kolaylığına ilişkin bilgi içeren bu değişken 5 seviyeden oluşur. Bu seviyeler 1-5 arasında sayısal değerlerle ifade edilmiştir. Buna göre 1 (Çok kolay), 2 (Kolay), 3 (Orta), 4 (Zor) ve 5 (Çok zor). <code>saglik_merkezi_erisim_olcek</code> bu bilgileri karakter formatında içerir. İstenirse bu değişken sıralı bir faktör olarak da tanımlanabilir.</p>
+</section>
+</section>
+<section id="ölçüm-düzeylerinin-özeti" class="level3" data-number="3.3.3">
+<h3 data-number="3.3.3" class="anchored" data-anchor-id="ölçüm-düzeylerinin-özeti"><span class="header-section-number">3.3.3</span> Ölçüm düzeylerinin özeti</h3>
+<p><a href="#tbl-olcum-duzeyleri" class="quarto-xref">Tablo&nbsp;<span>3.3</span></a> dört ölçüm düzeyini karşılaştırmaktadır. Her düzey, bir öncekinde anlamlı olan bütün işlemlere izin verir ve bunlara yenisini ekler. Bir değişkeni özetlerken hangi ölçünün kullanılabileceğini de ölçüm düzeyi belirler. Bu ölçüleri izleyen iki bölümde ayrıntılı olarak ele alacağız.</p>
+<div id="tbl-olcum-duzeyleri" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-olcum-duzeyleri-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tablo&nbsp;3.3: Ölçüm düzeyleri, anlamlı işlemler ve uygun özet ölçüleri
+</figcaption>
+<div aria-describedby="tbl-olcum-duzeyleri-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 11%">
+<col style="width: 30%">
+<col style="width: 35%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Ölçüm düzeyi</th>
+<th style="text-align: left;">Örnek</th>
+<th style="text-align: left;">Anlamlı işlemler</th>
+<th style="text-align: left;">Uygun özet ölçüleri</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Nominal</td>
+<td style="text-align: left;">tasarruf, bölge, kan grubu</td>
+<td style="text-align: left;">eşit mi, farklı mı</td>
+<td style="text-align: left;">frekans, oran, mod</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sıralı (ordinal)</td>
+<td style="text-align: left;">gelir grubu, memnuniyet</td>
+<td style="text-align: left;">ayrıca sıralama</td>
+<td style="text-align: left;">ayrıca medyan, çeyreklikler</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Aralık</td>
+<td style="text-align: left;">Celsius cinsinden sıcaklık</td>
+<td style="text-align: left;">ayrıca fark alma</td>
+<td style="text-align: left;">ayrıca ortalama, standart sapma</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Oransal</td>
+<td style="text-align: left;">gelir, boy, teslim süresi</td>
+<td style="text-align: left;">ayrıca oran alma</td>
+<td style="text-align: left;">ayrıca değişkenlik katsayısı, geometrik ortalama</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+</section>
+<section id="kitaptaki-veri-kümeleri" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="kitaptaki-veri-kümeleri"><span class="header-section-number">3.4</span> Kitaptaki Veri Kümeleri</h2>
+<p>Bu bölümde tanıttığımız hane ve ülke veri kümelerinin yanında kitap boyunca iki veri kümesi daha kullanacağız. <a href="#tbl-veri-kumeleri" class="quarto-xref">Tablo&nbsp;<span>3.4</span></a> bu dört veri kümesini özetlemektedir.</p>
+<div id="tbl-veri-kumeleri" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-veri-kumeleri-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tablo&nbsp;3.4: Kitapta kullanılan başlıca veri kümeleri
+</figcaption>
+<div aria-describedby="tbl-veri-kumeleri-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 28%">
+<col style="width: 28%">
+<col style="width: 17%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Veri kümesi</th>
+<th style="text-align: left;">Gözlem birimi</th>
+<th style="text-align: left;">Gözlem sayısı</th>
+<th style="text-align: left;">Nitelik</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>hane_anakutle</code>, <code>hane_ornek</code></td>
+<td style="text-align: left;">Hanehalkı</td>
+<td style="text-align: left;">20000 ve 400</td>
+<td style="text-align: left;">Simülasyon</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>ulkeler</code></td>
+<td style="text-align: left;">Ülke ve yıl</td>
+<td style="text-align: left;">212 ülke, 1960-2024</td>
+<td style="text-align: left;">Gerçek veri (Dünya Bankası)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>eticaret</code>, <code>eticaret_gunluk</code></td>
+<td style="text-align: left;">Sipariş; gün</td>
+<td style="text-align: left;">19695 sipariş; 365 gün</td>
+<td style="text-align: left;">Simülasyon</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>ogrenci_anket</code></td>
+<td style="text-align: left;">Öğrenci</td>
+<td style="text-align: left;">97</td>
+<td style="text-align: left;">Gerçek anonim anket</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>besiktas_ev</code>, <code>bakirkoy_ev</code></td>
+<td style="text-align: left;">Konut ilanı</td>
+<td style="text-align: left;">331 ve 357</td>
+<td style="text-align: left;">Gerçek ilan verisi</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><code>eticaret</code> veri kümesi bir e-ticaret şirketinin bir yıl boyunca aldığı bütün siparişlerin kayıtlarını içerir<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>. Her siparişin tarihi, ürün kategorisi, ödenen tutar, sepetteki ürün sayısı, teslim süresi, müşterinin verdiği memnuniyet puanı ve siparişin iade edilip edilmediği kayıtlıdır. <code>eticaret_gunluk</code> ise aynı siparişlerden hesaplanan günlük sipariş sayısını ve ciroyu içerir. Şirketin kendi siparişleriyle ilgili sorular için bu kayıtlar bir anakütledir, çünkü şirket bütün siparişlerini gözleyebilir.</p>
+<p><code>ogrenci_anket</code> veri kümesi İstatistik dersini alan bir öğrenci grubuna uygulanan anketin cevaplarından oluşur<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>. Öğrencilerin boyu, kilosu, dönem içinde nerede kaldığı, bir işte çalışıp çalışmadığı ve istatistik dersine ilişkin görüşleri 1-5 arası puanlarla kayıtlıdır. Bu veri kümesinin neyi temsil ettiği de araştırma sorusuna bağlıdır. Soru bu sınıfla ilgiliyse veri bir anakütledir. Soru örneğin Türkiye’deki bütün iktisat öğrencileriyle ilgiliyse, bu sınıf rassal olarak seçilmediği için o anakütleyi temsil ettiğini varsaymak güçtür.</p>
+<p><code>besiktas_ev</code> ve <code>bakirkoy_ev</code> veri kümeleri İstanbul’un iki ilçesindeki satılık daire ilanlarını içerir<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>. Her ilan için istenen fiyat, daire büyüklüğü, oda sayısı, semt, bina yaşı, bulunduğu kat, binanın kat sayısı ve ısıtma sistemi kayıtlıdır. İki ilçede ortalama daire büyüklüğü aynı olduğu hâlde fiyatların çok farklı olması, aynı yapıdaki iki veri kümesini karşılaştırmak için elverişli bir örnek sunar.</p>
+</section>
+<section id="çözümlü-alıştırmalar" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="çözümlü-alıştırmalar"><span class="header-section-number">3.5</span> Çözümlü Alıştırmalar</h2>
+<div id="exr-b3-anakutle" class="theorem exercise">
+<p><span class="theorem-title"><strong>Alıştırma 3.1</strong></span> YTÜ’de bir dönemde kayıtlı 38500 öğrenci bulunmaktadır. Üniversite yönetimi öğrencilerin kampüse ulaşım süresini merak etmektedir. Rassal olarak seçilen 400 öğrenciye ulaşım süresi sorulmuş ve ortalama 47 dakika bulunmuştur.</p>
+<ol type="a">
+<li>Anakütle ve örneklem nedir? <span class="math inline">\(N\)</span> ve <span class="math inline">\(n\)</span> kaçtır?</li>
+<li>47 dakika bir parametre midir yoksa istatistik midir? Simgesi nedir?</li>
+<li>İlgilenilen parametre nedir ve hangi simgeyle gösterilir?</li>
+<li>Bu çalışma betimsel midir yoksa çıkarımsal mıdır?</li>
+</ol>
+<p><strong>Çözüm</strong></p>
+<p><strong>a)</strong> Anakütle, kayıtlı <strong>38500 öğrencinin tamamıdır</strong>. Örneklem ise rassal seçilen <strong>400 öğrencidir</strong>. Buna göre <span class="math inline">\(N = 38500\)</span> ve <span class="math inline">\(n = 400\)</span>’dür.</p>
+<p><strong>b)</strong> 47 dakika örneklemden hesaplanmıştır, dolayısıyla bir <strong>istatistiktir</strong> ve <span class="math inline">\(\bar{x}\)</span> ile gösterilir.</p>
+<p><strong>c)</strong> İlgilenilen parametre, <strong>38500 öğrencinin tamamının ortalama ulaşım süresidir</strong> ve <span class="math inline">\(\mu\)</span> ile gösterilir. Bu değer bilinmemektedir, zaten çalışmanın amacı onu tahmin etmektir.</p>
+<p><strong>d)</strong> Çalışma <strong>çıkarımsaldır</strong>. Amaç 400 öğrenciyi betimlemek değil, onlardan hareketle 38500 öğrenci hakkında sonuç çıkarmaktır. Yalnızca 400 öğrenciyi betimlemek isteseydik <span class="math inline">\(47\)</span> dakika kesin bir bilgi olurdu ve daha ileri gitmeye gerek kalmazdı.</p>
+<p>Yönetim bütün öğrencilere ulaşabilseydi <span class="math inline">\(\mu\)</span>’yü doğrudan hesaplar, örneklemeye ve çıkarıma hiç gerek kalmazdı. <a href="#tbl-anakutle-orneklem" class="quarto-xref">Tablo&nbsp;<span>3.1</span></a> bu karşılıkları özetlemektedir.</p>
+</div>
+<div id="exr-b3-veriturleri" class="theorem exercise">
+<p><span class="theorem-title"><strong>Alıştırma 3.2</strong></span> Aşağıdaki veri kümelerinin her birini organizasyon biçimine göre sınıflandırınız (yatay kesit, zaman serisi, birleştirilmiş yatay kesit, panel).</p>
+<ol type="a">
+<li>2024 yılında Türkiye’deki 81 ilin işsizlik oranı.</li>
+<li>Türkiye’nin 2000-2024 dönemine ait yıllık enflasyon oranları.</li>
+<li>2015, 2020 ve 2024 yıllarında yapılan hanehalkı bütçe anketlerinin birleştirilmesi. Her yıl farklı haneler örneklenmiştir.</li>
+<li>Aynı 50 firmanın 2019-2024 dönemindeki yıllık yatırım harcamaları.</li>
+</ol>
+<p><strong>Çözüm</strong></p>
+<p><strong>a) Yatay kesit.</strong> Tek bir zaman diliminde (2024) birden çok birimden (81 il) ölçüm var.</p>
+<p><strong>b) Zaman serisi.</strong> Tek bir birimden (Türkiye) düzenli aralıklarla alınmış ölçümler var. Gözlemlerin sırası bilginin parçasıdır ve değiştirilemez.</p>
+<p><strong>c) Birleştirilmiş yatay kesit.</strong> Hem zaman hem birim boyutu var, ancak <strong>aynı haneler takip edilmiyor</strong>. Her yıl anakütleden yeniden örnekleme yapılmış.</p>
+<p><strong>d) Panel veri.</strong> Hem zaman hem birim boyutu var ve <strong>aynı 50 firma</strong> izleniyor.</p>
+<p>Birleştirilmiş yatay kesit ile panel arasındaki fark budur. İkisi de iki boyutludur, ama yalnızca panelde aynı birimin zaman içindeki değişimi izlenebilir. Bir firmanın yatırımının kendi geçmişine göre nasıl değiştiğini yalnızca (d) ile inceleyebilirsiniz.</p>
+</div>
+<div id="exr-b3-degisken" class="theorem exercise">
+<p><span class="theorem-title"><strong>Alıştırma 3.3</strong></span> Aşağıdaki değişkenleri üç ölçütte sınıflandırınız: nitel mi nicel mi, nicelse kesikli mi sürekli mi, ve ölçüm düzeyi nedir?</p>
+<ol type="a">
+<li>Bir hanenin aylık geliri (TL)</li>
+<li>Bir hanede yaşayan kişi sayısı</li>
+<li>Bir öğrencinin doğduğu il</li>
+<li>Bir günün Celsius cinsinden ortalama sıcaklığı</li>
+<li>Bir müşterinin memnuniyet düzeyi (1 = çok kötü, …, 5 = çok iyi)</li>
+<li>Bir maratoncunun yarışı bitirme süresi</li>
+</ol>
+<p><strong>Çözüm</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Değişken</th>
+<th style="text-align: left;">Nitel/Nicel</th>
+<th style="text-align: left;">Kesikli/Sürekli</th>
+<th style="text-align: left;">Ölçüm düzeyi</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(a) aylık gelir</td>
+<td style="text-align: left;">nicel</td>
+<td style="text-align: left;">sürekli</td>
+<td style="text-align: left;">oransal</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">(b) kişi sayısı</td>
+<td style="text-align: left;">nicel</td>
+<td style="text-align: left;">kesikli</td>
+<td style="text-align: left;">oransal</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">(c) doğulan il</td>
+<td style="text-align: left;">nitel</td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;">nominal</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">(d) sıcaklık</td>
+<td style="text-align: left;">nicel</td>
+<td style="text-align: left;">sürekli</td>
+<td style="text-align: left;">aralık</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">(e) memnuniyet</td>
+<td style="text-align: left;">nitel</td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;">sıralı</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">(f) bitirme süresi</td>
+<td style="text-align: left;">nicel</td>
+<td style="text-align: left;">sürekli</td>
+<td style="text-align: left;">oransal</td>
+</tr>
+</tbody>
+</table>
+<p>Üç noktaya dikkat ediniz.</p>
+<p><strong>Kesikli/sürekli ayrımı yalnızca nicel değişkenler için tanımlıdır.</strong> (c) ve (e) nitel olduğu için o sütun boş bırakılmıştır.</p>
+<p><strong>(d) neden oransal değil aralık?</strong> Celsius ölçeğinde sıfır noktası keyfidir, sıcaklığın yokluğunu göstermez. Bu yüzden 20 derecenin 10 dereceden “iki kat sıcak” olduğu söylenemez. Farklar anlamlıdır, oranlar değil.</p>
+<p><strong>(e) sayıyla kodlanmış olması onu nicel yapmaz.</strong> 1’den 5’e sıralama anlamlıdır, ama “çok iyi” ile “iyi” arasındaki fark, “orta” ile “kötü” arasındaki farka eşit değildir. Bu yüzden ortalama almak tartışmalıdır; sıralı veride medyan daha güvenli bir özettir.</p>
+</div>
+<div id="exr-b3-deneysel" class="theorem exercise">
+<p><span class="theorem-title"><strong>Alıştırma 3.4</strong></span> Aşağıdaki iki çalışmayı deneysel ve gözlemsel olarak sınıflandırınız. Her birinden hangi tür sonuç çıkarılabileceğini tartışınız.</p>
+<ol type="a">
+<li>Bir çevrimiçi mağaza, ziyaretçileri rassal olarak iki gruba ayırıyor. Birinci gruba ürün sayfasında ücretsiz kargo rozeti gösteriliyor, ikinci gruba gösterilmiyor. Bir ay sonra iki grubun satın alma oranları karşılaştırılıyor.</li>
+<li>Bir araştırmacı, düzenli spor yapan ve yapmayan bireylerin sağlık harcamalarını karşılaştırıyor. Verileri mevcut bir sağlık anketinden alıyor.</li>
+</ol>
+<p><strong>Çözüm</strong></p>
+<p><strong>a) Deneysel.</strong> Araştırmacı kimin rozeti göreceğine kendisi ve <strong>rassal olarak</strong> karar veriyor. Rassal atama sayesinde iki grup, rozet dışındaki bütün özellikler bakımından ortalamada birbirine benzer olur. Dolayısıyla satın alma oranındaki fark rozete atfedilebilir, yani <strong>nedensel</strong> bir sonuç çıkarılabilir. Bu tasarım, dijital ortamda A/B testi adıyla bilinen düzenektir; yapı olarak <a href="#exm-egitimdeney" class="quarto-xref">Örnek&nbsp;<span>3.2</span></a> ile aynıdır, yalnızca ölçeği ve hızı farklıdır.</p>
+<p><strong>b) Gözlemsel.</strong> Araştırmacı kimin spor yapacağına karar vermiyor, bireyler bu kararı kendileri veriyor. Spor yapanlar ile yapmayanlar başka bakımlardan da farklı olabilir; gelir düzeyi, yaş, beslenme alışkanlıkları ve genel sağlık bilinci akla ilk gelenlerdir. Bu etkenler hem spor yapma kararını hem sağlık harcamasını etkiliyor olabilir.</p>
+<p>Bu yüzden (b)’den çıkarılabilecek sonuç bir <strong>ilişki</strong> bildirimidir: “düzenli spor yapanların sağlık harcamaları daha düşüktür”. “Spor yapmak sağlık harcamasını düşürür” demek için ek varsayımlar ve uygun bir tasarım gerekir.</p>
+</div>
+<div id="exr-b3-rveri" class="theorem exercise">
+<p><span class="theorem-title"><strong>Alıştırma 3.5</strong></span> <code>hane_ornek</code> veri kümesindeki <code>saglik_merkezi_erisim</code> değişkeni <code>R</code>’da sayı olarak saklanmaktadır ve 1 ile 5 arasında değer alır. Bu değişkenin ölçüm düzeyi nedir? Ortalamasını hesaplamak anlamlı mıdır?</p>
+<p><strong>Çözüm</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(hane_ornek<span class="sc">$</span>saglik_merkezi_erisim)</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> num [1:400] 2 2 2 3 2 1 4 4 2 2 ...</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(hane_ornek<span class="sc">$</span>saglik_merkezi_erisim)</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  1   2   3   4   5 
+ 63 196  47  70  24 </code></pre>
+</div>
+</div>
+<p>Değişken sayı olarak saklanmış görünüyor. Ancak bu sayılar bir miktarı değil, bir <strong>sıralı kategoriyi</strong> kodluyor. Aynı bilginin sözel hali veri kümesinde ayrıca yer alıyor.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(hane_ornek<span class="sc">$</span>saglik_merkezi_erisim_olcek)</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Çok kolay   Çok zor     Kolay      Orta       Zor 
+       63        24       196        47        70 </code></pre>
+</div>
+</div>
+<p>Buna göre değişken <strong>sıralı (ordinal) ölçektedir</strong>. Kategoriler sıralanabilir, çok kolaydan çok zora doğru gider. Ama “çok kolay” ile “kolay” arasındaki uzaklığın, “zor” ile “çok zor” arasındaki uzaklığa eşit olduğunu varsayamayız.</p>
+<p>Ortalama almak bu yüzden tartışmalıdır. Ortalama, değerler arasındaki farkların anlamlı ve karşılaştırılabilir olmasını gerektirir. Sıralı veride bu koşul sağlanmaz. Medyan ve mod daha güvenli özetlerdir, dağılımı göstermek için de frekans tablosu ya da çubuk çizimi kullanılır.</p>
+<div class="callout callout-style-simple callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Uyarı</span><code>R</code>’daki saklama türü ölçüm düzeyini belirlemez
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>R</code> bir sütunu <code>num</code>, <code>int</code> ya da <code>chr</code> olarak saklar. Bu, verinin bilgisayarda nasıl tutulduğunu söyler, o değişkenin ölçüm düzeyi hakkında hiçbir şey söylemez.</p>
+<p><code>hane_ornek</code> içinde <code>sigara</code> değişkeni de sayı olarak saklanır ve 1 ile 2 değerlerini alır. Bu sayılar “içiliyor” ve “içilmiyor” kategorilerinin kodudur, yani değişken <strong>nominaldir</strong>. Ortalamasını hesaplamak teknik olarak mümkündür ama sonuç anlamsızdır.</p>
+<p>Ölçüm düzeyine değişkenin ne ölçtüğüne bakarak siz karar verirsiniz, <code>R</code>’a sorarak değil. Kategorik değişkenleri <code>factor()</code> ile tanımlamak bu ayrımı veri kümesinde de görünür kılar.</p>
+</div>
+</div>
+</div>
+<div id="exr-b3-eticaret" class="theorem exercise">
+<p><span class="theorem-title"><strong>Alıştırma 3.6</strong></span> <code>eticaret</code> veri kümesindeki (bkz. <a href="#tbl-veri-kumeleri" class="quarto-xref">Tablo&nbsp;<span>3.4</span></a>) <code>kategori</code>, <code>kampanya_grubu</code>, <code>urun_sayisi</code>, <code>tutar</code>, <code>teslim_suresi</code>, <code>memnuniyet</code> ve <code>iade</code> değişkenlerini nitel/nicel, kesikli/sürekli ve ölçüm düzeyi bakımından sınıflandırınız. Sınıflandırmanızı <code>R</code>’ın bu değişkenleri hangi türde sakladığıyla karşılaştırınız.</p>
+<p><strong>Çözüm</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"Data/eticaret.RData"</span>)</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(eticaret[, <span class="fu">c</span>(<span class="st">"kategori"</span>, <span class="st">"kampanya_grubu"</span>, <span class="st">"urun_sayisi"</span>, <span class="st">"tutar"</span>,</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"teslim_suresi"</span>, <span class="st">"memnuniyet"</span>, <span class="st">"iade"</span>)])</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   19695 obs. of  7 variables:
+ $ kategori      : Factor w/ 6 levels "Giyim","Elektronik",..: 4 4 4 4 1 3 4 2 2 3 ...
+ $ kampanya_grubu: Factor w/ 2 levels "Kontrol","Kupon": 2 1 2 1 1 1 1 1 2 2 ...
+ $ urun_sayisi   : int  2 1 3 2 3 1 2 1 1 1 ...
+ $ tutar         : num  1239 721 995 618 1295 ...
+ $ teslim_suresi : int  2 2 3 2 9 5 2 5 3 4 ...
+ $ memnuniyet    : int  NA 5 NA NA NA 2 NA 4 4 4 ...
+ $ iade          : Factor w/ 2 levels "Evet","Hayır": 2 2 2 2 2 1 2 2 2 2 ...</code></pre>
+</div>
+</div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 18%">
+<col style="width: 24%">
+<col style="width: 20%">
+<col style="width: 21%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Değişken</th>
+<th style="text-align: left;">Nitel/Nicel</th>
+<th style="text-align: left;">Kesikli/Sürekli</th>
+<th style="text-align: left;">Ölçüm düzeyi</th>
+<th style="text-align: left;"><code>R</code>’daki türü</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>kategori</code></td>
+<td style="text-align: left;">nitel</td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;">nominal</td>
+<td style="text-align: left;">faktör</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>kampanya_grubu</code></td>
+<td style="text-align: left;">nitel</td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;">nominal</td>
+<td style="text-align: left;">faktör</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>urun_sayisi</code></td>
+<td style="text-align: left;">nicel</td>
+<td style="text-align: left;">kesikli</td>
+<td style="text-align: left;">oransal</td>
+<td style="text-align: left;">tam sayı</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>tutar</code></td>
+<td style="text-align: left;">nicel</td>
+<td style="text-align: left;">sürekli</td>
+<td style="text-align: left;">oransal</td>
+<td style="text-align: left;">reel sayı</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>teslim_suresi</code></td>
+<td style="text-align: left;">nicel</td>
+<td style="text-align: left;">sürekli (gün olarak kaydedilmiş)</td>
+<td style="text-align: left;">oransal</td>
+<td style="text-align: left;">tam sayı</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>memnuniyet</code></td>
+<td style="text-align: left;">nitel</td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;">sıralı</td>
+<td style="text-align: left;">tam sayı</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>iade</code></td>
+<td style="text-align: left;">nitel</td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;">nominal</td>
+<td style="text-align: left;">faktör</td>
+</tr>
+</tbody>
+</table>
+<p>Üç değişken dikkat çekicidir.</p>
+<p><strong><code>teslim_suresi</code></strong> tam sayı olarak saklanmıştır ve kesikli görünür. Ancak süre doğası gereği süreklidir; burada yalnızca gün olarak yuvarlanarak kaydedilmiştir. Kesikli ve sürekli değişkenler alt bölümünde belirttiğimiz gibi belirleyici olan değişkenin kaydedildiği duyarlılık değil, doğasıdır.</p>
+<p><strong><code>memnuniyet</code></strong> de tam sayı olarak saklanmıştır, ama 1’den 5’e kadar olan puanlar sıralı kategorilerdir. Puanlar arasındaki farkların eşit olduğunu varsayamayız.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(eticaret<span class="sc">$</span>memnuniyet, <span class="at">useNA =</span> <span class="st">"ifany"</span>)</span></code></pre></div><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+   1    2    3    4    5 &lt;NA&gt; 
+  91  585 2386 3536 5605 7492 </code></pre>
+</div>
+</div>
+<p>Tabloda çok sayıda eksik gözlem (<code>NA</code>) bulunmaktadır; bu siparişlerde müşteri puan vermemiştir. Sıralı bir değişken için frekans tablosu ve medyan uygun özetlerdir (bkz. <a href="#tbl-olcum-duzeyleri" class="quarto-xref">Tablo&nbsp;<span>3.3</span></a>).</p>
+<p><strong><code>urun_sayisi</code></strong> ile <code>memnuniyet</code> <code>R</code>’da aynı türde saklanmıştır, ama ölçüm düzeyleri farklıdır. Sepetteki ürün sayısında 4 ürün 2 ürünün iki katıdır; memnuniyette 4 puanın 2 puandan “iki kat memnun” olduğunu söyleyemeyiz. <code>R</code>’daki saklama türü ölçüm düzeyini belirlemez.</p>
+</div>
+</section>
+<section id="problemler" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="problemler"><span class="header-section-number">3.6</span> Problemler</h2>
+<div id="cnj-b3-kavram" class="theorem conjecture">
+<p><span class="theorem-title"><strong>Problem 3.1</strong></span> Aşağıdaki durumların her biri için anakütleyi, örneklemi, ilgilenilen parametreyi ve hesaplanan istatistiği belirtiniz. Çalışmanın betimsel mi çıkarımsal mı olduğunu söyleyiniz.</p>
+<ol type="a">
+<li>Bir fabrikada bir günde üretilen 12000 vidadan rassal seçilen 150’sinin uzunluğu ölçülmüş, ortalama 4.02 cm bulunmuştur.</li>
+<li>Bir dersi alan 62 öğrencinin tamamının vize notu toplanmış ve ortalaması 58.4 olarak hesaplanmıştır.</li>
+<li>Bir kentteki tüm hanelerin yüzde kaçının internet erişimi olduğunu tahmin etmek için 800 haneye anket yapılmış, bunların 624’ünde erişim bulunduğu görülmüştür.</li>
+</ol>
+</div>
+<div id="cnj-b3-olcek" class="theorem conjecture">
+<p><span class="theorem-title"><strong>Problem 3.2</strong></span> Aşağıdaki değişkenleri nitel/nicel, kesikli/sürekli ve ölçüm düzeyi bakımından sınıflandırınız. Sınıflandırmanızı kısaca gerekçelendiriniz.</p>
+<ol type="a">
+<li>Bir otomobilin 100 kilometrede yaktığı yakıt (litre)</li>
+<li>Bir öğrencinin sınıf düzeyi (hazırlık, 1, 2, 3, 4)</li>
+<li>Bir çalışanın çalıştığı sektör</li>
+<li>Bir binada bulunan daire sayısı</li>
+<li>Bir ürünün barkod numarası</li>
+<li>Bir şehrin deniz seviyesinden yüksekliği (metre)</li>
+</ol>
+</div>
+<div id="cnj-b3-veriturleri2" class="theorem conjecture">
+<p><span class="theorem-title"><strong>Problem 3.3</strong></span> Aşağıdaki veri kümelerini organizasyon biçimine göre sınıflandırınız ve her biriyle hangi tür soruların yanıtlanabileceğini bir cümleyle söyleyiniz.</p>
+<ol type="a">
+<li>2024 Aralık ayında 26 İBBS2 bölgesinde ölçülen işsizlik oranı.</li>
+<li>BIST100 endeksinin 2003-2021 dönemine ait günlük kapanış değerleri.</li>
+<li>Aynı 1000 bireyin 2018-2024 arasında her yıl ölçülen gelir ve eğitim düzeyleri.</li>
+<li>2010, 2015 ve 2020 yıllarında farklı örneklemlerle yapılmış üç ayrı tüketici anketi.</li>
+</ol>
+</div>
+<div id="cnj-b3-deneysel2" class="theorem conjecture">
+<p><span class="theorem-title"><strong>Problem 3.4</strong></span> Aşağıdaki çalışmaların hangileri deneysel, hangileri gözlemseldir? Her biri için nedensel bir sonuç çıkarılıp çıkarılamayacağını tartışınız.</p>
+<ol type="a">
+<li>Bir üniversite, öğrencilerin yarısına rassal olarak ücretsiz ders çalışma rehberi dağıtıyor ve dönem sonunda not ortalamalarını karşılaştırıyor.</li>
+<li>Bir araştırmacı, özel okulda okuyan ve devlet okulunda okuyan öğrencilerin sınav başarısını karşılaştırıyor.</li>
+<li>Bir belediye, bir mahallede bisiklet yolu açıyor ve açılıştan önceki ve sonraki bir yıl boyunca bisiklet kullanımını ölçüyor. Bisiklet yolu olmayan benzer bir mahalleyi de aynı dönemde izliyor.</li>
+</ol>
+</div>
+<div id="cnj-b3-ornekleme" class="theorem conjecture">
+<p><span class="theorem-title"><strong>Problem 3.5</strong></span> Aşağıdaki durumların her biri için basit rassal örnekleme, tabakalı örnekleme, sistematik örnekleme ve küme örneklemesinden hangisinin uygun olduğunu gerekçesiyle belirtiniz.</p>
+<ol type="a">
+<li>Bir şirket, 5000 çalışanının tam listesinden 200 kişiyi seçerek bir memnuniyet anketi yapacak.</li>
+<li>Bir üniversite öğrenci memnuniyetini ölçmek istiyor. Fakültelerin öğrenci sayıları çok farklı olduğu için her fakültenin örneklemde yeterince temsil edilmesini istiyor.</li>
+<li>Bir fabrika, üretim bandından geçen ürünlerden her 50. ürünü kalite kontrolüne alıyor.</li>
+<li>Bir il genelinde hanelere yüz yüze anket yapılacak. Bütün hanelerin listesi yok, ama mahallelerin listesi var.</li>
+<li><ol start="3" type="a">
+<li>şıkkında bant üzerindeki makine her 50 üründe bir ayar değiştiriyorsa sistematik örnekleme neden yanıltıcı olabilir?</li>
+</ol></li>
+</ol>
+</div>
+<div id="cnj-b3-yanli" class="theorem conjecture">
+<p><span class="theorem-title"><strong>Problem 3.6</strong></span> Aşağıdaki örnekleme yöntemlerinin her birinde ne tür bir yanlılık ortaya çıkabileceğini açıklayınız. Örneklem büyüklüğünü artırmak bu sorunu çözer mi?</p>
+<ol type="a">
+<li>Bir kentteki ortalama hane gelirini tahmin etmek için yalnızca alışveriş merkezinde karşılaşılan kişilere anket yapmak.</li>
+<li>Bir dersin memnuniyetini ölçmek için yalnızca son derse katılan öğrencilere form doldurtmak.</li>
+<li>Bir ürünün beğenilme oranını ölçmek için yalnızca ürünü satın almış müşterilere e-posta göndermek.</li>
+</ol>
+</div>
+<div id="cnj-b3-haneornek" class="theorem conjecture">
+<p><span class="theorem-title"><strong>Problem 3.7</strong></span> <code>hane_ornek.RData</code> verilerini kullanarak aşağıdaki soruları yanıtlayınız.</p>
+<ol type="a">
+<li><code>str()</code> ile veri kümesinin yapısını inceleyiniz. Kaç gözlem ve kaç değişken vardır? Satırlar ve sütunlar neyi temsil etmektedir?</li>
+<li>Her değişkeni nitel/nicel, kesikli/sürekli ve ölçüm düzeyi bakımından sınıflandıran bir tablo hazırlayınız.</li>
+<li><code>sapply(hane_ornek, function(x) length(unique(x)))</code> komutunu çalıştırınız. Sonuçlar kesikli ve sürekli değişkenleri ayırt etmenize nasıl yardımcı oluyor?</li>
+<li>Bu veri kümesi bir anakütle midir yoksa örneklem midir? Nereden anlıyorsunuz?</li>
+</ol>
+</div>
+<div id="cnj-b3-ulkeler" class="theorem conjecture">
+<p><span class="theorem-title"><strong>Problem 3.8</strong></span> <code>ulkeler.RData</code> verilerini kullanarak aşağıdaki soruları yanıtlayınız.</p>
+<ol type="a">
+<li><code>str()</code> ile veri kümesinin yapısını inceleyiniz. Bir satır neyi temsil etmektedir? Kaç ülke ve kaç yıl vardır?</li>
+<li>Türkiye’ye ait zaman serisini ve 2010 yılına ait yatay kesiti ayrı veri kümeleri olarak oluşturunuz. Her birinde kaç gözlem vardır?</li>
+<li><code>bolge</code>, <code>gelir_grubu</code>, <code>nufus</code>, <code>yasam_beklentisi</code> ve <code>enflasyon</code> değişkenlerini nitel/nicel, kesikli/sürekli ve ölçüm düzeyi bakımından sınıflandırınız. Enflasyonun negatif değerler alabilmesi sınıflandırmanızı etkiliyor mu?</li>
+<li><code>sum(is.na(...))</code> kalıbını kullanarak 1970 ve 2010 yıllarında kişi başına GSYİH’si gözlenmeyen ülke sayısını bulunuz. Eksik gözlemler iki yılın karşılaştırmasını nasıl etkileyebilir?</li>
+<li>Bu veri kümesi bir anakütle midir yoksa örneklem midir? “2022 yılında yüksek gelirli ülkelerde ortalama yaşam beklentisi kaç yıldır?” sorusu ile “Kişi başına gelir arttıkça yaşam beklentisi nasıl değişir?” sorusu için ayrı ayrı tartışınız.</li>
+</ol>
+</div>
+<div id="cnj-b3-dyanlis" class="theorem conjecture">
+<p><span class="theorem-title"><strong>Problem 3.9</strong></span> Aşağıdaki ifadelerin doğru mu yanlış mı olduğunu belirtiniz ve kısaca açıklayınız.</p>
+<ol type="a">
+<li>Bir istatistik, örneklemden örnekleme değişebilen bir değerdir.</li>
+<li>Anakütle her zaman örneklemden çok daha büyüktür.</li>
+<li>Bir değişken <code>R</code>’da sayı olarak saklanıyorsa nicel bir değişkendir.</li>
+<li>Örneklem büyüklüğünü artırmak, örnekleme yöntemindeki yanlılığı azaltır.</li>
+<li>Gözlemsel verilerden hiçbir koşulda nedensel çıkarım yapılamaz.</li>
+<li>Kesikli bir değişken yalnızca tam sayı değerler alabilir.</li>
+</ol>
+</div>
+<div id="cnj-b3-konut" class="theorem conjecture">
+<p><span class="theorem-title"><strong>Problem 3.10</strong></span> <code>besiktas_ev.RData</code> ve <code>bakirkoy_ev.RData</code> veri kümeleri İstanbul’un iki ilçesindeki satılık daire ilanlarını içerir (bkz. <a href="#tbl-veri-kumeleri" class="quarto-xref">Tablo&nbsp;<span>3.4</span></a>).</p>
+<ol type="a">
+<li><code>str()</code> komutuyla değişkenleri inceleyiniz. Her değişkenin ölçüm düzeyini belirtiniz.</li>
+<li>Hangi değişkenler kesikli, hangileri süreklidir?</li>
+<li><code>bina_yas</code> değişkeni “11-15 arası” gibi aralıklarla kaydedilmiştir. Bu değişkenin ölçüm düzeyi nedir ve bina yaşı yıl olarak kaydedilseydi hangi düzeyde olurdu?</li>
+<li>Bu veri kümesinin anakütlesi nedir? İlana çıkmış konutlarla satılan konutlar arasındaki fark, “İstanbul’da konut fiyatları” sorusuna verilecek cevabı nasıl etkiler?</li>
+<li>Fiyatlar ilanda istenen fiyattır. Gerçekleşen satış fiyatları yerine istenen fiyatları gözlemek hangi yönde bir yanlılık yaratır?</li>
+</ol>
+</div>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-wdi" class="csl-entry" role="listitem">
+World Bank. 2026. <span>“World Development Indicators.”</span> <a href="https://databank.worldbank.org/source/world-development-indicators">https://databank.worldbank.org/source/world-development-indicators</a>.
+</div>
+</div>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Türkçe kaynaklarda çıkarımsal istatistik yerine <em>çıkarsamalı istatistik</em> ya da <em>tümevarımsal istatistik</em> de kullanılır. Bu kitapta <em>çıkarım</em> terimini tercih ediyoruz.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Burada örneklem büyüklüğünün önemsiz olduğunu söylemiyoruz. Çok küçük örneklemlerle yapılan genellemeler de yanıltıcı olabilir.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Bu veriler simülasyonla üretilmiştir. Hiçbir gözlem gerçek bir haneye ait değildir.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Borsa İstanbul Temmuz 2020’de endeks değerlerinden iki sıfır atmıştır. Veri kümesindeki bütün değerler bu yeni ölçekle ifade edilmiştir.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Kaynak: World Bank, World Development Indicators <span class="citation" data-cites="wdi">(<a href="kaynaklar.html#ref-wdi" role="doc-biblioref">World Bank 2026</a>)</span>. Veriler CC BY 4.0 lisansıyla yayımlanmaktadır ve 14 Eylül 2026 tarihinde indirilmiştir. Bölge ve gelir grubu, Dünya Bankası’nın indirme tarihindeki sınıflamasıdır ve bütün yıllara aynı biçimde yazılmıştır. Ülke adları Türkçeleştirilmiş, bölge ve gelir grubu toplamları veriden çıkarılmıştır.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>Bu veri kümesi simülasyonla üretilmiştir ve gerçek bir şirkete ait değildir. Sipariş tutarı, iade, teslim süresi ve memnuniyet arasındaki ilişkiler e-ticarette sık görülen örüntüleri taklit edecek biçimde kurulmuştur.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>Anket anonim olarak uygulanmıştır ve kimliği belirleyici bilgi içermez. Doğum tarihinden yalnızca gün ve ay bilgisi tutulmuş, öğrencilerin sırası karıştırılmıştır.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>Veriler Zingat’ın paylaştığı konut ilanı veri kümesinden derlenmiştir. İlanlar 2018 sonu ile 2019 başı arasında yayımlanmış, İstanbul Beşiktaş ve Bakırköy ilçelerindeki satılık dairelere aittir. Gözlem sayısı az olan semtler komşularıyla birleştirilmiş, bina yaşı ve ısıtma sistemi kategorileri toplulaştırılmıştır. Fiyatlar ilanda istenen fiyatlardır, gerçekleşen satış fiyatları değildir. Veri kümesi satılan konutları değil, ilana çıkmış konutları kapsar.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Kopyalandı!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Kopyalandı!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./R-base.html" class="pagination-link" aria-label="R Programına Giriş">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">R Programına Giriş</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./Betimsel-gorsel.html" class="pagination-link" aria-label="Frekans Dağılımları ve Grafikler">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Frekans Dağılımları ve Grafikler</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
